@@ -1,0 +1,5 @@
+require 'gemdiff/version'
+require 'gemdiff/cli'
+require 'gemdiff/bundle_inspector'
+require 'gemdiff/outdated_gem'
+require 'gemdiff/repo_finder'
