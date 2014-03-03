@@ -8,7 +8,7 @@ between the current version of a gem in your bundle and the latest version of th
 
 1. Looking up the github repository for a gem often requires The Google.
 2. Many gems do not have the source repository URL in the gemspec.
-3. You should Always Be Updating. This makes it easier.
+3. You should Always Be Updating. This makes it easier to understand what changed.
 
 ## Install
 
@@ -40,10 +40,9 @@ Open? (y to open, else skip)
 
 ### `compare`
 
-You don't need to use bundler or be in a project. You can query a specific gem by
-entering explicit version numbers.
+You can use `gemdiff` bypassing bundler and query a gem by entering explicit version numbers.
 
-For example, open the GitHub compare view in browser for difference between versions 4.0.2 and 5.0.0:
+For example, open the GitHub compare view in browser for difference between `arel` versions 4.0.2 and 5.0.0:
 
 ```sh
 $ gemdiff compare arel --new=5.0.0 --old=4.0.2
