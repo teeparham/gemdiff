@@ -51,7 +51,7 @@ $ gemdiff compare arel --new=5.0.0 --old=4.0.2
 
 ### find
 
-Simply lookup the repository URL:
+Lookup the repository URL using the gemspec. If a GitHub URL is not found, hit the GitHub search API.
 
 ```sh
 $ gemdiff find arel
