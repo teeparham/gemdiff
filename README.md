@@ -10,36 +10,31 @@ between the current version of a gem in your bundle and the latest version of th
 gem install gemdiff
 ```
 
-## Find
+## Commands
+### find
 
 ```sh
 $ gemdiff find arel
 http://github.com/rails/arel
-
 ```
 
-## Open
+### open
 ```sh
 $ gemdiff open arel
-
 # opens arel project url in browser
-
 ```
 
-## Compare
+### compare
 ```sh
 $ gemdiff compare arel --new=5.0.0 --old=4.0.2
-
 # opens GitHub compare view in browser for difference between versions 4.0.2 and 5.0.0
-
 ```
 
-## Outdated
+### outdated
 
 The holy grail:
 
 ```sh
 $ cd /your/ruby/project/using/bundler
 $ gemdiff
-
 ```
