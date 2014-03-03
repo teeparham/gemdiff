@@ -3,7 +3,7 @@ module Gemdiff
 
     # gems that tag releases with tag names like 1.2.3
     # keep it alphabetical
-    LIST_NO_V = %w[atomic haml thread_safe]
+    LIST_NO_V = %w[atomic babosa cancan compass haml thread_safe]
 
     attr_accessor :name, :old_version, :new_version
 
@@ -39,12 +39,20 @@ module Gemdiff
       !!repo
     end
 
+    def releases_url
+      "#{repo}/releases"
+    end
+
     def compare_message
       "#{name}: #{new_version} > #{old_version}"
     end
 
     def compare_url
       "#{repo}/compare/#{compare_part}"
+    end
+
+    def releases
+      `open #{releases_url}` if repo?
     end
 
     def compare

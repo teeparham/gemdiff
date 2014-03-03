@@ -18,8 +18,13 @@ module Gemdiff
     desc 'open gem_name', 'Open the github repository for a gem'
     def open(gem_name)
       gem = find(gem_name)
-      return unless gem.repo?
       gem.open
+    end
+
+    desc 'releases gem_name', 'Open the github releases page for a gem'
+    def releases(gem_name)
+      gem = find(gem_name)
+      gem.releases
     end
 
     desc 'compare gem_name', <<DESC
