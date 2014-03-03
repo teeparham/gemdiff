@@ -18,7 +18,7 @@ gem install gemdiff
 
 ## Commands
 
-### outdated
+### `outdated`
 
 Runs `bundle outdated --strict` on the project in the current directory.
 For each outdated gem, it prompts you if you would like to open the compare view
@@ -38,7 +38,7 @@ sprockets: 2.11.0 > 2.10.1
 Open? (y to open, else skip)
 ```
 
-### compare
+### `compare`
 
 You don't need to use bundler or be in a project. You can query a specific gem by
 entering explicit version numbers.
@@ -49,7 +49,7 @@ For example, open the GitHub compare view in browser for difference between vers
 $ gemdiff compare arel --new=5.0.0 --old=4.0.2
 ```
 
-### find
+### `find`
 
 Lookup the repository URL using the gemspec. If a GitHub URL is not found, hit the GitHub search API.
 
@@ -58,7 +58,7 @@ $ gemdiff find arel
 http://github.com/rails/arel
 ```
 
-### open
+### `open`
 
 Open the repository URL:
 
@@ -66,7 +66,7 @@ Open the repository URL:
 $ gemdiff open arel
 ```
 
-### releases
+### `releases`
 
 Open the repository's release history page:
 
