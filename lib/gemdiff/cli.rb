@@ -40,7 +40,7 @@ DESC
       gem.set_versions options
       if gem.missing_versions?
         puts "Checking for outdated gems in your bundle..."
-        unless gem.load_from_bundle
+        unless gem.load_bundle_versions
           puts "#{gem_name} is not outdated in your bundle. Specify versions."
           return
         end
