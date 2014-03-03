@@ -22,7 +22,11 @@ module Gemdiff
       gem.open
     end
 
-    desc 'compare gem_name', 'Compare gem versions. Opens the compare view between the specified new and old versions. If versions are not specified, your bundle is inspected and the latest version of the gem is compared with the current version in your bundle.'
+    desc 'compare gem_name', <<DESC
+Compare gem versions. Opens the compare view between the specified new and old versions.
+If versions are not specified, your bundle is inspected and the latest version of the
+gem is compared with the current version in your bundle.
+DESC
     method_option :new, aliases: '-n', desc: 'new gem version'
     method_option :old, aliases: '-o', desc: 'old gem version'
     def compare(gem_name)
@@ -37,7 +41,7 @@ module Gemdiff
         end
       end
       puts gem.compare_message
-      gem.open
+      gem.compare
     end
 
     desc 'outdated', 'Compare each outdated gem in the bundle. You will be prompted to open each compare view.'
@@ -47,7 +51,7 @@ module Gemdiff
       inspector.list.each do |gem|
         puts gem.compare_message
         response = ask("Open? (y to open, else skip)")
-        gem.open if response == 'y'
+        gem.compare if response == 'y'
       end
     end
   end

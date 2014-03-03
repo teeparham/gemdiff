@@ -19,7 +19,7 @@ module Gemdiff
     end
 
     def load_bundle_versions
-      gem = BundleInspector.new.get(gem_name)
+      gem = BundleInspector.new.get(@name)
       return false if gem.nil?
       @old_version ||= gem.old_version
       @new_version ||= gem.new_version
@@ -42,8 +42,12 @@ module Gemdiff
       "#{repo}/compare/v#{old_version}...v#{new_version}"
     end
 
-    def open
+    def compare
       `open #{compare_url}` if repo?
+    end
+
+    def open
+      `open #{repo}` if repo?
     end
   end
 end
