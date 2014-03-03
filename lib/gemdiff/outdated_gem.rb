@@ -43,12 +43,20 @@ module Gemdiff
       "#{repo}/releases"
     end
 
+    def commits_url
+      "#{repo}/commits/master"
+    end
+
     def compare_message
       "#{name}: #{new_version} > #{old_version}"
     end
 
     def compare_url
       "#{repo}/compare/#{compare_part}"
+    end
+
+    def commits
+      `open #{commits_url}` if repo?
     end
 
     def releases
@@ -63,7 +71,7 @@ module Gemdiff
       `open #{repo}` if repo?
     end
 
-    private
+  private
 
     def compare_part
       if compare_type == :no_v

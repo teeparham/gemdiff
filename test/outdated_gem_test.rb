@@ -26,6 +26,22 @@ module Gemdiff
       end
     end
 
+    describe "#releases_url" do
+      it "returns releases url" do
+        gem = OutdatedGem.new("x")
+        gem.stubs repo: "http://github.com/x/x"
+        assert_equal "http://github.com/x/x/releases", gem.releases_url
+      end
+    end
+
+    describe "#commits_url" do
+      it "returns commits url" do
+        gem = OutdatedGem.new("x")
+        gem.stubs repo: "http://github.com/x/x"
+        assert_equal "http://github.com/x/x/commits/master", gem.commits_url
+      end
+    end
+
     describe "#compare_message" do
       it "returns compare message" do
         gem = OutdatedGem.new("x", "1", "2")

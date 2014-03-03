@@ -73,6 +73,14 @@ Open the repository's release history page:
 $ gemdiff releases arel
 ```
 
+### `commits`
+
+Open the repository's master branch commit history page:
+
+```sh
+$ gemdiff commits arel
+```
+
 ## It didn't work
 
 `gemdiff` operates on a few assumptions:
