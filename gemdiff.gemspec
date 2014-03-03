@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = %w[lib]
 
   spec.add_dependency "bundler", "~> 1.5"
+  spec.add_dependency "highline", "~> 1.6"
   spec.add_dependency "octokit", "~> 2.7"
   spec.add_dependency "thor", "~> 0.18"
 
