@@ -27,7 +27,7 @@ module Gemdiff
       items = line.split(' ')
 
       # ["*", "haml", "(4.0.5", ">", "4.0.4)"]
-      # ["*", "activerecord-postgis-adapter", "(0.7.0", "99ddbc9", ">", "0.7.0", "1da2295)"]
+      # ["*", "a_forked_gem", "(0.7.0", "99ddbc9", ">", "0.7.0", "1da2295)"]
 
       return nil if items[4] == '>' # skip non-gems for now
       old_version = items[4].sub(')', '')
