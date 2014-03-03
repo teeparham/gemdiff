@@ -65,5 +65,15 @@ DESC
         gem.compare if response == 'y'
       end
     end
+
+    desc 'update <gem>', 'Update a gem, show a git diff of the update, and commit or reset'
+    def update(name)
+      puts "Updating #{name}..."
+      gem = GemUpdater.new(name)
+      gem.update
+      response = ask("Commit? (c to commit, r to reset, else do nothing")
+      gem.commit if response == 'c'
+      gem.reset if response == 'r'
+    end
   end
 end
