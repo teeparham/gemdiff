@@ -1,4 +1,5 @@
 require 'gemdiff/version'
+require 'gemdiff/colorize'
 require 'gemdiff/cli'
 require 'gemdiff/bundle_inspector'
 require 'gemdiff/outdated_gem'

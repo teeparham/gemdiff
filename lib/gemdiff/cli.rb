@@ -2,6 +2,8 @@ require 'thor'
 
 module Gemdiff
   class CLI < Thor
+    include Colorize
+
     default_task :outdated
 
     desc 'find <gem>', 'Find the github repository URL for a gem'
@@ -71,9 +73,10 @@ DESC
       puts "Updating #{name}..."
       gem = GemUpdater.new(name)
       gem.update
+      puts colorize_diff(gem.diff)
       response = ask("Commit? (c to commit, r to reset, else do nothing")
-      gem.commit if response == 'c'
-      gem.reset if response == 'r'
+      puts gem.commit if response == 'c'
+      puts gem.reset if response == 'r'
     end
   end
 end
