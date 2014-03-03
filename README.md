@@ -81,6 +81,12 @@ Open the repository's master branch commit history page:
 $ gemdiff commits arel
 ```
 
+### `help`
+
+```sh
+$ gemdiff help
+```
+
 ## It didn't work
 
 `gemdiff` operates on a few assumptions:
