@@ -1,8 +1,13 @@
 module Gemdiff
   class OutdatedGem
+
+    # gems that tag releases with tag names like 1.2.3
+    # keep it alphabetical
+    LIST_NO_V = %w[atomic haml thread_safe]
+
     attr_accessor :name, :old_version, :new_version
 
-    def initialize(name, old_version=nil, new_version=nil)
+    def initialize(name, old_version = nil, new_version = nil)
       @name = name
       @old_version = old_version
       @new_version = new_version
@@ -39,7 +44,7 @@ module Gemdiff
     end
 
     def compare_url
-      "#{repo}/compare/v#{old_version}...v#{new_version}"
+      "#{repo}/compare/#{compare_part}"
     end
 
     def compare
@@ -48,6 +53,24 @@ module Gemdiff
 
     def open
       `open #{repo}` if repo?
+    end
+
+    private
+
+    def compare_part
+      if compare_type == :no_v
+        "#{old_version}...#{new_version}"
+      else
+        "v#{old_version}...v#{new_version}"
+      end
+    end
+
+    def compare_type
+      if LIST_NO_V.include?(@name)
+        :no_v
+      else
+        :default
+      end
     end
   end
 end

@@ -14,9 +14,15 @@ module Gemdiff
 
     describe "#compare_url" do
       it "returns compare url" do
-        gem = OutdatedGem.new("x", "1", "2")
+        gem = OutdatedGem.new("x", "1.0", "2.0")
         gem.stubs repo: "http://github.com/x/x"
-        assert_equal "http://github.com/x/x/compare/v1...v2", gem.compare_url
+        assert_equal "http://github.com/x/x/compare/v1.0...v2.0", gem.compare_url
+      end
+
+      it "returns compare url with no v for exceptions" do
+        gem = OutdatedGem.new("haml", "4.0.0", "4.1.0")
+        gem.stubs repo: "http://github.com/haml/haml"
+        assert_equal "http://github.com/haml/haml/compare/4.0.0...4.1.0", gem.compare_url
       end
     end
 
