@@ -2,6 +2,7 @@ require 'thor'
 
 module Gemdiff
   class CLI < Thor
+    include Thor::Actions
     include Colorize
 
     default_task :outdated
