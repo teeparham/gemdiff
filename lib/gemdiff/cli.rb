@@ -75,7 +75,12 @@ DESC
       puts "Updating #{name}..."
       gem = GemUpdater.new(name)
       gem.update
-      puts colorize_git_output(gem.diff)
+      diff_output = colorize_git_output(gem.diff)
+      puts diff_output
+      if diff_output.empty?
+        puts "Nothing to update."
+        return
+      end
       response = ask("\nCommit? (c to commit, r to reset, else do nothing)")
       if response == 'c'
         gem.commit
