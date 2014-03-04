@@ -8,6 +8,8 @@ module Gemdiff
     default_task :outdated
 
     CHECKING_FOR_OUTDATED = "Checking for outdated gems in your bundle..."
+    NOTHING_TO_UPDATE = "Nothing to update."
+    WORKING_DIRECTORY_IS_NOT_CLEAN = "Your working directory is not clean. Please commit or stash before updating."
 
     desc 'find <gem>', 'Find the github repository URL for a gem'
     def find(gem_name)
@@ -74,14 +76,14 @@ DESC
     def update(name)
       gem = GemUpdater.new(name)
       unless gem.clean?
-        puts "Your working directory is not clean. Please commit or stash before updating."
+        puts WORKING_DIRECTORY_IS_NOT_CLEAN
       end
       puts "Updating #{name}..."
       gem.update
       diff_output = colorize_git_output(gem.diff)
       puts diff_output
       if diff_output.empty?
-        puts "Nothing to update."
+        puts NOTHING_TO_UPDATE
         return
       end
       response = ask("\nCommit? (c to commit, r to reset, else do nothing)")
