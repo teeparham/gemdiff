@@ -14,6 +14,10 @@ module Gemdiff
       git_diff
     end
 
+    def show
+      git_show
+    end
+
     def commit
       git_commit
     end
@@ -23,6 +27,10 @@ module Gemdiff
     end
 
   private
+
+    def git_show
+      `git show`
+    end
 
     def git_diff
       `git diff`

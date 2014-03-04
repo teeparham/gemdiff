@@ -4,11 +4,13 @@ module Gemdiff
       {
         red:     31,
         green:   32,
+        yellow:  33,
         blue:    34,
         magenta: 35,
       }
 
-    def colorize_diff(lines)
+    # works with `git show` and `git diff`
+    def colorize_git_output(lines)
       out = []
       lines.split("\n").each do |line|
         out <<
@@ -16,6 +18,8 @@ module Gemdiff
             colorize line, :blue
           elsif line.start_with?("@@")
             colorize line, :magenta
+          elsif line.start_with?("commit")
+            colorize line, :yellow
           elsif line.start_with?("-")
             colorize line, :red
           elsif line.start_with?("+")

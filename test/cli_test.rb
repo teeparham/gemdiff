@@ -67,34 +67,82 @@ module Gemdiff
     end
 
     describe "#outdated" do
+      it "does nothing when nothing to update" do
+        mock_inspector = mock do
+          stubs list: []
+          stubs outdated: ""
+        end
+        BundleInspector.stubs new: mock_inspector
+        @cli.expects(:puts).with(CLI::CHECKING_FOR_OUTDATED)
+        @cli.expects(:puts).with("")
+        @cli.outdated
+      end
+
       it "compares outdated gems with responses of y" do
+        gem = OutdatedGem.new("haml", "4.0.4", "4.0.5")
+        mock_inspector = mock do
+          stubs list: [gem]
+          stubs outdated: "outdated"
+        end
+        BundleInspector.stubs new: mock_inspector
+        @cli.stubs ask: 'y'
+        @cli.expects(:puts).with(CLI::CHECKING_FOR_OUTDATED)
+        @cli.expects(:puts).with("outdated")
+        @cli.expects(:puts).with("haml: 4.0.5 > 4.0.4")
+        gem.expects :compare
         @cli.outdated
       end
 
       it "skips outdated gems without responses of y" do
-
+        gem = OutdatedGem.new("haml", "4.0.4", "4.0.5")
+        mock_inspector = mock do
+          stubs list: [gem]
+          stubs outdated: "outdated"
+        end
+        BundleInspector.stubs new: mock_inspector
+        @cli.stubs ask: ''
+        @cli.expects(:puts).with(CLI::CHECKING_FOR_OUTDATED)
+        @cli.expects(:puts).with("outdated")
+        @cli.expects(:puts).with("haml: 4.0.5 > 4.0.4")
+        gem.expects(:compare).never
         @cli.outdated
       end
     end
 
     describe "#update" do
       before do
-        mock_inspector = mock { stubs list: []}
-        BundleInspector.stubs new: mock_inspector
+        @mock_gem = mock do
+          stubs diff: "le diff"
+          stubs show: "le show"
+        end
+        GemUpdater.stubs new: @mock_gem
       end
 
       it "updates the gem and returns with no response" do
         @cli.stubs ask: ''
+        @cli.expects(:puts).with("Updating haml...")
+        @mock_gem.expects :update
+        @cli.expects(:puts).with("le diff")
         @cli.update "haml"
       end
 
-      it "updates, commits with responses of c" do
-        @cli.stubs ask: 'r'
+      it "updates the gem and commits with responses of c" do
+        @cli.stubs ask: 'c'
+        @cli.expects(:puts).with("Updating haml...")
+        @mock_gem.expects :update
+        @cli.expects(:puts).with("le diff")
+        @mock_gem.expects :commit
+        @cli.expects(:puts).with("\nle show")
         @cli.update "haml"
       end
 
-      it "updates, resets with responses of r" do
+      it "updates the gem and resets with responses of r" do
         @cli.stubs ask: 'r'
+        @cli.expects(:puts).with("Updating haml...")
+        @mock_gem.expects :update
+        @cli.expects(:puts).with("le diff")
+        @mock_gem.expects(:reset).returns("le reset")
+        @cli.expects(:puts).with("le reset")
         @cli.update "haml"
       end
     end

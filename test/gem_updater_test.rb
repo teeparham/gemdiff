@@ -28,10 +28,18 @@ module Gemdiff
     end
 
     describe "#diff" do
-      it "shows git diff" do
+      it "returns git diff" do
         updater = GemUpdater.new("x")
         updater.expects :git_diff
         updater.diff
+      end
+    end
+
+    describe "#show" do
+      it "returns git show" do
+        updater = GemUpdater.new("x")
+        updater.expects :git_show
+        updater.show
       end
     end
   end

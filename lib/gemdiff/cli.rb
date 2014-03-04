@@ -6,6 +6,8 @@ module Gemdiff
 
     default_task :outdated
 
+    CHECKING_FOR_OUTDATED = "Checking for outdated gems in your bundle..."
+
     desc 'find <gem>', 'Find the github repository URL for a gem'
     def find(gem_name)
       gem = OutdatedGem.new(gem_name)
@@ -47,7 +49,7 @@ DESC
       return unless gem.repo?
       gem.set_versions options
       if gem.missing_versions?
-        puts "Checking for outdated gems in your bundle..."
+        puts CHECKING_FOR_OUTDATED
         unless gem.load_bundle_versions
           puts "#{gem_name} is not outdated in your bundle. Specify versions."
           return
@@ -59,8 +61,9 @@ DESC
 
     desc 'outdated', 'Compare each outdated gem in the bundle. You will be prompted to open each compare view.'
     def outdated
-      puts "Checking for outdated gems in your bundle..."
+      puts CHECKING_FOR_OUTDATED
       inspector = BundleInspector.new
+      puts inspector.outdated
       inspector.list.each do |gem|
         puts gem.compare_message
         response = ask("Open? (y to open, else skip)")
@@ -73,10 +76,14 @@ DESC
       puts "Updating #{name}..."
       gem = GemUpdater.new(name)
       gem.update
-      puts colorize_diff(gem.diff)
-      response = ask("Commit? (c to commit, r to reset, else do nothing")
-      puts gem.commit if response == 'c'
-      puts gem.reset if response == 'r'
+      puts colorize_git_output(gem.diff)
+      response = ask("\nCommit? (c to commit, r to reset, else do nothing)")
+      if response == 'c'
+        gem.commit
+        puts "\n" + colorize_git_output(gem.show)
+      elsif response == 'r'
+        puts gem.reset
+      end
     end
   end
 end

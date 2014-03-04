@@ -2,14 +2,17 @@ module Gemdiff
   class BundleInspector
     def list
       @list ||= begin
-        output = bundle_outdated_strict
         gems = []
-        output.split("\n").each do |line|
+        outdated.split("\n").each do |line|
           next unless (outdated_gem = new_outdated_gem(line))
           gems << outdated_gem
         end
         gems
       end
+    end
+
+    def outdated
+      @outdated ||= bundle_outdated_strict
     end
 
     def get(gem_name)

@@ -42,10 +42,45 @@ Open? (y to open, else skip)
 
 You can use `gemdiff` bypassing bundler and query a gem by entering explicit version numbers.
 
-For example, open the GitHub compare view in browser for difference between `arel` versions 4.0.2 and 5.0.0:
+For example, open the GitHub compare view in browser for difference between `haml` versions 4.0.4 and 4.0.5:
 
 ```sh
-$ gemdiff compare arel --new=5.0.0 --old=4.0.2
+$ gemdiff compare haml --new=4.0.5 --old=4.0.4
+```
+
+### `update`
+
+`gemdiff` can simplify your git workflow around updating gems. Use `update` to update a gem in your
+bundle and commit the change to your repository. You will be shown a preview of the `git diff` and
+you may choose to commit or reset the change.
+
+```sh
+$ gemdiff update haml
+
+Updating haml...
+diff --git a/Gemfile.lock b/Gemfile.lock
+index d5544ef..2d5def8 100644
+--- a/Gemfile.lock
++++ b/Gemfile.lock
+@@ -38,7 +38,7 @@ GEM
+     dalli (2.7.0)
+     debugger-linecache (1.2.0)
+     erubis (2.7.0)
+-    haml (4.0.4)
++    haml (4.0.5)
+       tilt
+     hike (1.2.3)
+     i18n (0.6.9)
+
+Commit? (c to commit, r to reset, else do nothing) c
+
+commit ebcc13f4c9a43f2e844d9d185e527652021c6a8f
+Author: Tee Parham
+Date:   Mon Mar 3 16:38:32 2014 -0700
+
+    Update haml to 4.0.5
+
+diff --git a/Gemfile.lock
 ```
 
 ### `find`
@@ -53,8 +88,8 @@ $ gemdiff compare arel --new=5.0.0 --old=4.0.2
 Lookup the repository URL using the gemspec. If a GitHub URL is not found, hit the GitHub search API.
 
 ```sh
-$ gemdiff find arel
-http://github.com/rails/arel
+$ gemdiff find haml
+http://github.com/haml/haml
 ```
 
 ### `open`
@@ -62,7 +97,7 @@ http://github.com/rails/arel
 Open the repository URL:
 
 ```sh
-$ gemdiff open arel
+$ gemdiff open haml
 ```
 
 ### `releases`
@@ -70,7 +105,7 @@ $ gemdiff open arel
 Open the repository's release history page:
 
 ```sh
-$ gemdiff releases arel
+$ gemdiff releases haml
 ```
 
 ### `commits`
@@ -78,7 +113,7 @@ $ gemdiff releases arel
 Open the repository's master branch commit history page:
 
 ```sh
-$ gemdiff commits arel
+$ gemdiff commits haml
 ```
 
 ### `help`
