@@ -5,15 +5,17 @@ module Gemdiff
     GITHUB_REPO_REGEX = /(https?):\/\/(www.)?github\.com\/([\w._%-]*)\/([\w._%-]*)/
 
     # rails builds several gems that are not individual projects
+    # some repos move and the old repo page still exists
     REPO_EXCEPTIONS =
       {
-        :'actionmailer'  => 'rails/rails',
-        :'actionpack'    => 'rails/rails',
-        :'actionview'    => 'rails/rails',
-        :'activemodel'   => 'rails/rails',
-        :'activerecord'  => 'rails/rails',
-        :'activesupport' => 'rails/rails',
-        :'railties'      => 'rails/rails',
+        actionmailer:  'rails/rails',
+        actionpack:    'rails/rails',
+        actionview:    'rails/rails',
+        activemodel:   'rails/rails',
+        activerecord:  'rails/rails',
+        activesupport: 'rails/rails',
+        railties:      'rails/rails',
+        resque:        'resque/resque',
       }
 
     class << self
