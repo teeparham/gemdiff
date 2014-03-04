@@ -67,5 +67,28 @@ module Gemdiff
         assert_equal "2.3.4", gem.new_version
       end
     end
+
+    describe "#set_versions" do
+      it "sets nil versions" do
+        gem = OutdatedGem.new("x", "1", "2")
+        gem.set_versions nil, nil
+        assert_nil gem.old_version
+        assert_nil gem.new_version
+      end
+
+      it "sets old, new versions" do
+        gem = OutdatedGem.new("x")
+        gem.set_versions "1.2.34", "2.34.56"
+        assert_equal "1.2.34", gem.old_version
+        assert_equal "2.34.56", gem.new_version
+      end
+
+      it "swaps versions in the wrong order" do
+        gem = OutdatedGem.new("x")
+        gem.set_versions "2.34.56", "1.2.34"
+        assert_equal "1.2.34", gem.old_version
+        assert_equal "2.34.56", gem.new_version
+      end
+    end
   end
 end

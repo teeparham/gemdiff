@@ -9,17 +9,17 @@ module Gemdiff
 
     def initialize(name, old_version = nil, new_version = nil)
       @name = name
-      @old_version = old_version
-      @new_version = new_version
+      set_versions old_version, new_version
     end
 
-    def set_versions(old_version, new_version)
-      @old_version = old_version
-      @new_version = new_version
+    def set_versions(v_old, v_new)
+      v_old, v_new = v_new, v_old if v_old && v_new && v_old > v_new # swap using parallel assignment
+      @old_version = v_old
+      @new_version = v_new
     end
 
     def missing_versions?
-      old_version.nil? || new_version.nil?
+      @old_version.nil? || @new_version.nil?
     end
 
     def load_bundle_versions
