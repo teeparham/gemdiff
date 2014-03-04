@@ -6,12 +6,20 @@
 `gemdiff` is a command-line utility to find and compare source code repositories
 associated with ruby gems. It makes it easy to compare source code differences
 between the current version of a gem in your bundle and the latest version of the gem.
+`gemdiff` helps connect gem version management (rubygems + bundler) with source code (github).
 
-## Why?
+#### Why?
 
-1. Looking up the github repository for a gem often requires The Google.
-2. Many gems do not have the source repository URL in the gemspec.
-3. You should Always Be Updating. This makes it easier to understand what changed.
+You want to quickly view the source code differences between versions of gems when your dependencies are updated. 
+It is often not that easy, because finding the github repository for a gem often requires The Google since many 
+gems do not have the source repository URL in their gemspec. 
+
+#### How?
+
+`gemdiff` does the repository lookup by inspecting the gemspec, then searching github if needed. It uses bundler to 
+list your outdated gems. For each outdated gem, it determines your currently used version and the version you can 
+update to, and builds a compare view URL with the old and new version tags. It also provides `update` to assist in 
+the `bundle update` and commit workflow.
 
 ## Install
 
@@ -33,17 +41,31 @@ This is the default task so you can just run `gemdiff`.
 $ cd /your/ruby/project/using/bundler
 $ gemdiff
 Checking for outdated gems in your bundle...
+Fetching gem metadata from https://rubygems.org/.......
+Fetching additional metadata from https://rubygems.org/..
+Resolving dependencies...
+
+Outdated gems included in the bundle:
+  * aws-sdk (1.35.0 > 1.34.1)
+  * sprockets (2.11.0 > 2.10.1)
+  * webmock (1.17.4 > 1.17.3)
 aws-sdk: 1.35.0 > 1.34.1
 Open? (y to open, else skip)
-webmock: 1.17.4 > 1.17.3
-Open? (y to open, else skip) y
 sprockets: 2.11.0 > 2.10.1
+Open? (y to open, else skip) y
+webmock: 1.17.4 > 1.17.3
 Open? (y to open, else skip)
 ```
 
 ### `compare`
 
-You can use `gemdiff` bypassing bundler and query a gem by entering explicit version numbers.
+You can open a compare view for an individual outdated gem in your bundle:
+
+```sh
+$ gemdiff compare haml
+```
+
+You can also bypass bundler and query a gem by entering explicit version numbers.
 
 For example, open the GitHub compare view in browser for difference between `haml` versions 4.0.4 and 4.0.5:
 
@@ -125,7 +147,7 @@ $ gemdiff commits haml
 $ gemdiff help
 ```
 
-## It didn't work
+### It didn't work
 
 `gemdiff` operates on a few assumptions:
 
@@ -140,3 +162,5 @@ a non-standard pattern, please submit a pull request. See `lib/gemdiff/outdated_
 4. Encourage gem maintainers to either enter the GitHub repository URL in the `homepage` field of their gemspec,
 or anywhere in the description. `gemdiff` is much faster if so, and if not, it guesses the best match using
 the GitHub search API.
+
+5. Some gems' source code is not on github (gasp!). `gemdiff` could support other source hosts. Submit a PR!
