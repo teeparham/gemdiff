@@ -14,6 +14,7 @@ module Gemdiff
         activemodel:   'rails/rails',
         activerecord:  'rails/rails',
         activesupport: 'rails/rails',
+        delayed_job:   'collectiveidea/delayed_job',
         railties:      'rails/rails',
         resque:        'resque/resque',
       }
