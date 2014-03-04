@@ -72,8 +72,11 @@ DESC
 
     desc 'update <gem>', 'Update a gem, show a git diff of the update, and commit or reset'
     def update(name)
-      puts "Updating #{name}..."
       gem = GemUpdater.new(name)
+      unless gem.clean?
+        puts "Your working directory is not clean. Please commit or stash before updating."
+      end
+      puts "Updating #{name}..."
       gem.update
       diff_output = colorize_git_output(gem.diff)
       puts diff_output

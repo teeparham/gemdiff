@@ -125,6 +125,7 @@ module Gemdiff
     describe "#update" do
       before do
         @mock_gem = mock do
+          stubs clean?: true
           stubs diff: "le diff"
           stubs show: "le show"
         end
