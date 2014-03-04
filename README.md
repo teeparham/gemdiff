@@ -65,12 +65,12 @@ You can open a compare view for an individual outdated gem in your bundle:
 $ gemdiff compare haml
 ```
 
-You can also bypass bundler and query a gem by entering explicit version numbers.
+You can also bypass bundler and query a gem by including the old and new version numbers.
 
 For example, open the GitHub compare view in browser for difference between `haml` versions 4.0.4 and 4.0.5:
 
 ```sh
-$ gemdiff compare haml --new=4.0.5 --old=4.0.4
+$ gemdiff compare haml 4.0.4 4.0.5
 ```
 
 ### `update`
