@@ -13,10 +13,9 @@ module Gemdiff
       @new_version = new_version
     end
 
-    # options :old, :new
-    def set_versions(options)
-      @old_version = options[:old]
-      @new_version = options[:new]
+    def set_versions(old_version, new_version)
+      @old_version = old_version
+      @new_version = new_version
     end
 
     def missing_versions?

@@ -37,17 +37,15 @@ module Gemdiff
       gem.commits
     end
 
-    desc 'compare <gem> [<versions>...]', <<DESC
+    desc 'compare <gem> [<old_version> <new_version>]', <<DESC
 Compare gem versions. Opens the compare view between the specified new and old versions.
 If versions are not specified, your bundle is inspected and the latest version of the
 gem is compared with the current version in your bundle.
 DESC
-    method_option :new, aliases: '-n', desc: 'new gem version'
-    method_option :old, aliases: '-o', desc: 'old gem version'
-    def compare(gem_name)
+    def compare(gem_name, old_version = nil, new_version = nil)
       gem = find(gem_name)
       return unless gem.repo?
-      gem.set_versions options
+      gem.set_versions old_version, new_version
       if gem.missing_versions?
         puts CHECKING_FOR_OUTDATED
         unless gem.load_bundle_versions

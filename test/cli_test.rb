@@ -48,15 +48,28 @@ module Gemdiff
     end
 
     describe "#compare" do
-      it "opens compare view" do
+      it "opens compare view using bundle" do
         gem = mock_gem("haml")
-        gem.expects(:set_versions).with({})
-        gem.expects(:missing_versions?).returns(false)
-        gem.expects(:compare_message).returns("compare message")
         @cli.expects(:puts).with("http://github.com/haml/haml")
+        gem.expects(:set_versions).with(nil, nil)
+        gem.expects(:missing_versions?).returns(true)
+        @cli.expects(:puts).with(CLI::CHECKING_FOR_OUTDATED)
+        gem.expects(:load_bundle_versions).returns(true)
+        gem.expects(:compare_message).returns("compare message")
         @cli.expects(:puts).with("compare message")
         gem.expects :compare
         @cli.compare "haml"
+      end
+
+      it "opens compare view with versions" do
+        gem = mock_gem("haml")
+        @cli.expects(:puts).with("http://github.com/haml/haml")
+        gem.expects(:set_versions).with("4.0.4", "4.0.5")
+        gem.expects(:missing_versions?).returns(false)
+        gem.expects(:compare_message).returns("compare message")
+        @cli.expects(:puts).with("compare message")
+        gem.expects :compare
+        @cli.compare "haml", "4.0.4", "4.0.5"
       end
 
       it "returns when the gem is not found" do
