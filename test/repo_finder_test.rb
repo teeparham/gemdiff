@@ -19,6 +19,10 @@ module Gemdiff
         RepoFinder.stubs find_homepage_in_spec: ""
         assert_nil RepoFinder.github_url("not_found")
       end
+
+      it "returns exception url" do
+        assert_equal "http://github.com/rails/rails", RepoFinder.github_url('activerecord')
+      end
     end
 
   private

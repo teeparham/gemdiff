@@ -4,6 +4,18 @@ module Gemdiff
   module RepoFinder
     GITHUB_REPO_REGEX = /(https?):\/\/(www.)?github\.com\/([\w._%-]*)\/([\w._%-]*)/
 
+    # rails builds several gems that are not individual projects
+    REPO_EXCEPTIONS =
+      {
+        :'actionmailer'  => 'rails/rails',
+        :'actionpack'    => 'rails/rails',
+        :'actionview'    => 'rails/rails',
+        :'activemodel'   => 'rails/rails',
+        :'activerecord'  => 'rails/rails',
+        :'activesupport' => 'rails/rails',
+        :'railties'      => 'rails/rails',
+      }
+
     class << self
       # Try to get the homepage from the gemspec
       # If not found, search github
@@ -16,6 +28,9 @@ module Gemdiff
     private
 
       def gemspec_homepage(gem_name)
+        if (full_name = REPO_EXCEPTIONS[gem_name.to_sym])
+          return github_repo(full_name)
+        end
         homepage = find_homepage_in_spec(gem_name)
         match = homepage.match(GITHUB_REPO_REGEX)
         match && match[0]
@@ -26,7 +41,11 @@ module Gemdiff
         result = octokit_client.search_repositories(query)
         return nil if result.items.empty?
         result.items
-        "http://github.com/#{result.items.first.full_name}"
+        github_repo result.items.first.full_name
+      end
+
+      def github_repo(full_name)
+        "http://github.com/#{full_name}"
       end
       
       def octokit_client
