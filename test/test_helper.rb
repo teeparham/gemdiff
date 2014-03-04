@@ -1,4 +1,9 @@
 require 'minitest/autorun'
 require 'mocha/setup'
-require 'pry-byebug'
 require 'gemdiff'
+
+begin
+  require 'pry-byebug'
+rescue LoadError
+  # ok
+end
