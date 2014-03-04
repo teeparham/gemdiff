@@ -26,6 +26,10 @@ module Gemdiff
       git_reset
     end
 
+    def clean?
+      git_diff.empty?
+    end
+
   private
 
     def git_show

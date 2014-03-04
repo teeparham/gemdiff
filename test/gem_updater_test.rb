@@ -42,5 +42,20 @@ module Gemdiff
         updater.show
       end
     end
+
+    describe "#clean?" do
+      it "returns true for empty diff" do
+        updater = GemUpdater.new("x")
+        updater.stubs git_diff: ""
+        assert updater.clean?
+      end
+
+      it "returns false for non-empty diff" do
+        updater = GemUpdater.new("x")
+        updater.stubs git_diff: "something"
+        refute updater.clean?
+      end
+    end
+
   end
 end

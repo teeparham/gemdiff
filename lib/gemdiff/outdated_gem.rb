@@ -38,10 +38,6 @@ module Gemdiff
       !!repo
     end
 
-    def clean?
-      `git diff`.empty?
-    end
-
     def releases_url
       "#{repo}/releases"
     end
