@@ -40,7 +40,7 @@ module Gemdiff
       end
 
       def search(gem_name)
-        query = "#{gem_name}&language:ruby&in:name"
+        query = "#{gem_name} language:ruby in:name"
         result = octokit_client.search_repositories(query)
         return nil if result.items.empty?
         result.items
