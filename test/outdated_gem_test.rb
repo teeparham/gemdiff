@@ -24,6 +24,12 @@ module Gemdiff
         gem.stubs repo: "http://github.com/haml/haml"
         assert_equal "http://github.com/haml/haml/compare/4.0.0...4.1.0", gem.compare_url
       end
+
+      it "returns compare url with branch name for new version" do
+        gem = OutdatedGem.new("x", "4.0.0", "master")
+        gem.stubs repo: "http://github.com/x/x"
+        assert_equal "http://github.com/x/x/compare/v4.0.0...master", gem.compare_url
+      end
     end
 
     describe "#releases_url" do

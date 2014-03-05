@@ -65,12 +65,51 @@ You can open a compare view for an individual outdated gem in your bundle:
 $ gemdiff compare haml
 ```
 
-You can also bypass bundler and query a gem by including the old and new version numbers.
+You can bypass bundler and query a gem by including the old and new version numbers.
 
 For example, open the GitHub compare view in browser for difference between `haml` versions 4.0.4 and 4.0.5:
 
 ```sh
 $ gemdiff compare haml 4.0.4 4.0.5
+```
+
+You can compare an old version with a branch name:
+
+```sh
+$ gemdiff compare arel 4.0.2 master
+```
+
+### `find`
+
+Lookup the repository URL using the gemspec. If a GitHub URL is not found, hit the GitHub search API.
+
+```sh
+$ gemdiff find haml
+http://github.com/haml/haml
+```
+
+### `open`
+
+Open the repository URL:
+
+```sh
+$ gemdiff open haml
+```
+
+### `releases`
+
+Open the repository's release history page:
+
+```sh
+$ gemdiff releases haml
+```
+
+### `commits`
+
+Open the repository's master branch commit history page:
+
+```sh
+$ gemdiff commits haml
 ```
 
 ### `update`
@@ -108,40 +147,16 @@ Date:   Mon Mar 3 16:38:32 2014 -0700
 diff --git a/Gemfile.lock
 ```
 
-### `find`
+### `help`
 
-Lookup the repository URL using the gemspec. If a GitHub URL is not found, hit the GitHub search API.
+You can use abbreviations for any of the above commands. For example, this is equivalent to `gemdiff find haml`:
 
 ```sh
-$ gemdiff find haml
+$ gemdiff f haml
 http://github.com/haml/haml
 ```
 
-### `open`
-
-Open the repository URL:
-
-```sh
-$ gemdiff open haml
-```
-
-### `releases`
-
-Open the repository's release history page:
-
-```sh
-$ gemdiff releases haml
-```
-
-### `commits`
-
-Open the repository's master branch commit history page:
-
-```sh
-$ gemdiff commits haml
-```
-
-### `help`
+To get help on the command line:
 
 ```sh
 $ gemdiff help

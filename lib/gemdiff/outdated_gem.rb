@@ -76,7 +76,10 @@ module Gemdiff
       if compare_type == :no_v
         "#{old_version}...#{new_version}"
       else
-        "v#{old_version}...v#{new_version}"
+        # if the new version is not a number, assume it is a branch name
+        # and drop the 'v'
+        prefix = (new_version[0] =~ /^[0-9]/) == 0 ? 'v' : ''
+        "v#{old_version}...#{prefix}#{new_version}"
       end
     end
 
