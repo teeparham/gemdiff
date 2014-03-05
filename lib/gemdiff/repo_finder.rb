@@ -6,6 +6,7 @@ module Gemdiff
 
     # rails builds several gems that are not individual projects
     # some repos move and the old repo page still exists
+    # some repos are not mostly ruby so the github search doesn't find them
     REPO_EXCEPTIONS =
       {
         actionmailer:  'rails/rails',
@@ -15,6 +16,8 @@ module Gemdiff
         activerecord:  'rails/rails',
         activesupport: 'rails/rails',
         delayed_job:   'collectiveidea/delayed_job',
+        nokogiri:      'sparklemotion/nokogiri',
+        passenger:     'phusion/passenger',
         railties:      'rails/rails',
         resque:        'resque/resque',
       }
