@@ -34,8 +34,8 @@ module Gemdiff
         if (full_name = REPO_EXCEPTIONS[gem_name.to_sym])
           return github_repo(full_name)
         end
-        homepage = find_homepage_in_spec(gem_name)
-        match = homepage.match(GITHUB_REPO_REGEX)
+        return nil unless (spec = gemspec(gem_name))
+        match = spec.match(GITHUB_REPO_REGEX)
         match && match[0]
       end
 
@@ -55,8 +55,22 @@ module Gemdiff
         Octokit::Client.new
       end
 
-      def find_homepage_in_spec(gem_name)
-        `gem spec #{gem_name} | grep //github.com/`
+      def gemspec(name)
+        local = find_local_gemspec(name)
+        return find_remote_gemspec(name) unless last_shell_command_success?
+        local if local =~ GITHUB_REPO_REGEX
+      end
+
+      def last_shell_command_success?
+        $?.success?
+      end
+
+      def find_local_gemspec(name)
+        `gem spec #{name}`
+      end
+
+      def find_remote_gemspec(name)
+        `gem spec -r #{name}`
       end
     end
   end
