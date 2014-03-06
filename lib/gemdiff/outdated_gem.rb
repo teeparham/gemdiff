@@ -1,3 +1,5 @@
+require 'launchy'
+
 module Gemdiff
   class OutdatedGem
 
@@ -55,22 +57,28 @@ module Gemdiff
     end
 
     def commits
-      `open #{commits_url}` if repo?
+      open_url(commits_url) if repo?
     end
 
     def releases
-      `open #{releases_url}` if repo?
+      open_url(releases_url) if repo?
     end
 
     def compare
-      `open #{compare_url}` if repo?
+      open_url(compare_url) if repo?
     end
 
     def open
-      `open #{repo}` if repo?
+      open_url(repo) if repo?
     end
 
   private
+
+    def open_url(url)
+      Launchy.open(url) do |exception|
+        $stderr.puts "Could not open #{url} because #{exception}"
+      end
+    end
 
     def compare_part
       if compare_type == :no_v
