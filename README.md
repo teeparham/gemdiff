@@ -10,16 +10,16 @@ between the current version of a gem in your bundle and the latest version of th
 
 #### Why?
 
-You want to quickly view the source code differences between versions of gems when your dependencies are updated. 
-It is often not that easy, because finding the github repository for a gem often requires The Google since many 
-gems do not have the source repository URL in their gemspec. 
+You want to view the source code differences between versions of gems when your dependencies are updated. 
+`gemdiff` hides the complexity of the source repository lookup, provides commands to open common github
+pages, and provides efficient workflow commands that work with a bundled project (see `outdated`, `update`).
 
 #### How?
 
-`gemdiff` does the repository lookup by inspecting the gemspec, then searching github if needed. It uses bundler to 
-list your outdated gems. For each outdated gem, it determines your currently used version and the version you can 
-update to, and builds a compare view URL with the old and new version tags. It also provides `update` to assist in 
-the `bundle update` and commit workflow.
+`gemdiff` does the repository lookup by inspecting the local (or remote) gemspec, then searching github if needed. 
+It uses bundler to list your outdated gems. For each outdated gem, it determines your currently used version and 
+the version you can  update to, and builds a compare view URL with the old and new version tags. 
+It also provides `update` for a simple `bundle update` and commit workflow.
 
 ## Install
 
