@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Gemdiff::VERSION
   spec.authors       = ["Tee Parham"]
   spec.email         = ["tee@neighborland.com"]
-  spec.summary       = %q{Compare gem versions}
-  spec.description   = %q{Command-line utility to find source repository URLs related to ruby gems and compare gem versions}
+  spec.summary       = %q{Find source repository URLs for ruby gems and compare gem versions}
+  spec.description   = %q{Command-line utility to find source repository URLs for ruby gems and compare gem versions}
   spec.homepage      = "https://github.com/teeparham/gemdiff"
   spec.license       = "MIT"
 
