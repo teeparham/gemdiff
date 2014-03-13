@@ -16,10 +16,10 @@ pages, and provides efficient workflow commands that work with a bundled project
 
 #### How?
 
-`gemdiff` does the repository lookup by inspecting the local (or remote) gemspec, then searching github if needed. 
+`gemdiff` finds a repository by inspecting the local (or remote) gemspec, then searching github if needed. 
 It uses bundler to list your outdated gems. For each outdated gem, it determines your currently used version and 
-the version you can  update to, and builds a compare view URL with the old and new version tags. 
-It also provides `update` for a simple `bundle update` and commit workflow.
+the version you can update to, and builds a compare view URL with the old and new version tags. 
+It also provides `update` for a simple `bundle update <gem>` and commit workflow.
 
 ## Install
 
@@ -171,11 +171,13 @@ is not helpful.
 
 2. The GitHub repository must have tagged releases to show compare views.
 
-3. The versions must be tagged using the standard name format of v1.2.3. If you find exceptions that follow
-a non-standard pattern, please submit a pull request. See `lib/gemdiff/outdated_gem.rb`.
+3. The versions must be tagged using the standard name format of v1.2.3. If you find gems that follow
+a non-standard format (such as 1.2.3), please open an issue or submit a pull request. 
+See [`lib/gemdiff/outdated_gem.rb`](https://github.com/teeparham/gemdiff/blob/master/lib/gemdiff/outdated_gem.rb).
 
 4. Encourage gem maintainers to either enter the GitHub repository URL in the `homepage` field of their gemspec,
 or anywhere in the description. `gemdiff` is much faster if so, and if not, it guesses the best match using
-the GitHub search API.
+the GitHub search API. If you find exceptions, open an issue or submit a pull request.
+See [`lib/gemdiff/repo_finder.rb`](https://github.com/teeparham/gemdiff/blob/master/lib/gemdiff/repo_finder.rb).
 
 5. Some gems' source code is not on github (gasp!). `gemdiff` could support other source hosts. Submit a PR!
