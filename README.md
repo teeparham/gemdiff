@@ -50,11 +50,11 @@ Outdated gems included in the bundle:
   * sprockets (2.11.0 > 2.10.1)
   * webmock (1.17.4 > 1.17.3)
 aws-sdk: 1.35.0 > 1.34.1
-Open? (y to open, else skip)
+Open? (y to open, x to exit, else skip)
 sprockets: 2.11.0 > 2.10.1
-Open? (y to open, else skip) y
+Open? (y to open, x to exit, else skip) y
 webmock: 1.17.4 > 1.17.3
-Open? (y to open, else skip)
+Open? (y to open, x to exit, else skip)
 ```
 
 ### `compare`

@@ -67,8 +67,9 @@ DESC
       puts inspector.outdated
       inspector.list.each do |gem|
         puts gem.compare_message
-        response = ask("Open? (y to open, else skip)")
+        response = ask("Open? (y to open, x to exit, else skip)")
         gem.compare if response == 'y'
+        return if response == 'x'
       end
     end
 
