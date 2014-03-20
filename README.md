@@ -105,12 +105,12 @@ Open the repository's release history page:
 $ gemdiff releases haml
 ```
 
-### `commits`
+### `master`
 
 Open the repository's master branch commit history page:
 
 ```sh
-$ gemdiff commits haml
+$ gemdiff master haml
 ```
 
 ### `update`

@@ -34,10 +34,10 @@ module Gemdiff
       gem.releases
     end
 
-    desc 'commits <gem>', 'Open the github master branch commits page for a gem'
-    def commits(gem_name)
+    desc 'master <gem>', 'Open the github master branch commits page for a gem'
+    def master(gem_name)
       gem = find(gem_name)
-      gem.commits
+      gem.master
     end
 
     desc 'compare <gem> [<old_version> <new_version>]', <<DESC

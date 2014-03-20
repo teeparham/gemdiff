@@ -96,5 +96,41 @@ module Gemdiff
         assert_equal "2.34.56", gem.new_version
       end
     end
+
+    describe "#master" do
+      it "opens master commits url" do
+        gem = OutdatedGem.new("x")
+        gem.stubs repo: "http://github.com/x/x"
+        gem.expects(:open_url).with("http://github.com/x/x/commits/master")
+        gem.master
+      end
+    end
+
+    describe "#releases" do
+      it "opens releases url" do
+        gem = OutdatedGem.new("x")
+        gem.stubs repo: "http://github.com/x/x"
+        gem.expects(:open_url).with("http://github.com/x/x/releases")
+        gem.releases
+      end
+    end
+
+    describe "#compare" do
+      it "opens compare url" do
+        gem = OutdatedGem.new("x", "1.2.3", "2.3.4")
+        gem.stubs repo: "http://github.com/x/x"
+        gem.expects(:open_url).with("http://github.com/x/x/compare/v1.2.3...v2.3.4")
+        gem.compare
+      end
+    end
+
+    describe "#open" do
+      it "opens repo url" do
+        gem = OutdatedGem.new("x")
+        gem.stubs repo: "http://github.com/x/x"
+        gem.expects(:open_url).with("http://github.com/x/x")
+        gem.open
+      end
+    end
   end
 end

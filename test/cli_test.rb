@@ -38,12 +38,12 @@ module Gemdiff
       end
     end
 
-    describe "#commits" do
+    describe "#master" do
       it "opens commits page" do
         gem = mock_gem("haml")
         @cli.expects(:puts).with("http://github.com/haml/haml")
-        gem.expects :commits
-        @cli.commits "haml"
+        gem.expects :master
+        @cli.master "haml"
       end
     end
 

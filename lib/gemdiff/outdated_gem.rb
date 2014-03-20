@@ -56,7 +56,7 @@ module Gemdiff
       "#{repo}/compare/#{compare_part}"
     end
 
-    def commits
+    def master
       open_url(commits_url) if repo?
     end
 
