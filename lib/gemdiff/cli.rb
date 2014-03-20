@@ -40,7 +40,7 @@ module Gemdiff
       gem.master
     end
 
-    desc 'compare <gem> [<old_version> <new_version>]', <<DESC
+    desc 'compare <gem> [<old> <new>]', <<DESC
 Compare gem versions. Opens the compare view between the specified new and old versions.
 If versions are not specified, your bundle is inspected and the latest version of the
 gem is compared with the current version in your bundle.
