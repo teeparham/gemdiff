@@ -172,7 +172,8 @@ is not helpful.
 
 2. The GitHub repository must have tagged releases to show compare views.
 
-3. The versions must be tagged using the standard name format of v1.2.3. If you find gems that follow
+3. The versions must be tagged using the standard name format of v1.2.3. If you find gems that do not
+tag releases, submit an issue to the gem maintainer to tag their releases. If you find gems that follow
 a non-standard format (such as 1.2.3), please open an issue or submit a pull request. 
 See [`lib/gemdiff/outdated_gem.rb`](https://github.com/teeparham/gemdiff/blob/master/lib/gemdiff/outdated_gem.rb).
 
