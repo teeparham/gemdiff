@@ -9,17 +9,18 @@ module Gemdiff
     # some repos are not mostly ruby so the github search doesn't find them
     REPO_EXCEPTIONS =
       {
-        actionmailer:  'rails/rails',
-        actionpack:    'rails/rails',
-        actionview:    'rails/rails',
-        activemodel:   'rails/rails',
-        activerecord:  'rails/rails',
-        activesupport: 'rails/rails',
-        delayed_job:   'collectiveidea/delayed_job',
-        nokogiri:      'sparklemotion/nokogiri',
-        passenger:     'phusion/passenger',
-        railties:      'rails/rails',
-        resque:        'resque/resque',
+        actionmailer:                'rails/rails',
+        actionpack:                  'rails/rails',
+        actionview:                  'rails/rails',
+        activemodel:                 'rails/rails',
+        activerecord:                'rails/rails',
+        activesupport:               'rails/rails',
+        delayed_job:                 'collectiveidea/delayed_job',
+        nokogiri:                    'sparklemotion/nokogiri',
+        passenger:                   'phusion/passenger',
+        railties:                    'rails/rails',
+        resque:                      'resque/resque',
+        :"resque-multi-job-forks" => 'stulentsev/resque-multi-job-forks',
       }
 
     class << self
