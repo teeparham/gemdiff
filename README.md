@@ -11,12 +11,12 @@ between the current version of a gem in your bundle and the latest version of th
 #### Why?
 
 You want to view the source code differences between versions of gems when your dependencies are updated. 
-`gemdiff` hides the complexity of the source repository lookup, provides commands to open common github
-pages, and provides efficient workflow commands that work with a bundled project (see `outdated`, `update`).
+`gemdiff` does the source repository lookup, opens common GitHub pages, and simplifies your git workflow for a 
+bundled project (see `outdated`, `update`).
 
 #### How?
 
-`gemdiff` finds a repository by inspecting the local (or remote) gemspec, then searching github if needed. 
+`gemdiff` finds a repository by inspecting the local or remote gemspec, or searching github if needed. 
 It uses bundler to list your outdated gems. For each outdated gem, it determines your currently used version and 
 the version you can update to, and builds a compare view URL with the old and new version tags. 
 It also provides `update` for a simple `bundle update <gem>` and commit workflow.
@@ -32,7 +32,7 @@ gem install gemdiff
 ### `outdated`
 
 Runs `bundle outdated --strict` in the current directory.
-For each outdated gem, it prompts you if you would like to open the compare view for that gem. 
+For each outdated gem, you can open the compare view for that gem, skip it, or exit all prompts. 
 Enter `y` to review.
 
 `outdated` is the default task, so `gemdiff` with no arguments is the same as `gemdiff outdated`.
@@ -65,8 +65,8 @@ Open a compare view for an individual outdated gem in your bundle:
 $ gemdiff compare haml
 ```
 
-You can bypass bundler and query a gem by including the old and new version numbers. This is faster since
-the `bundle` command to check the versions is skipped.
+You can bypass bundler and query a gem by including the old and new version numbers. This is faster since it bypasses
+the `bundle outdated --strict` command used to get the versions.
 
 For example, open the GitHub compare view in browser for difference between `haml` versions 4.0.4 and 4.0.5:
 
@@ -115,9 +115,8 @@ $ gemdiff master haml
 
 ### `update`
 
-`gemdiff` can simplify your git workflow around updating gems. Use `update` to update a gem in your
-bundle and commit the change to your repository. You will be shown a preview of the `git diff` and
-you may choose to commit or reset the change.
+Use `update` to update a gem in your bundle and commit the change to your git repository. 
+You will be shown a preview of the `git diff` and you may choose to commit or reset the change.
 
 ```sh
 $ gemdiff update haml
@@ -163,17 +162,17 @@ To get help on the command line:
 $ gemdiff help
 ```
 
-### It didn't work
+### What if it didn't work?
 
-`gemdiff` operates on a few assumptions:
+`gemdiff` assumes a few things:
 
 1. The gem must have a repository on GitHub. If not, `gemdiff` will find nothing or a similar repository, which
-is not helpful.
+is not helpful. Some gems' source code is not on GitHub. `gemdiff` could support other source hosts. Submit a pull request!
 
-2. The GitHub repository must have tagged releases to show compare views.
+2. The GitHub repository must have tagged releases to show compare views. If you find gems that do not tag 
+releases, submit an issue to the gem maintainer to tag their releases.
 
-3. The versions must be tagged using the standard name format of v1.2.3. If you find gems that do not
-tag releases, submit an issue to the gem maintainer to tag their releases. If you find gems that follow
+3. The versions must be tagged using the standard name format of v1.2.3. If you find gems that follow
 a non-standard format (such as 1.2.3), please open an issue or submit a pull request. 
 See [`lib/gemdiff/outdated_gem.rb`](https://github.com/teeparham/gemdiff/blob/master/lib/gemdiff/outdated_gem.rb).
 
@@ -181,5 +180,3 @@ See [`lib/gemdiff/outdated_gem.rb`](https://github.com/teeparham/gemdiff/blob/ma
 or anywhere in the description. `gemdiff` is much faster if so, and if not, it guesses the best match using
 the GitHub search API. If you find exceptions, open an issue or submit a pull request.
 See [`lib/gemdiff/repo_finder.rb`](https://github.com/teeparham/gemdiff/blob/master/lib/gemdiff/repo_finder.rb).
-
-5. Some gems' source code is not on GitHub (gasp!). `gemdiff` could support other source hosts. Submit a pull request!
