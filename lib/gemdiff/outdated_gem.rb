@@ -5,7 +5,7 @@ module Gemdiff
 
     # gems that tag releases with tag names like 1.2.3
     # keep it alphabetical
-    LIST_NO_V = %w[atomic babosa cancan compass haml sass thread_safe]
+    LIST_NO_V = %w[atomic babosa cancan compass haml safe_yaml sass thread_safe]
 
     attr_accessor :name, :old_version, :new_version
 
