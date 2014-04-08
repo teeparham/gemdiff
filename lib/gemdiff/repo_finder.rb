@@ -21,6 +21,7 @@ module Gemdiff
         railties:                    'rails/rails',
         resque:                      'resque/resque',
         :"resque-multi-job-forks" => 'stulentsev/resque-multi-job-forks',
+        sinatra:                     'sinatra/sinatra',
       }
 
     class << self
