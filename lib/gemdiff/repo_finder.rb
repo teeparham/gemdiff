@@ -16,6 +16,7 @@ module Gemdiff
         activerecord:                'rails/rails',
         activesupport:               'rails/rails',
         delayed_job:                 'collectiveidea/delayed_job',
+        gosu:                        'jlnr/gosu',
         nokogiri:                    'sparklemotion/nokogiri',
         passenger:                   'phusion/passenger',
         railties:                    'rails/rails',
