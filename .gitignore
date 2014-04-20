@@ -1,5 +1,6 @@
 .bundle
 .config
+.ruby-version
 Gemfile.lock
 pkg
 tmp
