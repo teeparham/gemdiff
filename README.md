@@ -180,3 +180,7 @@ See [`lib/gemdiff/outdated_gem.rb`](https://github.com/teeparham/gemdiff/blob/ma
 or anywhere in the description. `gemdiff` is much faster if so, and if not, it guesses the best match using
 the GitHub search API. If you find exceptions, open an issue or submit a pull request.
 See [`lib/gemdiff/repo_finder.rb`](https://github.com/teeparham/gemdiff/blob/master/lib/gemdiff/repo_finder.rb).
+
+### More Info
+
+[Slides from lightning talk at Boulder Ruby 4/15/2014](http://www.slideshare.net/teeparham/gemdiff)
