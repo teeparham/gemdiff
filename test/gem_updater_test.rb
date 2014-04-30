@@ -17,6 +17,13 @@ module Gemdiff
         updater.expects(:git_add_and_commit_lockfile).with("1.35.0")
         assert updater.commit
       end
+
+      it "adds a git commit for an update from a specific ref" do
+        updater = GemUpdater.new("sass-rails")
+        updater.stubs git_changed_line: "+    sass-rails (4.0.3)\n+  sass-rails"
+        updater.expects(:git_add_and_commit_lockfile).with("4.0.3")
+        assert updater.commit
+      end
     end
 
     describe "#reset" do

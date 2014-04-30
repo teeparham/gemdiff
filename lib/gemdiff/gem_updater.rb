@@ -43,11 +43,16 @@ module Gemdiff
     def git_commit
       added = git_changed_line
       return false if added.empty?
-      version = added.split(' ').last.gsub(/[()]/, '')
+      version = added.split("\n").first.split(' ').last.gsub(/[()]/, '')
       git_add_and_commit_lockfile version
       true
     end
 
+    # example returns:
+    # +    aws-sdk (1.35.0)
+    # or
+    # +    sass-rails (4.0.3)
+    # +  sass-rails
     def git_changed_line
       `git diff | grep #{name} | grep '+  '`
     end
