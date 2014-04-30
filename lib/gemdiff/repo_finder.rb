@@ -49,7 +49,6 @@ module Gemdiff
         query = "#{gem_name} language:ruby in:name"
         result = octokit_client.search_repositories(query)
         return nil if result.items.empty?
-        result.items
         github_repo result.items.first.full_name
       end
 
