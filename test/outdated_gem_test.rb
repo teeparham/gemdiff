@@ -95,6 +95,20 @@ module Gemdiff
         assert_equal "1.2.34", gem.old_version
         assert_equal "2.34.56", gem.new_version
       end
+
+      it "swaps versions over 10 in the wrong order" do
+        gem = OutdatedGem.new("x")
+        gem.set_versions "1.10.0", "1.9.3"
+        assert_equal "1.9.3", gem.old_version
+        assert_equal "1.10.0", gem.new_version
+      end
+
+      it "swaps versions with master" do
+        gem = OutdatedGem.new("x")
+        gem.set_versions "master", "1.9.3"
+        assert_equal "1.9.3", gem.old_version
+        assert_equal "master", gem.new_version
+      end
     end
 
     describe "#master" do

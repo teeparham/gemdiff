@@ -15,9 +15,7 @@ module Gemdiff
     end
 
     def set_versions(v_old, v_new)
-      v_old, v_new = v_new, v_old if v_old && v_new && v_old > v_new # swap using parallel assignment
-      @old_version = v_old
-      @new_version = v_new
+      @old_version, @new_version = old_new(v_old, v_new)
     end
 
     def missing_versions?
@@ -97,6 +95,18 @@ module Gemdiff
       else
         :default
       end
+    end
+
+    # swap versions if needed
+    def old_new(v_old, v_new)
+      return [v_old, v_new] unless v_old && v_new
+      if v_old == 'master' || (Gem::Version.new(v_old) > Gem::Version.new(v_new))
+        [v_new, v_old]
+      else
+        [v_old, v_new]
+      end
+    rescue ArgumentError
+      [v_old, v_new]
     end
   end
 end
