@@ -15,6 +15,7 @@ module Gemdiff
         activemodel:                 'rails/rails',
         activerecord:                'rails/rails',
         activesupport:               'rails/rails',
+        color:                       'halostatue/color',
         delayed_job:                 'collectiveidea/delayed_job',
         gosu:                        'jlnr/gosu',
         nokogiri:                    'sparklemotion/nokogiri',
@@ -55,7 +56,7 @@ module Gemdiff
       def github_repo(full_name)
         "http://github.com/#{full_name}"
       end
-      
+
       def octokit_client
         Octokit::Client.new
       end
