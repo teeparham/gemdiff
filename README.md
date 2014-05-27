@@ -29,7 +29,7 @@ gem install gemdiff
 
 ## Commands
 
-### `outdated`
+### `gemdiff outdated`
 
 Runs `bundle outdated --strict` in the current directory.
 For each outdated gem, you can open the compare view for that gem, skip it, or exit all prompts. 
@@ -57,7 +57,7 @@ webmock: 1.17.4 > 1.17.3
 Open? (y to open, x to exit, else skip)
 ```
 
-### `compare`
+### `gemdiff compare [gem] [version] [version]`
 
 Open a compare view for an individual outdated gem in your bundle:
 
@@ -80,7 +80,7 @@ You can compare a version with a branch name:
 $ gemdiff compare arel 4.0.2 master
 ```
 
-### `find`
+### `gemdiff find [gem]`
 
 Lookup the repository URL using the gemspec. If a GitHub URL is not found, query the GitHub search API.
 
@@ -89,7 +89,7 @@ $ gemdiff find haml
 http://github.com/haml/haml
 ```
 
-### `open`
+### `gemdiff open [gem]`
 
 Open the repository URL:
 
@@ -97,7 +97,7 @@ Open the repository URL:
 $ gemdiff open haml
 ```
 
-### `releases`
+### `gemdiff releases [gem]`
 
 Open the repository's release history page:
 
@@ -105,7 +105,7 @@ Open the repository's release history page:
 $ gemdiff releases haml
 ```
 
-### `master`
+### `gemdiff master [gem]`
 
 Open the repository's master branch commit history page:
 
@@ -113,7 +113,7 @@ Open the repository's master branch commit history page:
 $ gemdiff master haml
 ```
 
-### `update`
+### `gemdiff update [gem]`
 
 Use `update` to update a gem in your bundle and commit the change to your git repository. 
 You will be shown a preview of the `git diff` and you may choose to commit or reset the change.
@@ -147,19 +147,21 @@ Date:   Mon Mar 3 16:38:32 2014 -0700
 diff --git a/Gemfile.lock
 ```
 
-### `help`
+### `gemdiff help`
+
+To get help on the command line:
+
+```sh
+$ gemdiff help
+```
+
+### Shortcuts
 
 You can use abbreviations for any of the above commands. For example, this is equivalent to `gemdiff find haml`:
 
 ```sh
 $ gemdiff f haml
 http://github.com/haml/haml
-```
-
-To get help on the command line:
-
-```sh
-$ gemdiff help
 ```
 
 ### What if it didn't work?
