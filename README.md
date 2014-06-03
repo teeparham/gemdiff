@@ -1,7 +1,7 @@
 # gemdiff
 
 [![Gem Version](https://badge.fury.io/rb/gemdiff.svg)](http://rubygems.org/gems/gemdiff)
-[![Build Status](https://api.travis-ci.org/teeparham/gemdiff.svg)](https://travis-ci.org/teeparham/gemdiff)
+[![Build Status](https://travis-ci.org/teeparham/gemdiff.svg?branch=master)](https://travis-ci.org/teeparham/gemdiff)
 
 `gemdiff` is a command-line utility to find and compare source code repositories
 associated with ruby gems. It makes it easy to compare source code differences
