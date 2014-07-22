@@ -30,9 +30,7 @@ module Gemdiff
       # Try to get the homepage from the gemspec
       # If not found, search github
       def github_url(gem_name)
-        homepage = gemspec_homepage(gem_name)
-        return homepage if homepage
-        search gem_name
+        gemspec_homepage(gem_name) || search(gem_name)
       end
 
     private
