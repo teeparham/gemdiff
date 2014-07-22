@@ -16,14 +16,20 @@ module Gemdiff
         activerecord:                'rails/rails',
         activesupport:               'rails/rails',
         color:                       'halostatue/color',
+        :"color-schemer"          => 'Team-Sass/color-schemer',
         delayed_job:                 'collectiveidea/delayed_job',
         gosu:                        'jlnr/gosu',
+        :"modular-scale"          => 'Team-Sass/modular-scale',
         nokogiri:                    'sparklemotion/nokogiri',
         passenger:                   'phusion/passenger',
         railties:                    'rails/rails',
         resque:                      'resque/resque',
         :"resque-multi-job-forks" => 'stulentsev/resque-multi-job-forks',
+        SassyLists:                  'Team-Sass/SassyLists',
+        :"Sassy-Maps"             => 'Team-Sass/Sassy-Maps',
+        :"sassy-math"             => 'Team-Sass/Sassy-math',
         sinatra:                     'sinatra/sinatra',
+        toolkit:                     'Team-Sass/tookit',
       }
 
     class << self
