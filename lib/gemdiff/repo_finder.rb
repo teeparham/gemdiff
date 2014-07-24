@@ -2,7 +2,7 @@ require 'octokit'
 
 module Gemdiff
   module RepoFinder
-    GITHUB_REPO_REGEX = /(https?):\/\/(www.)?github\.com\/([\w._%-]*)\/([\w._%-]*)/
+    GITHUB_REPO_REGEX = /(https?):\/\/(www.)?github\.com\/([\w.%-]*)\/([\w.%-]*)/
 
     # rails builds several gems that are not individual projects
     # some repos move and the old repo page still exists
