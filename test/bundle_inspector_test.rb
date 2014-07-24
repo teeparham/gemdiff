@@ -56,9 +56,9 @@ Outdated gems included in the bundle:
   * aws-sdk (1.35.0 > 1.34.1)
   * haml (4.0.5 > 4.0.4)
 OUT
-  end
+    end
 
-  def fake_up_to_date
+    def fake_up_to_date
 <<OUT
 Fetching gem metadata from https://rubygems.org/.........
 Fetching additional metadata from https://rubygems.org/..
