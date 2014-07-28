@@ -15,6 +15,7 @@ module Gemdiff
       rvm-capistrano
       safe_yaml
       sass
+      twilio-ruby
     ]
 
     attr_accessor :name, :old_version, :new_version
