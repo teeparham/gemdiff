@@ -12,6 +12,7 @@ module Gemdiff
         actionmailer:                'rails/rails',
         actionpack:                  'rails/rails',
         actionview:                  'rails/rails',
+        activejob:                   'rails/rails',
         activemodel:                 'rails/rails',
         activerecord:                'rails/rails',
         activesupport:               'rails/rails',
