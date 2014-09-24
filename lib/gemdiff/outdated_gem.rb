@@ -11,6 +11,7 @@ module Gemdiff
       cancan
       capybara
       compass
+      ffi
       haml
       rvm-capistrano
       safe_yaml

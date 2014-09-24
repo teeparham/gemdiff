@@ -19,6 +19,7 @@ module Gemdiff
         color:                       'halostatue/color',
         :"color-schemer"          => 'Team-Sass/color-schemer',
         delayed_job:                 'collectiveidea/delayed_job',
+        ffi:                         'ffi/ffi',
         gosu:                        'jlnr/gosu',
         :"modular-scale"          => 'Team-Sass/modular-scale',
         nokogiri:                    'sparklemotion/nokogiri',
