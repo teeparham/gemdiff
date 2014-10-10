@@ -3,7 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/gemdiff.svg)](http://rubygems.org/gems/gemdiff)
 [![Build Status](https://travis-ci.org/teeparham/gemdiff.svg?branch=master)](https://travis-ci.org/teeparham/gemdiff)
 
-`gemdiff` is a command-line utility to find and compare source code repositories
+`gemdiff` is a command-line utility to find and compare source code 
 associated with ruby gems. It makes it easy to compare source code differences
 between the current version of a gem in your bundle and the latest version of the gem.
 `gemdiff` helps connect gem version management (rubygems + bundler) with source code (github).
@@ -12,14 +12,14 @@ between the current version of a gem in your bundle and the latest version of th
 
 You want to view the source code differences between versions of gems when your dependencies are updated. 
 `gemdiff` does the source repository lookup, opens common GitHub pages, and simplifies your git workflow for a 
-bundled project (see `outdated`, `update`).
+bundled project.
 
 ### How?
 
 `gemdiff` finds a repository by inspecting the local or remote gemspec, or searching github if needed. 
 It uses bundler to list your outdated gems. For each outdated gem, it determines your currently used version and 
 the version you can update to, and builds a compare view URL with the old and new version tags. 
-It also provides `update` for a simple `bundle update <gem>` and commit workflow.
+It provides `update` for a simple `bundle update <gem>` and commit workflow.
 
 ## Install
 
@@ -32,7 +32,7 @@ gem install gemdiff
 ### `gemdiff outdated`
 
 Runs `bundle outdated --strict` in the current directory.
-For each outdated gem, you can open the compare view for that gem, skip it, or exit all prompts. 
+For each outdated gem, you can open the compare view for that gem, skip it, or exit. 
 Enter `y` to review.
 
 `outdated` is the default task, so `gemdiff` with no arguments is the same as `gemdiff outdated`.
@@ -174,13 +174,12 @@ is not helpful. Some gems' source code is not on GitHub. `gemdiff` could support
 2. The GitHub repository must have tagged releases to show compare views. If you find gems that do not tag 
 releases, submit an issue to the gem maintainer to tag their releases.
 
-3. The versions must be tagged using the standard name format of `v1.2.3`. If you find gems that follow
+3. The versions must be tagged using the standard format of `v1.2.3`. If you find gems that follow
 a non-standard format (such as `1.2.3`), please open an issue or submit a pull request. 
 See [`lib/gemdiff/outdated_gem.rb`](https://github.com/teeparham/gemdiff/blob/master/lib/gemdiff/outdated_gem.rb).
 
-4. Encourage gem maintainers to either enter the GitHub repository URL in the `homepage` field of their gemspec,
-or anywhere in the description. `gemdiff` is much faster if so, and if not, it guesses the best match using
-the GitHub search API. If you find exceptions, open an issue or submit a pull request.
+4. Encourage gem maintainers to enter the GitHub repository URL in the `homepage` field of their gemspec
+or anywhere in the description. If you find exceptions, open an issue or submit a pull request.
 See [`lib/gemdiff/repo_finder.rb`](https://github.com/teeparham/gemdiff/blob/master/lib/gemdiff/repo_finder.rb).
 
 ### More Info
