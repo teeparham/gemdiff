@@ -1,4 +1,5 @@
 require 'octokit'
+require 'yaml'
 
 module Gemdiff
   module RepoFinder
@@ -47,8 +48,10 @@ module Gemdiff
         if (full_name = REPO_EXCEPTIONS[gem_name.to_sym])
           return github_repo(full_name)
         end
-        return nil unless (spec = gemspec(gem_name))
-        match = spec.match(GITHUB_REPO_REGEX)
+        return nil unless (yaml = gemspec(gem_name))
+        spec = YAML.load(yaml)
+        return spec.homepage if spec.homepage =~ GITHUB_REPO_REGEX        
+        match = spec.description.match(GITHUB_REPO_REGEX)
         match && match[0]
       end
 
@@ -82,7 +85,7 @@ module Gemdiff
       end
 
       def find_remote_gemspec(name)
-        `gem spec -r #{name}`
+        `gem spec -r #{name}` if last_shell_command_success?
       end
     end
   end
