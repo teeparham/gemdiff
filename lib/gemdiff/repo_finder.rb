@@ -17,7 +17,6 @@ module Gemdiff
         activemodel:                 'rails/rails',
         activerecord:                'rails/rails',
         activesupport:               'rails/rails',
-        color:                       'halostatue/color',
         :"color-schemer"          => 'Team-Sass/color-schemer',
         delayed_job:                 'collectiveidea/delayed_job',
         ffi:                         'ffi/ffi',
