@@ -17,6 +17,7 @@ module Gemdiff
         activemodel:                 'rails/rails',
         activerecord:                'rails/rails',
         activesupport:               'rails/rails',
+        chunky_png:                  'wvanbergen/chunky_png',
         :"color-schemer"          => 'Team-Sass/color-schemer',
         delayed_job:                 'collectiveidea/delayed_job',
         ffi:                         'ffi/ffi',
@@ -49,7 +50,7 @@ module Gemdiff
         end
         return nil unless (yaml = gemspec(gem_name))
         spec = YAML.load(yaml)
-        return spec.homepage if spec.homepage =~ GITHUB_REPO_REGEX        
+        return spec.homepage if spec.homepage =~ GITHUB_REPO_REGEX
         match = spec.description.match(GITHUB_REPO_REGEX)
         match && match[0]
       end
