@@ -13,6 +13,7 @@ module Gemdiff
       compass
       ffi
       haml
+      mail
       rvm-capistrano
       safe_yaml
       sass
