@@ -36,10 +36,10 @@ module Gemdiff
     end
 
     def load_bundle_versions
-      gem = BundleInspector.new.get(@name)
-      return false if gem.nil?
-      @old_version ||= gem.old_version
-      @new_version ||= gem.new_version
+      outdated_gem = BundleInspector.new.get(@name)
+      return false if outdated_gem.nil?
+      @old_version ||= outdated_gem.old_version
+      @new_version ||= outdated_gem.new_version
       true
     end
 
