@@ -22,53 +22,53 @@ module Gemdiff
 
     describe "#open" do
       it "opens repo" do
-        gem = mock_gem("haml")
+        outdated_gem = mock_gem("haml")
         @cli.expects(:puts).with("http://github.com/haml/haml")
-        gem.expects :open
+        outdated_gem.expects :open
         @cli.open "haml"
       end
     end
 
     describe "#releases" do
       it "opens releases page" do
-        gem = mock_gem("haml")
+        outdated_gem = mock_gem("haml")
         @cli.expects(:puts).with("http://github.com/haml/haml")
-        gem.expects :releases
+        outdated_gem.expects :releases
         @cli.releases "haml"
       end
     end
 
     describe "#master" do
       it "opens commits page" do
-        gem = mock_gem("haml")
+        outdated_gem = mock_gem("haml")
         @cli.expects(:puts).with("http://github.com/haml/haml")
-        gem.expects :master
+        outdated_gem.expects :master
         @cli.master "haml"
       end
     end
 
     describe "#compare" do
       it "opens compare view using bundle" do
-        gem = mock_gem("haml")
+        outdated_gem = mock_gem("haml")
         @cli.expects(:puts).with("http://github.com/haml/haml")
-        gem.expects(:set_versions).with(nil, nil)
-        gem.expects(:missing_versions?).returns(true)
+        outdated_gem.expects(:set_versions).with(nil, nil)
+        outdated_gem.expects(:missing_versions?).returns(true)
         @cli.expects(:puts).with(CLI::CHECKING_FOR_OUTDATED)
-        gem.expects(:load_bundle_versions).returns(true)
-        gem.expects(:compare_message).returns("compare message")
+        outdated_gem.expects(:load_bundle_versions).returns(true)
+        outdated_gem.expects(:compare_message).returns("compare message")
         @cli.expects(:puts).with("compare message")
-        gem.expects :compare
+        outdated_gem.expects :compare
         @cli.compare "haml"
       end
 
       it "opens compare view with versions" do
-        gem = mock_gem("haml")
+        outdated_gem = mock_gem("haml")
         @cli.expects(:puts).with("http://github.com/haml/haml")
-        gem.expects(:set_versions).with("4.0.4", "4.0.5")
-        gem.expects(:missing_versions?).returns(false)
-        gem.expects(:compare_message).returns("compare message")
+        outdated_gem.expects(:set_versions).with("4.0.4", "4.0.5")
+        outdated_gem.expects(:missing_versions?).returns(false)
+        outdated_gem.expects(:compare_message).returns("compare message")
         @cli.expects(:puts).with("compare message")
-        gem.expects :compare
+        outdated_gem.expects :compare
         @cli.compare "haml", "4.0.4", "4.0.5"
       end
 
@@ -92,9 +92,9 @@ module Gemdiff
       end
 
       it "compares outdated gems with responses of y" do
-        gem = OutdatedGem.new("haml", "4.0.4", "4.0.5")
+        outdated_gem = OutdatedGem.new("haml", "4.0.4", "4.0.5")
         mock_inspector = mock do
-          stubs list: [gem]
+          stubs list: [outdated_gem]
           stubs outdated: "outdated"
         end
         BundleInspector.stubs new: mock_inspector
@@ -102,14 +102,14 @@ module Gemdiff
         @cli.expects(:puts).with(CLI::CHECKING_FOR_OUTDATED)
         @cli.expects(:puts).with("outdated")
         @cli.expects(:puts).with("haml: 4.0.5 > 4.0.4")
-        gem.expects :compare
+        outdated_gem.expects :compare
         @cli.outdated
       end
 
       it "skips outdated gems without responses of y" do
-        gem = OutdatedGem.new("haml", "4.0.4", "4.0.5")
+        outdated_gem = OutdatedGem.new("haml", "4.0.4", "4.0.5")
         mock_inspector = mock do
-          stubs list: [gem]
+          stubs list: [outdated_gem]
           stubs outdated: "outdated"
         end
         BundleInspector.stubs new: mock_inspector
@@ -117,7 +117,7 @@ module Gemdiff
         @cli.expects(:puts).with(CLI::CHECKING_FOR_OUTDATED)
         @cli.expects(:puts).with("outdated")
         @cli.expects(:puts).with("haml: 4.0.5 > 4.0.4")
-        gem.expects(:compare).never
+        outdated_gem.expects(:compare).never
         @cli.outdated
       end
     end
@@ -164,18 +164,18 @@ module Gemdiff
   private
 
     def mock_gem(name)
-      gem = mock do
+      outdated_gem = mock do
         stubs repo?: true
         stubs repo: "http://github.com/#{name}/#{name}"
       end
-      OutdatedGem.stubs new: gem
-      gem
+      OutdatedGem.stubs new: outdated_gem
+      outdated_gem
     end
 
     def mock_missing_gem
-      gem = mock { stubs repo?: false }
-      OutdatedGem.stubs new: gem
-      gem
+      outdated_gem = mock { stubs repo?: false }
+      OutdatedGem.stubs new: outdated_gem
+      outdated_gem
     end
   end
 end
