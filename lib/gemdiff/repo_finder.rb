@@ -26,6 +26,7 @@ module Gemdiff
         nokogiri:                    'sparklemotion/nokogiri',
         passenger:                   'phusion/passenger',
         railties:                    'rails/rails',
+        rake:                        'ruby/rake',
         resque:                      'resque/resque',
         :"resque-multi-job-forks" => 'stulentsev/resque-multi-job-forks',
         SassyLists:                  'Team-Sass/SassyLists',
