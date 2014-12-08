@@ -22,6 +22,7 @@ module Gemdiff
         delayed_job:                 'collectiveidea/delayed_job',
         ffi:                         'ffi/ffi',
         gosu:                        'jlnr/gosu',
+        :"jquery-ujs"             => 'rails/jquery-ujs',
         :"modular-scale"          => 'Team-Sass/modular-scale',
         nokogiri:                    'sparklemotion/nokogiri',
         passenger:                   'phusion/passenger',
