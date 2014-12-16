@@ -30,6 +30,7 @@ module Gemdiff
         rake:                        'ruby/rake',
         resque:                      'resque/resque',
         :"resque-multi-job-forks" => 'stulentsev/resque-multi-job-forks',
+        rr:                          'rr/rr',
         SassyLists:                  'Team-Sass/SassyLists',
         :"Sassy-Maps"             => 'Team-Sass/Sassy-Maps',
         :"sassy-math"             => 'Team-Sass/Sassy-math',
