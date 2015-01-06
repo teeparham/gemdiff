@@ -26,6 +26,7 @@ module Gemdiff
         :"modular-scale"          => 'Team-Sass/modular-scale',
         nokogiri:                    'sparklemotion/nokogiri',
         passenger:                   'phusion/passenger',
+        pg:                          'ged/ruby-pg',
         railties:                    'rails/rails',
         rake:                        'ruby/rake',
         resque:                      'resque/resque',
