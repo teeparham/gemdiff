@@ -36,6 +36,7 @@ module Gemdiff
         :"Sassy-Maps"             => 'Team-Sass/Sassy-Maps',
         :"sassy-math"             => 'Team-Sass/Sassy-math',
         sinatra:                     'sinatra/sinatra',
+        stripe:                      'stripe/stripe-ruby',
         toolkit:                     'Team-Sass/tookit',
       }
 
