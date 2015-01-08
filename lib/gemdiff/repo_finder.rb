@@ -27,6 +27,7 @@ module Gemdiff
         nokogiri:                    'sparklemotion/nokogiri',
         passenger:                   'phusion/passenger',
         pg:                          'ged/ruby-pg',
+        :"pry-doc"                => 'pry/pry-doc',
         railties:                    'rails/rails',
         rake:                        'ruby/rake',
         resque:                      'resque/resque',
