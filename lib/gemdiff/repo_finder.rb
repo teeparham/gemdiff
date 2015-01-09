@@ -23,6 +23,7 @@ module Gemdiff
         ffi:                         'ffi/ffi',
         gosu:                        'jlnr/gosu',
         :"jquery-ujs"             => 'rails/jquery-ujs',
+        json:                        'flori/json',
         :"modular-scale"          => 'Team-Sass/modular-scale',
         nokogiri:                    'sparklemotion/nokogiri',
         passenger:                   'phusion/passenger',
