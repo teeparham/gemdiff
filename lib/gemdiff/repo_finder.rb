@@ -22,6 +22,7 @@ module Gemdiff
         delayed_job:                 'collectiveidea/delayed_job',
         ffi:                         'ffi/ffi',
         gosu:                        'jlnr/gosu',
+        :"guard-livereload"       => 'guard/guard-livereload',
         :"jquery-ujs"             => 'rails/jquery-ujs',
         json:                        'flori/json',
         :"modular-scale"          => 'Team-Sass/modular-scale',
