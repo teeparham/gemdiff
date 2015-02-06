@@ -41,6 +41,7 @@ module Gemdiff
         sinatra:                     'sinatra/sinatra',
         stripe:                      'stripe/stripe-ruby',
         toolkit:                     'Team-Sass/tookit',
+        zeus:                        'burke/zeus',
       }
 
     class << self
