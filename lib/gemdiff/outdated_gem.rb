@@ -7,6 +7,7 @@ module Gemdiff
     # keep it alphabetical
     LIST_NO_V = %w[
       atomic
+      autoprefixer-rails
       babosa
       cancan
       capybara
