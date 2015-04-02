@@ -10,9 +10,9 @@ between the current version of a gem in your bundle and the latest version of th
 
 ### Why?
 
-You want to view the source code differences between versions of gems when your dependencies are updated. 
-`gemdiff` does the source repository lookup, opens common GitHub pages, and simplifies your git workflow for a 
-bundled project.
+You want to view the source code differences between versions of gems before updating. 
+`gemdiff` does the source repository lookup, opens a compare view of commits on GitHub, 
+and simplifies your git workflow for a bundled project.
 
 ### How?
 
