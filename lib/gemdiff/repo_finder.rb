@@ -20,6 +20,7 @@ module Gemdiff
         chunky_png:                  'wvanbergen/chunky_png',
         :"color-schemer"          => 'Team-Sass/color-schemer',
         delayed_job:                 'collectiveidea/delayed_job',
+        execjs:                      'rails/execjs',
         ffi:                         'ffi/ffi',
         gosu:                        'jlnr/gosu',
         :"guard-livereload"       => 'guard/guard-livereload',
