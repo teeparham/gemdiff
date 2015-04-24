@@ -28,6 +28,7 @@ module Gemdiff
         json:                        'flori/json',
         :"modular-scale"          => 'Team-Sass/modular-scale',
         nokogiri:                    'sparklemotion/nokogiri',
+        nokogumbo:                   'rubys/nokogumbo',
         passenger:                   'phusion/passenger',
         pg:                          'ged/ruby-pg',
         :"pry-doc"                => 'pry/pry-doc',
