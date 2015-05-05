@@ -21,6 +21,7 @@ module Gemdiff
         :"color-schemer"          => 'Team-Sass/color-schemer',
         delayed_job:                 'collectiveidea/delayed_job',
         execjs:                      'rails/execjs',
+        faraday_middleware:          'lostisland/faraday_middleware',
         ffi:                         'ffi/ffi',
         gosu:                        'jlnr/gosu',
         :"guard-livereload"       => 'guard/guard-livereload',
