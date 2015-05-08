@@ -3,20 +3,20 @@
 [![Gem Version](https://badge.fury.io/rb/gemdiff.svg)](http://rubygems.org/gems/gemdiff)
 [![Build Status](https://travis-ci.org/teeparham/gemdiff.svg?branch=master)](https://travis-ci.org/teeparham/gemdiff)
 
-`gemdiff` is a command-line utility to find and compare source code 
-associated with ruby gems. It makes it easy to compare source code differences
-between the current version of a gem in your bundle and the latest version of the gem.
-`gemdiff` helps connect gem version management (rubygems + bundler) with source code (github).
+`gemdiff` is a command-line tool to find source code for ruby gems. 
+You can compare source code differences between the current version of a gem in your bundle and 
+the latest version of the gem.
+`gemdiff` helps connect gem version management (rubygems + bundler) with source code (GitHub).
 
 ### Why?
 
-You want to view the source code differences between versions of gems before updating. 
+You want to view differences between versions of gems before updating. 
 `gemdiff` does the source repository lookup, opens a compare view of commits on GitHub, 
 and simplifies your git workflow for a bundled project.
 
 ### How?
 
-`gemdiff` finds a repository by inspecting the local or remote gemspec, or searching github if needed. 
+`gemdiff` finds a repository by inspecting the local or remote gemspec, or searching GitHub if needed. 
 It uses bundler to list your outdated gems. For each outdated gem, it determines your currently used version and 
 the version you can update to, and builds a compare view URL with the old and new version tags. 
 It provides `update` for a simple `bundle update <gem>` and commit workflow.
@@ -62,22 +62,22 @@ Open? (y to open, x to exit, else skip)
 Open a compare view for an individual outdated gem in your bundle:
 
 ```sh
-$ gemdiff compare haml
+$ gemdiff compare pundit
 ```
 
 You can bypass bundler and query a gem by including the old and new version numbers. This is faster since it bypasses
 the `bundle outdated --strict` command used to get the versions.
 
-For example, open the GitHub compare view in browser for difference between `haml` versions 4.0.4 and 4.0.5:
+For example, open the GitHub compare view in browser for difference between `pundit` versions 0.3.0 and 1.0.0:
 
 ```sh
-$ gemdiff compare haml 4.0.4 4.0.5
+$ gemdiff compare pundit 1.0.0 0.3.0
 ```
 
 You can compare a version with a branch name:
 
 ```sh
-$ gemdiff compare arel 4.0.2 master
+$ gemdiff compare arel 6.0.0 master
 ```
 
 ### `gemdiff find [gem]`
