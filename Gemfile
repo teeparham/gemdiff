@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-platform :mri_21 do
+platform :mri_22 do
   unless ENV['TRAVIS']
-    gem "pry-byebug", "~> 2.0"
+    gem "pry-byebug"
   end
 end
 
