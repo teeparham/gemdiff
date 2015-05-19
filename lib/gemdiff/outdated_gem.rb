@@ -15,6 +15,7 @@ module Gemdiff
       ffi
       haml
       mail
+      rack
       rvm-capistrano
       safe_yaml
       sass
