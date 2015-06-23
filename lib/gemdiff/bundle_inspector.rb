@@ -26,16 +26,20 @@ module Gemdiff
     end
 
     def new_outdated_gem(line)
-      return nil unless line.start_with?('  * ')
-      items = line.split(' ')
+      return unless line.start_with?("  * ")
 
-      # ["*", "haml", "(4.0.5", ">", "4.0.4)"]
-      # ["*", "a_forked_gem", "(0.7.0", "99ddbc9", ">", "0.7.0", "1da2295)"]
+      # clean & convert new & old output to same format
+      items = line.gsub("*", "")
+                  .gsub("(newest", "")
+                  .gsub(", installed", " >")
+                  .gsub(/([(),])/, "")
+                  .split(" ")
 
-      return nil if items[4] == '>' # skip non-gems for now
-      old_version = items[4].sub(')', '')
-      new_version = items[2].sub('(', '')
-      OutdatedGem.new(items[1], old_version, new_version)
+      # ["haml", "4.0.5", ">", "4.0.4"]
+      # ["a_forked_gem", "0.7.0", "99ddbc9", ">", "0.7.0", "1da2295"]
+
+      return if items[3] == ">" # skip non-gems for now
+      OutdatedGem.new(items[0], items[3], items[1])
     end
   end
 end
