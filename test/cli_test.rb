@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 module Gemdiff
   class CLITest < MiniTest::Spec
