@@ -49,12 +49,16 @@ module Gemdiff
     end
 
     # example returns:
-    # +    aws-sdk (1.35.0)
+    # +    rails (4.2.3)
     # or
     # +    sass-rails (4.0.3)
     # +  sass-rails
+    # or
+    # +      activejob (= 4.2.3)
+    # +    activejob (4.2.3)
+    # +      activejob (= 4.2.3)
     def git_changed_line
-      `git diff | grep #{name} | grep '+  '`
+      `git diff | grep ' #{name} (' | grep '+  '`
     end
 
     def git_add_and_commit_lockfile(version)
@@ -68,6 +72,5 @@ module Gemdiff
     def bundle_update
       `bundle update #{name}`
     end
-
   end
 end

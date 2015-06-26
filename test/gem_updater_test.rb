@@ -24,6 +24,14 @@ module Gemdiff
         updater.expects(:git_add_and_commit_lockfile).with("4.0.3")
         assert updater.commit
       end
+
+      it "adds a git commit for an update with dependencies" do
+        updater = GemUpdater.new("activejob")
+        updater.stubs git_changed_line: \
+          "+      activejob (= 4.2.3)\n+    activejob (4.2.3)\n+      activejob (= 4.2.3)"
+        updater.expects(:git_add_and_commit_lockfile).with("4.2.3")
+        assert updater.commit
+      end
     end
 
     describe "#reset" do
