@@ -44,6 +44,7 @@ module Gemdiff
         sinatra:                     'sinatra/sinatra',
         stripe:                      'stripe/stripe-ruby',
         thread_safe:                 'ruby-concurrency/thread_safe',
+        tolk:                        'tolk/tolk',
         toolkit:                     'Team-Sass/tookit',
         zeus:                        'burke/zeus',
       }
