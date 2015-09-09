@@ -29,32 +29,21 @@ gem install gemdiff
 
 ## Commands
 
-### `gemdiff outdated`
+### `gemdiff find [gem]`
 
-Runs `bundle outdated --strict` in the current directory.
-For each outdated gem, you can open the compare view for that gem, skip it, or exit. 
-Enter `y` to review.
-
-`outdated` is the default task, so `gemdiff` with no arguments is the same as `gemdiff outdated`.
+Show the repository URL using the gemspec. If a GitHub URL is not found, query the GitHub search API.
 
 ```sh
-$ cd /your/ruby/project/using/bundler
-$ gemdiff
-Checking for outdated gems in your bundle...
-Fetching gem metadata from https://rubygems.org/.......
-Fetching additional metadata from https://rubygems.org/..
-Resolving dependencies...
+$ gemdiff find pundit
+http://github.com/elabs/pundit
+```
 
-Outdated gems included in the bundle:
-  * aws-sdk (1.35.0 > 1.34.1)
-  * sprockets (2.11.0 > 2.10.1)
-  * webmock (1.17.4 > 1.17.3)
-aws-sdk: 1.35.0 > 1.34.1
-Open? (y to open, x to exit, else skip)
-sprockets: 2.11.0 > 2.10.1
-Open? (y to open, x to exit, else skip) y
-webmock: 1.17.4 > 1.17.3
-Open? (y to open, x to exit, else skip)
+### `gemdiff open [gem]`
+
+Open the repository URL (with your default browser unless you have an odd setup):
+
+```sh
+$ gemdiff open pundit
 ```
 
 ### `gemdiff compare [gem] [version] [version]`
@@ -78,23 +67,6 @@ You can compare a version with a branch name:
 
 ```sh
 $ gemdiff compare arel 6.0.0 master
-```
-
-### `gemdiff find [gem]`
-
-Lookup the repository URL using the gemspec. If a GitHub URL is not found, query the GitHub search API.
-
-```sh
-$ gemdiff find haml
-http://github.com/haml/haml
-```
-
-### `gemdiff open [gem]`
-
-Open the repository URL:
-
-```sh
-$ gemdiff open haml
 ```
 
 ### `gemdiff releases [gem]`
@@ -145,6 +117,34 @@ Date:   Mon Mar 3 16:38:32 2014 -0700
     Update haml to 4.0.5
 
 diff --git a/Gemfile.lock
+```
+
+### `gemdiff outdated`
+
+Runs `bundle outdated --strict` in the current directory. Then, or each outdated gem, 
+you can open the compare view for that gem, skip it, or exit. 
+Enter `y` to review. Enter `A` to open all compare views (beware!).
+
+`outdated` is the default task, so `gemdiff` with no arguments is the same as `gemdiff outdated`.
+
+```sh
+$ cd /your/ruby/project/using/bundler
+$ gemdiff
+Checking for outdated gems in your bundle...
+Fetching gem metadata from https://rubygems.org/.......
+Fetching additional metadata from https://rubygems.org/..
+Resolving dependencies...
+
+Outdated gems included in the bundle:
+  * aws-sdk (1.35.0 > 1.34.1)
+  * sprockets (2.11.0 > 2.10.1)
+  * webmock (1.17.4 > 1.17.3)
+aws-sdk: 1.35.0 > 1.34.1
+Open? (y to open, x to exit, else skip)
+sprockets: 2.11.0 > 2.10.1
+Open? (y to open, x to exit, else skip) y
+webmock: 1.17.4 > 1.17.3
+Open? (y to open, x to exit, else skip)
 ```
 
 ### `gemdiff help`
