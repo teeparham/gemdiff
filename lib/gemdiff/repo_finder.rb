@@ -23,6 +23,7 @@ module Gemdiff
         execjs:                      'rails/execjs',
         faraday_middleware:          'lostisland/faraday_middleware',
         ffi:                         'ffi/ffi',
+        googleauth:                  'google/google-auth-library-ruby',
         gosu:                        'jlnr/gosu',
         :"guard-livereload"       => 'guard/guard-livereload',
         :"jquery-ujs"             => 'rails/jquery-ujs',
