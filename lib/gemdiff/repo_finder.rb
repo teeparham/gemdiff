@@ -78,7 +78,7 @@ module Gemdiff
       end
 
       def github_repo(full_name)
-        "http://github.com/#{full_name}"
+        "https://github.com/#{full_name}"
       end
 
       def octokit_client

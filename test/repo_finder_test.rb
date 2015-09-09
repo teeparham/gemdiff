@@ -19,7 +19,7 @@ module Gemdiff
       it "returns github url from github search" do
         RepoFinder.stubs octokit_client: mock_octokit("haml/haml")
         RepoFinder.stubs gemspec: fake_gemspec
-        assert_equal "http://github.com/haml/haml", RepoFinder.github_url("haml")
+        assert_equal "https://github.com/haml/haml", RepoFinder.github_url("haml")
       end
 
       it "returns nil when not found" do
@@ -29,7 +29,7 @@ module Gemdiff
       end
 
       it "returns exception url" do
-        assert_equal "http://github.com/rails/rails", RepoFinder.github_url('activerecord')
+        assert_equal "https://github.com/rails/rails", RepoFinder.github_url('activerecord')
       end
     end
 
