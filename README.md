@@ -35,7 +35,7 @@ Show the repository URL using the gemspec. If a GitHub URL is not found, query t
 
 ```sh
 $ gemdiff find pundit
-http://github.com/elabs/pundit
+https://github.com/elabs/pundit
 ```
 
 ### `gemdiff open [gem]`
@@ -87,7 +87,7 @@ $ gemdiff master haml
 
 ### `gemdiff update [gem]`
 
-Use `update` to update a gem in your bundle and commit the change to your git repository. 
+Use `update` to update a gem in your bundle and commit the change with git. 
 You will be shown a preview of the `git diff` and you may choose to commit or reset the change.
 
 ```sh
@@ -121,7 +121,7 @@ diff --git a/Gemfile.lock
 
 ### `gemdiff outdated`
 
-Runs `bundle outdated --strict` in the current directory. Then, or each outdated gem, 
+Runs `bundle outdated --strict` in the current directory. For each outdated gem, 
 you can open the compare view for that gem, skip it, or exit. 
 Enter `y` to review. Enter `A` to open all compare views (beware!).
 
