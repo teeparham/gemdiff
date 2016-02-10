@@ -74,11 +74,6 @@ Style/Documentation:
     - 'lib/gemdiff/repo_finder.rb'
 
 # Offense count: 1
-Style/DoubleNegation:
-  Exclude:
-    - 'lib/gemdiff/outdated_gem.rb'
-
-# Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: MaxLineLength.
 Style/IfUnlessModifier:

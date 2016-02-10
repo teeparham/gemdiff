@@ -49,7 +49,7 @@ module Gemdiff
     end
 
     def repo?
-      !!repo
+      repo
     end
 
     def releases_url
