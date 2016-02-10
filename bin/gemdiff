@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 
-$LOAD_PATH.unshift File.dirname(__FILE__) + '/../lib'
+$LOAD_PATH.unshift File.dirname(__FILE__) + "/../lib"
 
 # Exit cleanly from an early interrupt
 Signal.trap("INT") { exit 1 }
 
-require 'gemdiff'
+require "gemdiff"
 
 Gemdiff::CLI.start(ARGV)

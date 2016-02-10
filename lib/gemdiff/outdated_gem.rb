@@ -1,11 +1,10 @@
-require 'launchy'
+require "launchy"
 
 module Gemdiff
   class OutdatedGem
-
     # gems that tag releases with tag names like 1.2.3
     # keep it alphabetical
-    LIST_NO_V = %w[
+    LIST_NO_V = %w(
       atomic
       autoprefixer-rails
       babosa
@@ -20,7 +19,7 @@ module Gemdiff
       safe_yaml
       sass
       twilio-ruby
-    ]
+    )
 
     attr_accessor :name, :old_version, :new_version
 
@@ -50,7 +49,7 @@ module Gemdiff
     end
 
     def repo?
-      !!repo
+      repo
     end
 
     def releases_url
@@ -85,7 +84,7 @@ module Gemdiff
       open_url(repo) if repo?
     end
 
-  private
+    private
 
     def open_url(url)
       Launchy.open(url) do |exception|
@@ -99,7 +98,7 @@ module Gemdiff
       else
         # if the new version is not a number, assume it is a branch name
         # and drop the 'v'
-        prefix = (new_version[0] =~ /^[0-9]/) == 0 ? 'v' : ''
+        prefix = (new_version[0] =~ /^[0-9]/) == 0 ? "v" : ""
         "v#{old_version}...#{prefix}#{new_version}"
       end
     end
@@ -115,7 +114,7 @@ module Gemdiff
     # swap versions if needed
     def old_new(v_old, v_new)
       return [v_old, v_new] unless v_old && v_new
-      if v_old == 'master' || (Gem::Version.new(v_old) > Gem::Version.new(v_new))
+      if v_old == "master" || (Gem::Version.new(v_old) > Gem::Version.new(v_new))
         [v_new, v_old]
       else
         [v_old, v_new]

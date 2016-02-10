@@ -59,7 +59,7 @@ module Gemdiff
       end
     end
 
-  private
+    private
 
     def fake_outdated_old
 <<OUT

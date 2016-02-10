@@ -1,5 +1,5 @@
-require 'octokit'
-require 'yaml'
+require "octokit"
+require "yaml"
 
 module Gemdiff
   module RepoFinder
@@ -10,44 +10,44 @@ module Gemdiff
     # some repos are not mostly ruby so the github search doesn't find them
     REPO_EXCEPTIONS =
       {
-        actionmailer:                'rails/rails',
-        actionpack:                  'rails/rails',
-        actionview:                  'rails/rails',
-        activejob:                   'rails/rails',
-        activemodel:                 'rails/rails',
-        activerecord:                'rails/rails',
-        activesupport:               'rails/rails',
-        chunky_png:                  'wvanbergen/chunky_png',
-        :"color-schemer"          => 'at-import/color-schemer',
-        delayed_job:                 'collectiveidea/delayed_job',
-        execjs:                      'rails/execjs',
-        faraday_middleware:          'lostisland/faraday_middleware',
-        ffi:                         'ffi/ffi',
-        googleauth:                  'google/google-auth-library-ruby',
-        gosu:                        'jlnr/gosu',
-        :"guard-livereload"       => 'guard/guard-livereload',
-        :"jquery-ujs"             => 'rails/jquery-ujs',
-        json:                        'flori/json',
-        :"modular-scale"          => 'modularscale/modularscale-sass',
-        nokogiri:                    'sparklemotion/nokogiri',
-        nokogumbo:                   'rubys/nokogumbo',
-        passenger:                   'phusion/passenger',
-        pg:                          'ged/ruby-pg',
-        :"pry-doc"                => 'pry/pry-doc',
-        railties:                    'rails/rails',
-        rake:                        'ruby/rake',
-        resque:                      'resque/resque',
-        :"resque-multi-job-forks" => 'stulentsev/resque-multi-job-forks',
-        rr:                          'rr/rr',
-        SassyLists:                  'at-import/SassyLists',
-        :"Sassy-Maps"             => 'at-import/Sassy-Maps',
-        :"sassy-math"             => 'at-import/Sassy-math',
-        sinatra:                     'sinatra/sinatra',
-        stripe:                      'stripe/stripe-ruby',
-        thread_safe:                 'ruby-concurrency/thread_safe',
-        tolk:                        'tolk/tolk',
-        toolkit:                     'at-import/tookit',
-        zeus:                        'burke/zeus',
+        actionmailer:                "rails/rails",
+        actionpack:                  "rails/rails",
+        actionview:                  "rails/rails",
+        activejob:                   "rails/rails",
+        activemodel:                 "rails/rails",
+        activerecord:                "rails/rails",
+        activesupport:               "rails/rails",
+        chunky_png:                  "wvanbergen/chunky_png",
+        :"color-schemer"          => "at-import/color-schemer",
+        delayed_job:                 "collectiveidea/delayed_job",
+        execjs:                      "rails/execjs",
+        faraday_middleware:          "lostisland/faraday_middleware",
+        ffi:                         "ffi/ffi",
+        googleauth:                  "google/google-auth-library-ruby",
+        gosu:                        "jlnr/gosu",
+        :"guard-livereload"       => "guard/guard-livereload",
+        :"jquery-ujs"             => "rails/jquery-ujs",
+        json:                        "flori/json",
+        :"modular-scale"          => "modularscale/modularscale-sass",
+        nokogiri:                    "sparklemotion/nokogiri",
+        nokogumbo:                   "rubys/nokogumbo",
+        passenger:                   "phusion/passenger",
+        pg:                          "ged/ruby-pg",
+        :"pry-doc"                => "pry/pry-doc",
+        railties:                    "rails/rails",
+        rake:                        "ruby/rake",
+        resque:                      "resque/resque",
+        :"resque-multi-job-forks" => "stulentsev/resque-multi-job-forks",
+        rr:                          "rr/rr",
+        SassyLists:                  "at-import/SassyLists",
+        :"Sassy-Maps"             => "at-import/Sassy-Maps",
+        :"sassy-math"             => "at-import/Sassy-math",
+        sinatra:                     "sinatra/sinatra",
+        stripe:                      "stripe/stripe-ruby",
+        thread_safe:                 "ruby-concurrency/thread_safe",
+        tolk:                        "tolk/tolk",
+        toolkit:                     "at-import/tookit",
+        zeus:                        "burke/zeus",
       }
 
     class << self
@@ -57,7 +57,7 @@ module Gemdiff
         gemspec_homepage(gem_name) || search(gem_name)
       end
 
-    private
+      private
 
       def gemspec_homepage(gem_name)
         if (full_name = REPO_EXCEPTIONS[gem_name.to_sym])
@@ -92,7 +92,7 @@ module Gemdiff
       end
 
       def last_shell_command_success?
-        $?.success?
+        $CHILD_STATUS.success?
       end
 
       def find_local_gemspec(name)

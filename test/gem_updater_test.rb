@@ -71,6 +71,5 @@ module Gemdiff
         refute updater.clean?
       end
     end
-
   end
 end

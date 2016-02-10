@@ -30,7 +30,7 @@ module Gemdiff
       git_diff.empty?
     end
 
-  private
+    private
 
     def git_show
       `git show`
@@ -43,7 +43,7 @@ module Gemdiff
     def git_commit
       added = git_changed_line
       return false if added.empty?
-      version = added.split("\n").first.split(' ').last.gsub(/[()]/, '')
+      version = added.split("\n").first.split(" ").last.gsub(/[()]/, "")
       git_add_and_commit_lockfile version
       true
     end

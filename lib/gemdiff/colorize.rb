@@ -14,7 +14,7 @@ module Gemdiff
       out = []
       lines.split("\n").each do |line|
         out <<
-          if line.start_with?("---") || line.start_with?("+++") || line.start_with?("diff") || line.start_with?("index")
+          if line.start_with?("---", "+++", "diff", "index")
             colorize line, :blue
           elsif line.start_with?("@@")
             colorize line, :magenta
@@ -35,7 +35,7 @@ module Gemdiff
       "\e[#{to_color_code(color)}m#{string}\e[0m"
     end
 
-  private
+    private
 
     def to_color_code(color)
       COLORS[color] || 30
