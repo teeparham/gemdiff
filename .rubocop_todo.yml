@@ -136,8 +136,3 @@ Style/TrailingCommaInLiteral:
     - 'lib/gemdiff/colorize.rb'
     - 'lib/gemdiff/repo_finder.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/UnneededPercentQ:
-  Exclude:
-    - 'gemdiff.gemspec'
