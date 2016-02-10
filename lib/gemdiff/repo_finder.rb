@@ -57,7 +57,7 @@ module Gemdiff
         gemspec_homepage(gem_name) || search(gem_name)
       end
 
-    private
+      private
 
       def gemspec_homepage(gem_name)
         if (full_name = REPO_EXCEPTIONS[gem_name.to_sym])

@@ -161,7 +161,7 @@ module Gemdiff
       end
     end
 
-  private
+    private
 
     def mock_gem(name)
       outdated_gem = mock do

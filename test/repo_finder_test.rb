@@ -5,13 +5,13 @@ module Gemdiff
     describe ".github_url" do
       it "returns github url from local gemspec" do
         RepoFinder.stubs find_local_gemspec: fake_gemspec("homepage: http://github.com/rails/arel")
-        RepoFinder.stubs  last_shell_command_success?: true
+        RepoFinder.stubs last_shell_command_success?: true
         assert_equal "http://github.com/rails/arel", RepoFinder.github_url("arel")
       end
 
       it "returns github url from remote gemspec" do
         RepoFinder.stubs find_local_gemspec: ""
-        RepoFinder.stubs  last_shell_command_success?: false
+        RepoFinder.stubs last_shell_command_success?: false
         RepoFinder.stubs find_remote_gemspec: fake_gemspec("homepage: http://github.com/rails/arel")
         assert_equal "http://github.com/rails/arel", RepoFinder.github_url("arel")
       end
@@ -33,7 +33,7 @@ module Gemdiff
       end
     end
 
-  private
+    private
 
     def mock_octokit(full_name)
       mock_items = if full_name.nil?

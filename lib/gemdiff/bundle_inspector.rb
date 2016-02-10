@@ -16,10 +16,10 @@ module Gemdiff
     end
 
     def get(gem_name)
-      list.select{ |gem| gem.name == gem_name }.first
+      list.select { |gem| gem.name == gem_name }.first
     end
 
-  private
+    private
 
     def bundle_outdated_strict
       `bundle outdated --strict`

@@ -30,7 +30,7 @@ module Gemdiff
       git_diff.empty?
     end
 
-  private
+    private
 
     def git_show
       `git show`

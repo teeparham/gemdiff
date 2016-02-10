@@ -2,7 +2,6 @@ require 'launchy'
 
 module Gemdiff
   class OutdatedGem
-
     # gems that tag releases with tag names like 1.2.3
     # keep it alphabetical
     LIST_NO_V = %w[
@@ -85,7 +84,7 @@ module Gemdiff
       open_url(repo) if repo?
     end
 
-  private
+    private
 
     def open_url(url)
       Launchy.open(url) do |exception|

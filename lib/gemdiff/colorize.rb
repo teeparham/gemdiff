@@ -35,7 +35,7 @@ module Gemdiff
       "\e[#{to_color_code(color)}m#{string}\e[0m"
     end
 
-  private
+    private
 
     def to_color_code(color)
       COLORS[color] || 30

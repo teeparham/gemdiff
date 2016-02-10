@@ -61,13 +61,6 @@ Performance/StringReplacement:
   Exclude:
     - 'lib/gemdiff/bundle_inspector.rb'
 
-# Offense count: 8
-# Cop supports --auto-correct.
-# Configuration parameters: SupportedStyles, IndentationWidth.
-# SupportedStyles: outdent, indent
-Style/AccessModifierIndentation:
-  EnforcedStyle: outdent
-
 # Offense count: 6
 Style/Documentation:
   Exclude:
@@ -84,22 +77,6 @@ Style/Documentation:
 Style/DoubleNegation:
   Exclude:
     - 'lib/gemdiff/outdated_gem.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: empty_lines, no_empty_lines
-Style/EmptyLinesAroundClassBody:
-  Exclude:
-    - 'lib/gemdiff/outdated_gem.rb'
-    - 'test/gem_updater_test.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: AllowForAlignment, ForceEqualSignAlignment.
-Style/ExtraSpacing:
-  Exclude:
-    - 'test/repo_finder_test.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -156,20 +133,6 @@ Style/RegexpLiteral:
 Style/SpaceAroundOperators:
   Exclude:
     - 'lib/gemdiff/repo_finder.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: space, no_space
-Style/SpaceBeforeBlockBraces:
-  Enabled: false
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: AllowForAlignment.
-Style/SpaceBeforeFirstArg:
-  Exclude:
-    - 'test/repo_finder_test.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
