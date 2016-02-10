@@ -51,11 +51,6 @@ Performance/Detect:
     - 'lib/gemdiff/bundle_inspector.rb'
 
 # Offense count: 1
-Performance/DoubleStartEndWith:
-  Exclude:
-    - 'lib/gemdiff/colorize.rb'
-
-# Offense count: 1
 # Cop supports --auto-correct.
 Performance/StringReplacement:
   Exclude:

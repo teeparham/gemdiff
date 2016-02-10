@@ -14,7 +14,7 @@ module Gemdiff
       out = []
       lines.split("\n").each do |line|
         out <<
-          if line.start_with?("---") || line.start_with?("+++") || line.start_with?("diff") || line.start_with?("index")
+          if line.start_with?("---", "+++", "diff", "index")
             colorize line, :blue
           elsif line.start_with?("@@")
             colorize line, :magenta
