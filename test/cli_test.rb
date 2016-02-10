@@ -98,7 +98,7 @@ module Gemdiff
           stubs outdated: "outdated"
         end
         BundleInspector.stubs new: mock_inspector
-        @cli.stubs ask: 'y'
+        @cli.stubs ask: "y"
         @cli.expects(:puts).with(CLI::CHECKING_FOR_OUTDATED)
         @cli.expects(:puts).with("outdated")
         @cli.expects(:puts).with("haml: 4.0.5 > 4.0.4")
@@ -113,7 +113,7 @@ module Gemdiff
           stubs outdated: "outdated"
         end
         BundleInspector.stubs new: mock_inspector
-        @cli.stubs ask: ''
+        @cli.stubs ask: ""
         @cli.expects(:puts).with(CLI::CHECKING_FOR_OUTDATED)
         @cli.expects(:puts).with("outdated")
         @cli.expects(:puts).with("haml: 4.0.5 > 4.0.4")
@@ -133,7 +133,7 @@ module Gemdiff
       end
 
       it "updates the gem and returns with no response" do
-        @cli.stubs ask: ''
+        @cli.stubs ask: ""
         @cli.expects(:puts).with("Updating haml...")
         @mock_gem.expects :update
         @cli.expects(:puts).with("le diff")
@@ -141,7 +141,7 @@ module Gemdiff
       end
 
       it "updates the gem and commits with responses of c" do
-        @cli.stubs ask: 'c'
+        @cli.stubs ask: "c"
         @cli.expects(:puts).with("Updating haml...")
         @mock_gem.expects :update
         @cli.expects(:puts).with("le diff")
@@ -151,7 +151,7 @@ module Gemdiff
       end
 
       it "updates the gem and resets with responses of r" do
-        @cli.stubs ask: 'r'
+        @cli.stubs ask: "r"
         @cli.expects(:puts).with("Updating haml...")
         @mock_gem.expects :update
         @cli.expects(:puts).with("le diff")

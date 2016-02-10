@@ -29,7 +29,7 @@ module Gemdiff
       end
 
       it "returns exception url" do
-        assert_equal "https://github.com/rails/rails", RepoFinder.github_url('activerecord')
+        assert_equal "https://github.com/rails/rails", RepoFinder.github_url("activerecord")
       end
     end
 
