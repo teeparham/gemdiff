@@ -13,4 +13,4 @@ Style/StringLiterals:
   EnforcedStyle: double_quotes
 
 Style/SpaceAroundOperators:
-  AllowForAlignment: true
+  Enabled: false
