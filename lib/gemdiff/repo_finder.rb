@@ -92,7 +92,7 @@ module Gemdiff
       end
 
       def last_shell_command_success?
-        $?.success?
+        $CHILD_STATUS.success?
       end
 
       def find_local_gemspec(name)
