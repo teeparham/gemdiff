@@ -4,7 +4,7 @@ module Gemdiff
   class OutdatedGem
     # gems that tag releases with tag names like 1.2.3
     # keep it alphabetical
-    LIST_NO_V = %w[
+    LIST_NO_V = %w(
       atomic
       autoprefixer-rails
       babosa
@@ -19,7 +19,7 @@ module Gemdiff
       safe_yaml
       sass
       twilio-ruby
-    ]
+    )
 
     attr_accessor :name, :old_version, :new_version
 
