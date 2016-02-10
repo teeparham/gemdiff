@@ -46,12 +46,6 @@ Metrics/PerceivedComplexity:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Performance/Detect:
-  Exclude:
-    - 'lib/gemdiff/bundle_inspector.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 Performance/StringReplacement:
   Exclude:
     - 'lib/gemdiff/bundle_inspector.rb'
