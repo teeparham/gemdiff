@@ -14,10 +14,12 @@ module Gemdiff
       ffi
       haml
       mail
+      newrelic_rpm
       rack
       rvm-capistrano
       safe_yaml
       sass
+      secure_headers
       twilio-ruby
     )
 
