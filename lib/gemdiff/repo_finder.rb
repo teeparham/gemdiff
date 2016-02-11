@@ -29,6 +29,7 @@ module Gemdiff
         :"jquery-ujs"             => "rails/jquery-ujs",
         json:                        "flori/json",
         :"modular-scale"          => "modularscale/modularscale-sass",
+        newrelic_rpm:                "newrelic/rpm",
         nokogiri:                    "sparklemotion/nokogiri",
         nokogumbo:                   "rubys/nokogumbo",
         passenger:                   "phusion/passenger",
