@@ -61,8 +61,12 @@ module Gemdiff
       `git diff | grep ' #{name} (' | grep '+  '`
     end
 
+    def commit_message(version)
+      "Update #{name} to #{version}"
+    end
+
     def git_add_and_commit_lockfile(version)
-      `git add Gemfile.lock && git commit -m 'Update #{name} to #{version}'`
+      `git add Gemfile.lock && git commit -m '#{commit_message(version)}'`
     end
 
     def git_reset
