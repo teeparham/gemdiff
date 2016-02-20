@@ -32,6 +32,7 @@ module Gemdiff
         newrelic_rpm:                "newrelic/rpm",
         nokogiri:                    "sparklemotion/nokogiri",
         nokogumbo:                   "rubys/nokogumbo",
+        oauth:                       "oauth-xx/oauth-ruby",
         passenger:                   "phusion/passenger",
         pg:                          "ged/ruby-pg",
         :"pry-doc"                => "pry/pry-doc",
