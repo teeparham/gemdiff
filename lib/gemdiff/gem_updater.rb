@@ -41,7 +41,7 @@ module Gemdiff
     end
 
     def git_commit
-      added = git_changed_line
+      added = git_added_line
       return false if added.empty?
       version = added.split("\n").first.split(" ").last.gsub(/[()]/, "")
       git_add_and_commit_lockfile version
@@ -57,7 +57,7 @@ module Gemdiff
     # +      activejob (= 4.2.3)
     # +    activejob (4.2.3)
     # +      activejob (= 4.2.3)
-    def git_changed_line
+    def git_added_line
       `git diff | grep ' #{name} (' | grep '+  '`
     end
 

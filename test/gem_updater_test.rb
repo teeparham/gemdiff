@@ -12,21 +12,21 @@ class GemUpdaterTest < MiniTest::Spec
   describe "#commit" do
     it "adds a git commit for a gem update" do
       updater = Gemdiff::GemUpdater.new("aws-sdk")
-      updater.stubs git_changed_line: "+    aws-sdk (1.35.0)"
+      updater.stubs git_added_line: "+    aws-sdk (1.35.0)"
       updater.expects(:git_add_and_commit_lockfile).with("1.35.0")
       assert updater.commit
     end
 
     it "adds a git commit for an update from a specific ref" do
       updater = Gemdiff::GemUpdater.new("sass-rails")
-      updater.stubs git_changed_line: "+    sass-rails (4.0.3)\n+  sass-rails"
+      updater.stubs git_added_line: "+    sass-rails (4.0.3)\n+  sass-rails"
       updater.expects(:git_add_and_commit_lockfile).with("4.0.3")
       assert updater.commit
     end
 
     it "adds a git commit for an update with dependencies" do
       updater = Gemdiff::GemUpdater.new("activejob")
-      updater.stubs git_changed_line: \
+      updater.stubs git_added_line: \
         "+      activejob (= 4.2.3)\n+    activejob (4.2.3)\n+      activejob (= 4.2.3)"
       updater.expects(:git_add_and_commit_lockfile).with("4.2.3")
       assert updater.commit
