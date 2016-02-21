@@ -41,11 +41,13 @@ module Gemdiff
     end
 
     def git_commit
-      added = git_changed_line
-      return false if added.empty?
-      version = added.split("\n").first.split(" ").last.gsub(/[()]/, "")
-      git_add_and_commit_lockfile version
+      return false if git_added_line.empty?
+      git_add_and_commit_lockfile
       true
+    end
+
+    def version(changed_line)
+      changed_line.split("\n").first.split(" ").last.gsub(/[()]/, "")
     end
 
     # example returns:
@@ -57,12 +59,24 @@ module Gemdiff
     # +      activejob (= 4.2.3)
     # +    activejob (4.2.3)
     # +      activejob (= 4.2.3)
-    def git_changed_line
-      `git diff | grep ' #{name} (' | grep '+  '`
+    def git_added_line
+      @added_line ||= `git diff | grep ' #{name} (' | grep '+  '`
     end
 
-    def git_add_and_commit_lockfile(version)
-      `git add Gemfile.lock && git commit -m 'Update #{name} to #{version}'`
+    # example returns:
+    # -    json (1.8.1)
+    def git_removed_line
+      `git diff | grep ' #{name} (' | grep '\\-  '`
+    end
+
+    def commit_message
+      new_version = version(git_added_line)
+      outdated = OutdatedGem.new(name, new_version, version(git_removed_line))
+      "Update #{name} to #{new_version}\n\n#{outdated.compare_url}"
+    end
+
+    def git_add_and_commit_lockfile
+      `git add Gemfile.lock && git commit -m '#{commit_message}'`
     end
 
     def git_reset
