@@ -87,7 +87,7 @@ DESC
       response = ask("\nCommit? (c to commit, r to reset, else do nothing)")
       if response == "c"
         gem_updater.commit
-        puts "\n" << colorize_git_output(gem_updater.show)
+        puts "\n" + colorize_git_output(gem_updater.show)
       elsif response == "r"
         puts gem_updater.reset
       end
