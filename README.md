@@ -6,7 +6,7 @@
 `gemdiff` is a command-line tool to find source code for ruby gems. 
 You can compare source code differences between the current version of a gem in your bundle and 
 the latest version of the gem.
-`gemdiff` helps connect gem version management (rubygems + bundler) with source code (GitHub).
+`gemdiff` connects gem version management (rubygems + bundler) with source code (GitHub).
 
 ### Why?
 
@@ -115,6 +115,8 @@ Author: Tee Parham
 Date:   Mon Mar 3 16:38:32 2014 -0700
 
     Update haml to 4.0.5
+    
+    https://github.com/haml/haml/compare/4.0.4...4.0.5
 
 diff --git a/Gemfile.lock
 ```
@@ -157,11 +159,11 @@ $ gemdiff help
 
 ### Shortcuts
 
-You can use abbreviations for any of the above commands. For example, this is equivalent to `gemdiff find haml`:
+You can use abbreviations for any of the above commands. For example, this is equivalent to `gemdiff find pundit`:
 
 ```sh
-$ gemdiff f haml
-http://github.com/haml/haml
+$ gemdiff f pundit
+https://github.com/elabs/pundit
 ```
 
 ### What if it didn't work?
