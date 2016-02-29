@@ -8,6 +8,14 @@ class RepoFinderTest < MiniTest::Spec
       assert_equal "http://github.com/rails/arel", Gemdiff::RepoFinder.github_url("arel")
     end
 
+    it "strips anchors from urls" do
+      Gemdiff::RepoFinder.stubs \
+        find_local_gemspec: fake_gemspec("homepage: https://github.com/rubysec/bundler-audit#readme")
+      Gemdiff::RepoFinder.stubs last_shell_command_success?: true
+      assert_equal "https://github.com/rubysec/bundler-audit",
+                   Gemdiff::RepoFinder.github_url("bundler-audit")
+    end
+
     it "returns github url from remote gemspec" do
       Gemdiff::RepoFinder.stubs find_local_gemspec: ""
       Gemdiff::RepoFinder.stubs last_shell_command_success?: false

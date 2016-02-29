@@ -90,7 +90,7 @@ module Gemdiff
       def gemspec(name)
         local = find_local_gemspec(name)
         return find_remote_gemspec(name) unless last_shell_command_success?
-        local if local =~ GITHUB_REPO_REGEX
+        local.partition("#").first if local =~ GITHUB_REPO_REGEX
       end
 
       def last_shell_command_success?
