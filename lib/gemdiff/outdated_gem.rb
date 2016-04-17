@@ -12,6 +12,7 @@ module Gemdiff
       capybara
       compass
       ffi
+      google-api-client
       haml
       mail
       newrelic_rpm
