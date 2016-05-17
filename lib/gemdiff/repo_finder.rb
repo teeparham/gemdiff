@@ -22,6 +22,7 @@ module Gemdiff
         delayed_job:                 "collectiveidea/delayed_job",
         execjs:                      "rails/execjs",
         faraday_middleware:          "lostisland/faraday_middleware",
+        flamegraph:                  "SamSaffron/flamegraph",
         ffi:                         "ffi/ffi",
         googleauth:                  "google/google-auth-library-ruby",
         gosu:                        "jlnr/gosu",
