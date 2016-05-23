@@ -8,6 +8,7 @@ module Gemdiff
       atomic
       autoprefixer-rails
       babosa
+      bullet
       cancan
       capybara
       compass
