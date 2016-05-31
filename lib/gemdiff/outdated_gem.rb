@@ -16,6 +16,7 @@ module Gemdiff
       google-api-client
       haml
       mail
+      mysql2
       newrelic_rpm
       rack
       rvm-capistrano
