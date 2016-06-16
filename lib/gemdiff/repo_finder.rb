@@ -34,6 +34,7 @@ module Gemdiff
         nokogiri:                    "sparklemotion/nokogiri",
         nokogumbo:                   "rubys/nokogumbo",
         oauth:                       "oauth-xx/oauth-ruby",
+        oj:                          "ohler55/oj",
         passenger:                   "phusion/passenger",
         pg:                          "ged/ruby-pg",
         :"pry-doc"                => "pry/pry-doc",
