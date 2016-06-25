@@ -1,4 +1,5 @@
 require "launchy"
+require "uri"
 
 module Gemdiff
   class OutdatedGem
@@ -59,11 +60,11 @@ module Gemdiff
     end
 
     def releases_url
-      "#{repo}/releases"
+      clean_url "#{repo}/releases"
     end
 
     def commits_url
-      "#{repo}/commits/master"
+      clean_url "#{repo}/commits/master"
     end
 
     def compare_message
@@ -71,7 +72,7 @@ module Gemdiff
     end
 
     def compare_url
-      "#{repo}/compare/#{compare_part}"
+      clean_url "#{repo}/compare/#{compare_part}"
     end
 
     def master
@@ -91,6 +92,12 @@ module Gemdiff
     end
 
     private
+
+    def clean_url(url)
+      uri = URI.parse(url)
+      uri.path.gsub! %r{/+}, "/"
+      uri.to_s
+    end
 
     def open_url(url)
       Launchy.open(url) do |exception|
