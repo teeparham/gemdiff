@@ -14,7 +14,7 @@ class OutdatedGemTest < MiniTest::Spec
   describe "#compare_url" do
     it "returns compare url" do
       outdated_gem = Gemdiff::OutdatedGem.new("x", "1.0", "2.0")
-      outdated_gem.stubs repo: "http://github.com/x/x"
+      outdated_gem.stubs repo: "http://github.com/x/x/"
       assert_equal "http://github.com/x/x/compare/v1.0...v2.0", outdated_gem.compare_url
     end
 
