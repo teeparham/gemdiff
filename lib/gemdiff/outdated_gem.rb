@@ -23,6 +23,7 @@ module Gemdiff
       safe_yaml
       sass
       secure_headers
+      signet
       twilio-ruby
     )
 
