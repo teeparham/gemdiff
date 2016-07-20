@@ -5,7 +5,7 @@
 
 `gemdiff` is a command-line tool to find source code for ruby gems. 
 You can compare source code differences between the current version of a gem in your bundle and 
-the latest version of the gem.
+the version of the gem that would be installed with `bundle update <gem>` (or any two versions of a gem).
 `gemdiff` connects gem version management (rubygems + bundler) with source code (GitHub).
 
 ### Why?
