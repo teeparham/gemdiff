@@ -24,6 +24,7 @@ module Gemdiff
         faraday_middleware:          "lostisland/faraday_middleware",
         flamegraph:                  "SamSaffron/flamegraph",
         ffi:                         "ffi/ffi",
+        :"foundation-rails"       => "zurb/foundation-rails",
         googleauth:                  "google/google-auth-library-ruby",
         gosu:                        "jlnr/gosu",
         :"guard-livereload"       => "guard/guard-livereload",
