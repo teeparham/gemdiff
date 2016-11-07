@@ -47,6 +47,7 @@ module Gemdiff
         SassyLists:                  "at-import/SassyLists",
         :"Sassy-Maps"             => "at-import/Sassy-Maps",
         :"sassy-math"             => "at-import/Sassy-math",
+        settingslogic:               "settingslogic/settingslogic",
         sinatra:                     "sinatra/sinatra",
         stripe:                      "stripe/stripe-ruby",
         thread_safe:                 "ruby-concurrency/thread_safe",
