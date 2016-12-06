@@ -17,3 +17,7 @@ Style/SpaceAroundOperators:
 
 Style/NumericPredicate:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*'
