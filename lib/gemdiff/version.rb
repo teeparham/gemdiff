@@ -1,3 +1,3 @@
 module Gemdiff
-  VERSION = "1.0.11"
+  VERSION = "1.1.0"
 end
