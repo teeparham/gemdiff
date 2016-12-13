@@ -65,9 +65,10 @@ DESC
       open_all = false
       inspector.list.each do |outdated_gem|
         puts outdated_gem.compare_message
-        response = open_all || ask("Open? (y to open, x to exit, A to open all, else skip)")
-        open_all = "A" if response == "A"
+        response = open_all || ask("Open? (y to open, x to exit, A to open all, s to show all to stdout, else skip)")
+        open_all = response if %(A s).include?(response)
         outdated_gem.compare if %w(y A).include?(response)
+        puts outdated_gem.compare_url if response == "s"
         return if response == "x"
       end
     end

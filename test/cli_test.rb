@@ -103,6 +103,22 @@ class CLITest < MiniTest::Spec
       cli.outdated
     end
 
+    it "show compare urls of outdated gems with responses of s" do
+      outdated_gem = Gemdiff::OutdatedGem.new("haml", "4.0.4", "4.0.5")
+      mock_inspector = mock do
+        stubs list: [outdated_gem]
+        stubs outdated: "outdated"
+      end
+      Gemdiff::BundleInspector.stubs new: mock_inspector
+      cli.stubs ask: "s"
+      cli.expects(:puts).with(Gemdiff::CLI::CHECKING_FOR_OUTDATED)
+      cli.expects(:puts).with("outdated")
+      cli.expects(:puts).with("haml: 4.0.5 > 4.0.4")
+      outdated_gem.expects(:compare_url).returns("https://github.com/haml/haml/compare/4.0.4...4.0.5")
+      cli.expects(:puts).with("https://github.com/haml/haml/compare/4.0.4...4.0.5")
+      cli.outdated
+    end
+
     it "skips outdated gems without responses of y" do
       outdated_gem = Gemdiff::OutdatedGem.new("haml", "4.0.4", "4.0.5")
       mock_inspector = mock do
