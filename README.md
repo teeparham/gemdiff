@@ -3,22 +3,22 @@
 [![Gem Version](https://badge.fury.io/rb/gemdiff.svg)](http://rubygems.org/gems/gemdiff)
 [![Build Status](https://travis-ci.org/teeparham/gemdiff.svg?branch=master)](https://travis-ci.org/teeparham/gemdiff)
 
-`gemdiff` is a command-line tool to find source code for ruby gems. 
-You can compare source code differences between the current version of a gem in your bundle and 
+`gemdiff` is a command-line tool to find source code for ruby gems.
+You can compare source code differences between the current version of a gem in your bundle and
 the version of the gem that would be installed with `bundle update <gem>` (or any two versions of a gem).
 `gemdiff` connects gem version management (rubygems + bundler) with source code (GitHub).
 
 ### Why?
 
-You want to view differences between versions of gems before updating. 
-`gemdiff` does the source repository lookup, opens a compare view of commits on GitHub, 
+You want to view differences between versions of gems before updating.
+`gemdiff` does the source repository lookup, opens a compare view of commits on GitHub,
 and simplifies your git workflow for a bundled project.
 
 ### How?
 
-`gemdiff` finds a repository by inspecting the local or remote gemspec, or searching GitHub if needed. 
-It uses bundler to list your outdated gems. For each outdated gem, it determines your currently used version and 
-the version you can update to, and builds a compare view URL with the old and new version tags. 
+`gemdiff` finds a repository by inspecting the local or remote gemspec, or searching GitHub if needed.
+It uses bundler to list your outdated gems. For each outdated gem, it determines your currently used version and
+the version you can update to, and builds a compare view URL with the old and new version tags.
 It provides `update` for a simple `bundle update <gem>` and commit workflow.
 
 ## Install
@@ -87,7 +87,7 @@ $ gemdiff master haml
 
 ### `gemdiff update [gem]`
 
-Use `update` to update a gem in your bundle and commit the change with git. 
+Use `update` to update a gem in your bundle and commit the change with git.
 You will be shown a preview of the `git diff` and you may choose to commit or reset the change.
 
 ```sh
@@ -115,7 +115,7 @@ Author: Tee Parham
 Date:   Mon Mar 3 16:38:32 2014 -0700
 
     Update haml to 4.0.5
-    
+
     https://github.com/haml/haml/compare/4.0.4...4.0.5
 
 diff --git a/Gemfile.lock
@@ -123,8 +123,8 @@ diff --git a/Gemfile.lock
 
 ### `gemdiff outdated`
 
-Runs `bundle outdated --strict` in the current directory. For each outdated gem, 
-you can open the compare view for that gem, skip it, or exit. 
+Runs `bundle outdated --strict` in the current directory. For each outdated gem,
+you can open the compare view for that gem, skip it, or exit.
 Enter `y` to review. Enter `A` to open all compare views (beware!).
 
 `outdated` is the default task, so `gemdiff` with no arguments is the same as `gemdiff outdated`.
@@ -142,11 +142,11 @@ Outdated gems included in the bundle:
   * sprockets (2.11.0 > 2.10.1)
   * webmock (1.17.4 > 1.17.3)
 aws-sdk: 1.35.0 > 1.34.1
-Open? (y to open, x to exit, else skip)
+Open? (y to open, x to exit, A to open all, s to show all to stdout, else skip)
 sprockets: 2.11.0 > 2.10.1
-Open? (y to open, x to exit, else skip) y
+Open? (y to open, x to exit, A to open all, s to show all to stdout, else skip) y
 webmock: 1.17.4 > 1.17.3
-Open? (y to open, x to exit, else skip)
+Open? (y to open, x to exit, A to open all, s to show all to stdout, else skip)
 ```
 
 ### `gemdiff help`
@@ -173,11 +173,11 @@ https://github.com/elabs/pundit
 1. The gem must have a repository on GitHub. If not, `gemdiff` will find nothing or a similar repository, which
 is not helpful. Some gems' source code is not on GitHub. `gemdiff` could support other source hosts. Submit a pull request!
 
-2. The GitHub repository must have tagged releases to show compare views. If you find gems that do not tag 
+2. The GitHub repository must have tagged releases to show compare views. If you find gems that do not tag
 releases, submit an issue to the gem maintainer to tag their releases.
 
 3. The versions must be tagged using the standard format of `v1.2.3`. If you find gems that follow
-a non-standard format (such as `1.2.3`), please open an issue or submit a pull request. 
+a non-standard format (such as `1.2.3`), please open an issue or submit a pull request.
 See [`lib/gemdiff/outdated_gem.rb`](https://github.com/teeparham/gemdiff/blob/master/lib/gemdiff/outdated_gem.rb).
 
 4. Encourage gem maintainers to enter the GitHub repository URL in the `homepage` field of their gemspec
