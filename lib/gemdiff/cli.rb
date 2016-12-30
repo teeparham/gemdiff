@@ -73,6 +73,19 @@ DESC
       end
     end
 
+    desc "list", "List compare URLs for all outdated gems in the bundle."
+    def list
+      puts CHECKING_FOR_OUTDATED
+      inspector = BundleInspector.new
+      puts inspector.outdated
+      puts "\n"
+      inspector.list.each do |outdated_gem|
+        puts outdated_gem.compare_message
+        puts outdated_gem.compare_url
+        puts "\n"
+      end
+    end
+
     desc "update <gem>", "Update a gem, show a git diff of the update, and commit or reset"
     def update(name)
       gem_updater = GemUpdater.new(name)
