@@ -126,6 +126,7 @@ diff --git a/Gemfile.lock
 Runs `bundle outdated --strict` in the current directory. For each outdated gem,
 you can open the compare view for that gem, skip it, or exit.
 Enter `y` to review. Enter `A` to open all compare views (beware!).
+Enter `s` to list all the compare URLs to stdout (same as the `list` command).
 
 `outdated` is the default task, so `gemdiff` with no arguments is the same as `gemdiff outdated`.
 
@@ -134,7 +135,7 @@ $ cd /your/ruby/project/using/bundler
 $ gemdiff
 Checking for outdated gems in your bundle...
 Fetching gem metadata from https://rubygems.org/.......
-Fetching additional metadata from https://rubygems.org/..
+Fetching version metadata from https://rubygems.org/..
 Resolving dependencies...
 
 Outdated gems included in the bundle:
@@ -147,6 +148,32 @@ sprockets: 2.11.0 > 2.10.1
 Open? (y to open, x to exit, A to open all, s to show all to stdout, else skip) y
 webmock: 1.17.4 > 1.17.3
 Open? (y to open, x to exit, A to open all, s to show all to stdout, else skip)
+```
+
+### `gemdiff list`
+
+Outputs outdated gems in your bundle with their compare URLs to stdout.
+
+```sh
+$ gemdiff list
+Checking for outdated gems in your bundle...
+Fetching gem metadata from https://rubygems.org/.......
+Fetching version metadata from https://rubygems.org/..
+Resolving dependencies...
+
+Outdated gems included in the bundle:
+  * mocha (newest 1.2.1, installed 1.1.0, requested ~> 1.0) in group "development"
+  * rake (newest 11.3.0, installed 11.1.2, requested ~> 11.0) in group "development"
+  * sqlite3 (newest 1.3.12, installed 1.3.11, requested ~> 1.3) in group "development"
+  
+mocha: 1.2.1 > 1.1.0
+https://github.com/freerange/mocha/compare/v1.1.0...v1.2.1
+
+rake: 11.3.0 > 11.1.2
+https://github.com/ruby/rake/compare/v11.1.2...v11.3.0
+
+sqlite3: 1.3.12 > 1.3.11
+https://github.com/sparklemotion/sqlite3-ruby/compare/v1.3.11...v1.3.12
 ```
 
 ### `gemdiff help`

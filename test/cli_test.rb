@@ -135,6 +135,36 @@ class CLITest < MiniTest::Spec
     end
   end
 
+  describe "#list" do
+    it "does nothing when nothing to update" do
+      mock_inspector = mock do
+        stubs list: []
+        stubs outdated: ""
+      end
+      Gemdiff::BundleInspector.stubs new: mock_inspector
+      cli.expects(:puts).with(Gemdiff::CLI::CHECKING_FOR_OUTDATED)
+      cli.expects(:puts).with("")
+      cli.expects(:puts).with("\n")
+      cli.list
+    end
+
+    it "lists outdated gems" do
+      outdated_gem = Gemdiff::OutdatedGem.new("pundit", "1.0.0", "1.0.1")
+      mock_inspector = mock do
+        stubs list: [outdated_gem]
+        stubs outdated: "outdated"
+      end
+      Gemdiff::BundleInspector.stubs new: mock_inspector
+      outdated_gem.expects(:compare_url).returns("https://github.com/elabs/pundit/compare/v1.0.0...v1.0.1")
+      cli.expects(:puts).with(Gemdiff::CLI::CHECKING_FOR_OUTDATED)
+      cli.expects(:puts).with("outdated")
+      cli.expects(:puts).with("\n").twice
+      cli.expects(:puts).with("pundit: 1.0.1 > 1.0.0")
+      cli.expects(:puts).with("https://github.com/elabs/pundit/compare/v1.0.0...v1.0.1")
+      cli.list
+    end
+  end
+
   describe "#update" do
     before do
       @mock_gem = mock do
