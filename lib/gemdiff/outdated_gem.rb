@@ -24,6 +24,7 @@ module Gemdiff
       safe_yaml
       sass
       secure_headers
+      slack-notifier
       signet
       twilio-ruby
     )
