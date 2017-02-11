@@ -36,6 +36,7 @@ module Gemdiff
         :"kaminari-activerecord"  => "kaminari/kaminari",
         :"kaminari-core"          => "kaminari/kaminari",
         :"modular-scale"          => "modularscale/modularscale-sass",
+        :"net-ssh-gateway"        => "net-ssh/net-ssh-gateway",
         newrelic_rpm:                "newrelic/rpm",
         nokogiri:                    "sparklemotion/nokogiri",
         nokogumbo:                   "rubys/nokogumbo",
