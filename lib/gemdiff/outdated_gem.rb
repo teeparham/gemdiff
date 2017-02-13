@@ -18,6 +18,7 @@ module Gemdiff
       haml
       mail
       mysql2
+      net-ssh-gateway
       newrelic_rpm
       rack
       rvm-capistrano
