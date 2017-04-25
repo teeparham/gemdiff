@@ -60,6 +60,7 @@ module Gemdiff
         thread_safe:                 "ruby-concurrency/thread_safe",
         tolk:                        "tolk/tolk",
         toolkit:                     "at-import/tookit",
+        :"trailblazer-cells"      => "trailblazer/trailblazer-cells",
         :"twitter-text"           => "twitter/twitter-text",
         zeus:                        "burke/zeus",
       }
