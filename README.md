@@ -29,6 +29,97 @@ gem install gemdiff
 
 ## Commands
 
+### `gemdiff list`
+
+Output outdated gems in your bundle with their compare URLs to stdout.
+
+```sh
+$ gemdiff list
+Checking for outdated gems in your bundle...
+Fetching gem metadata from https://rubygems.org/.......
+Fetching version metadata from https://rubygems.org/..
+Resolving dependencies...
+
+Outdated gems included in the bundle:
+  * mocha (newest 1.2.1, installed 1.1.0, requested ~> 1.0) in group "development"
+  * rake (newest 11.3.0, installed 11.1.2, requested ~> 11.0) in group "development"
+  * sqlite3 (newest 1.3.12, installed 1.3.11, requested ~> 1.3) in group "development"
+  
+mocha: 1.2.1 > 1.1.0
+https://github.com/freerange/mocha/compare/v1.1.0...v1.2.1
+
+rake: 11.3.0 > 11.1.2
+https://github.com/ruby/rake/compare/v11.1.2...v11.3.0
+
+sqlite3: 1.3.12 > 1.3.11
+https://github.com/sparklemotion/sqlite3-ruby/compare/v1.3.11...v1.3.12
+```
+
+### `gemdiff outdated`
+
+Runs `bundle outdated --strict` in the current directory. For each outdated gem,
+you can open the compare view for that gem, skip it, or exit.
+Enter `y` to review. Enter `A` to open all compare views (beware!).
+Enter `s` to list all the compare URLs to stdout (same as the `list` command).
+
+`outdated` is the default task, so `gemdiff` with no arguments is the same as `gemdiff outdated`.
+
+```sh
+$ cd /your/ruby/project/using/bundler
+$ gemdiff
+Checking for outdated gems in your bundle...
+Fetching gem metadata from https://rubygems.org/.......
+Fetching version metadata from https://rubygems.org/..
+Resolving dependencies...
+
+Outdated gems included in the bundle:
+  * aws-sdk (1.35.0 > 1.34.1)
+  * sprockets (2.11.0 > 2.10.1)
+  * webmock (1.17.4 > 1.17.3)
+aws-sdk: 1.35.0 > 1.34.1
+Open? (y to open, x to exit, A to open all, s to show all to stdout, else skip)
+sprockets: 2.11.0 > 2.10.1
+Open? (y to open, x to exit, A to open all, s to show all to stdout, else skip) y
+webmock: 1.17.4 > 1.17.3
+Open? (y to open, x to exit, A to open all, s to show all to stdout, else skip)
+```
+
+### `gemdiff update [gem]`
+
+Use `update` to update a gem in your bundle and commit the change with git.
+You will be shown a preview of the `git diff` and you may choose to commit or reset the change.
+
+```sh
+$ gemdiff update haml
+
+Updating haml...
+diff --git a/Gemfile.lock b/Gemfile.lock
+index d5544ef..2d5def8 100644
+--- a/Gemfile.lock
++++ b/Gemfile.lock
+@@ -38,7 +38,7 @@ GEM
+     dalli (2.7.0)
+     debugger-linecache (1.2.0)
+     erubis (2.7.0)
+-    haml (4.0.4)
++    haml (4.0.5)
+       tilt
+     hike (1.2.3)
+     i18n (0.6.9)
+
+Commit? (c to commit, r to reset, else do nothing) c
+
+commit ebcc13f4c9a43f2e844d9d185e527652021c6a8f
+Author: Tee Parham
+Date:   Mon Mar 3 16:38:32 2014 -0700
+
+    Update haml to 4.0.5
+
+    https://github.com/haml/haml/compare/4.0.4...4.0.5
+
+diff --git a/Gemfile.lock
+```
+
 ### `gemdiff find [gem]`
 
 Show the repository URL using the gemspec. If a GitHub URL is not found, query the GitHub search API.
@@ -83,97 +174,6 @@ Open the repository's master branch commit history page:
 
 ```sh
 $ gemdiff master haml
-```
-
-### `gemdiff update [gem]`
-
-Use `update` to update a gem in your bundle and commit the change with git.
-You will be shown a preview of the `git diff` and you may choose to commit or reset the change.
-
-```sh
-$ gemdiff update haml
-
-Updating haml...
-diff --git a/Gemfile.lock b/Gemfile.lock
-index d5544ef..2d5def8 100644
---- a/Gemfile.lock
-+++ b/Gemfile.lock
-@@ -38,7 +38,7 @@ GEM
-     dalli (2.7.0)
-     debugger-linecache (1.2.0)
-     erubis (2.7.0)
--    haml (4.0.4)
-+    haml (4.0.5)
-       tilt
-     hike (1.2.3)
-     i18n (0.6.9)
-
-Commit? (c to commit, r to reset, else do nothing) c
-
-commit ebcc13f4c9a43f2e844d9d185e527652021c6a8f
-Author: Tee Parham
-Date:   Mon Mar 3 16:38:32 2014 -0700
-
-    Update haml to 4.0.5
-
-    https://github.com/haml/haml/compare/4.0.4...4.0.5
-
-diff --git a/Gemfile.lock
-```
-
-### `gemdiff outdated`
-
-Runs `bundle outdated --strict` in the current directory. For each outdated gem,
-you can open the compare view for that gem, skip it, or exit.
-Enter `y` to review. Enter `A` to open all compare views (beware!).
-Enter `s` to list all the compare URLs to stdout (same as the `list` command).
-
-`outdated` is the default task, so `gemdiff` with no arguments is the same as `gemdiff outdated`.
-
-```sh
-$ cd /your/ruby/project/using/bundler
-$ gemdiff
-Checking for outdated gems in your bundle...
-Fetching gem metadata from https://rubygems.org/.......
-Fetching version metadata from https://rubygems.org/..
-Resolving dependencies...
-
-Outdated gems included in the bundle:
-  * aws-sdk (1.35.0 > 1.34.1)
-  * sprockets (2.11.0 > 2.10.1)
-  * webmock (1.17.4 > 1.17.3)
-aws-sdk: 1.35.0 > 1.34.1
-Open? (y to open, x to exit, A to open all, s to show all to stdout, else skip)
-sprockets: 2.11.0 > 2.10.1
-Open? (y to open, x to exit, A to open all, s to show all to stdout, else skip) y
-webmock: 1.17.4 > 1.17.3
-Open? (y to open, x to exit, A to open all, s to show all to stdout, else skip)
-```
-
-### `gemdiff list`
-
-Outputs outdated gems in your bundle with their compare URLs to stdout.
-
-```sh
-$ gemdiff list
-Checking for outdated gems in your bundle...
-Fetching gem metadata from https://rubygems.org/.......
-Fetching version metadata from https://rubygems.org/..
-Resolving dependencies...
-
-Outdated gems included in the bundle:
-  * mocha (newest 1.2.1, installed 1.1.0, requested ~> 1.0) in group "development"
-  * rake (newest 11.3.0, installed 11.1.2, requested ~> 11.0) in group "development"
-  * sqlite3 (newest 1.3.12, installed 1.3.11, requested ~> 1.3) in group "development"
-  
-mocha: 1.2.1 > 1.1.0
-https://github.com/freerange/mocha/compare/v1.1.0...v1.2.1
-
-rake: 11.3.0 > 11.1.2
-https://github.com/ruby/rake/compare/v11.1.2...v11.3.0
-
-sqlite3: 1.3.12 > 1.3.11
-https://github.com/sparklemotion/sqlite3-ruby/compare/v1.3.11...v1.3.12
 ```
 
 ### `gemdiff help`
