@@ -19,9 +19,9 @@ class OutdatedGemTest < MiniTest::Spec
     end
 
     it "returns compare url with no v for exceptions" do
-      outdated_gem = Gemdiff::OutdatedGem.new("haml", "4.0.0", "4.1.0")
-      outdated_gem.stubs repo: "http://github.com/haml/haml"
-      assert_equal "http://github.com/haml/haml/compare/4.0.0...4.1.0", outdated_gem.compare_url
+      outdated_gem = Gemdiff::OutdatedGem.new("ffi", "1.9.17", "1.9.18")
+      outdated_gem.stubs repo: "http://github.com/ffi/ffi"
+      assert_equal "http://github.com/ffi/ffi/compare/1.9.17...1.9.18", outdated_gem.compare_url
     end
 
     it "returns compare url with branch name for new version" do

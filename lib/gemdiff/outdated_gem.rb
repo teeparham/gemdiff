@@ -15,7 +15,6 @@ module Gemdiff
       compass
       ffi
       google-api-client
-      haml
       mail
       mysql2
       net-ssh-gateway
