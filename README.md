@@ -44,7 +44,7 @@ Outdated gems included in the bundle:
   * mocha (newest 1.2.1, installed 1.1.0, requested ~> 1.0) in group "development"
   * rake (newest 11.3.0, installed 11.1.2, requested ~> 11.0) in group "development"
   * sqlite3 (newest 1.3.12, installed 1.3.11, requested ~> 1.3) in group "development"
-  
+
 mocha: 1.2.1 > 1.1.0
 https://github.com/freerange/mocha/compare/v1.1.0...v1.2.1
 
@@ -90,34 +90,35 @@ Use `update` to update a gem in your bundle and commit the change with git.
 You will be shown a preview of the `git diff` and you may choose to commit or reset the change.
 
 ```sh
-$ gemdiff update haml
+$ gemdiff update nokogiri
 
-Updating haml...
+Updating nokogiri...
 diff --git a/Gemfile.lock b/Gemfile.lock
-index d5544ef..2d5def8 100644
+index b074472..e0554f2 100644
 --- a/Gemfile.lock
 +++ b/Gemfile.lock
-@@ -38,7 +38,7 @@ GEM
-     dalli (2.7.0)
-     debugger-linecache (1.2.0)
-     erubis (2.7.0)
--    haml (4.0.4)
-+    haml (4.0.5)
-       tilt
-     hike (1.2.3)
-     i18n (0.6.9)
+@@ -102,7 +102,7 @@ GEM
+     mini_portile2 (2.1.0)
+     minitest (5.10.1)
+     nio4r (2.0.0)
+-    nokogiri (1.7.1)
++    nokogiri (1.7.2)
+       mini_portile2 (~> 2.1.0)
+     orm_adapter (0.5.0)
+     parser (2.4.0.0)
 
 Commit? (c to commit, r to reset, else do nothing) c
 
-commit ebcc13f4c9a43f2e844d9d185e527652021c6a8f
+commit 1131db6f57ccad8ed3dab6759c6b1306f98a165c
 Author: Tee Parham
-Date:   Mon Mar 3 16:38:32 2014 -0700
+Date:   Fri May 12 14:04:26 2017 -0600
 
-    Update haml to 4.0.5
+    Update nokogiri to 1.7.2
 
-    https://github.com/haml/haml/compare/4.0.4...4.0.5
+    https://github.com/sparklemotion/nokogiri/compare/v1.7.1...v1.7.2
 
-diff --git a/Gemfile.lock
+diff --git a/Gemfile.lock b/Gemfile.lock
+...
 ```
 
 ### `gemdiff find [gem]`
