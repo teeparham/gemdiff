@@ -61,6 +61,7 @@ module Gemdiff
         tolk:                        "tolk/tolk",
         toolkit:                     "at-import/tookit",
         :"trailblazer-cells"      => "trailblazer/trailblazer-cells",
+        turbolinks:                  "turbolinks/turbolinks",
         :"twitter-text"           => "twitter/twitter-text",
         zeus:                        "burke/zeus",
       }
