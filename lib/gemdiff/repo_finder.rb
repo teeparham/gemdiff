@@ -10,6 +10,7 @@ module Gemdiff
     # some repos are not mostly ruby so the github search doesn't find them
     REPO_EXCEPTIONS =
       {
+        actioncable:                 "rails/rails",
         actionmailer:                "rails/rails",
         actionpack:                  "rails/rails",
         actionview:                  "rails/rails",
