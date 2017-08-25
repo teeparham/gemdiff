@@ -47,6 +47,7 @@ module Gemdiff
         passenger:                "phusion/passenger",
         pg:                       "ged/ruby-pg",
         "pry-doc":                "pry/pry-doc",
+        public_suffix:            "weppos/publicsuffix-ruby",
         railties:                 "rails/rails",
         rake:                     "ruby/rake",
         resque:                   "resque/resque",
