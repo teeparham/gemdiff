@@ -37,6 +37,7 @@ module Gemdiff
         "kaminari-activerecord":  "kaminari/kaminari",
         "kaminari-core":          "kaminari/kaminari",
         "libxml-ruby":            "xml4r/libxml-ruby",
+        "minitest-reporters":     "kern/minitest-reporters",
         "modular-scale":          "modularscale/modularscale-sass",
         "net-ssh-gateway":        "net-ssh/net-ssh-gateway",
         newrelic_rpm:             "newrelic/rpm",
