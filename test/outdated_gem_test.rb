@@ -57,14 +57,14 @@ class OutdatedGemTest < MiniTest::Spec
 
   describe "#load_bundle_versions" do
     it "returns false if not found" do
-      mock_inspector = mock { stubs :get }
+      mock_inspector = stub :get
       Gemdiff::BundleInspector.stubs new: mock_inspector
       refute Gemdiff::OutdatedGem.new("x").load_bundle_versions
     end
 
     it "sets versions from gem in bundle" do
       mock_outdated_gem = Gemdiff::OutdatedGem.new("y", "1.2.3", "2.3.4")
-      mock_inspector = mock { stubs get: mock_outdated_gem }
+      mock_inspector = stub get: mock_outdated_gem
       Gemdiff::BundleInspector.stubs new: mock_inspector
       outdated_gem = Gemdiff::OutdatedGem.new("y")
       assert outdated_gem.load_bundle_versions

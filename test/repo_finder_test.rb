@@ -44,12 +44,11 @@ class RepoFinderTest < MiniTest::Spec
 
   def mock_octokit(full_name)
     mock_items = if full_name.nil?
-                   mock { stubs items: [] }
+                   stub items: []
                  else
-                   mock_item = mock { stubs full_name: full_name }
-                   mock { stubs items: [mock_item] }
+                   stub items: [stub(full_name: full_name)]
                  end
-    mock { stubs search_repositories: mock_items }
+    stub search_repositories: mock_items
   end
 
 FAKE_GEMSPEC = %(

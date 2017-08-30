@@ -78,10 +78,7 @@ class CLITest < MiniTest::Spec
 
   describe "#outdated" do
     it "does nothing when nothing to update" do
-      mock_inspector = mock do
-        stubs list: []
-        stubs outdated: ""
-      end
+      mock_inspector = stub list: [], outdated: ""
       Gemdiff::BundleInspector.stubs new: mock_inspector
       cli.expects(:puts).with(Gemdiff::CLI::CHECKING_FOR_OUTDATED)
       cli.expects(:puts).with("")
@@ -90,10 +87,7 @@ class CLITest < MiniTest::Spec
 
     it "compares outdated gems with responses of y" do
       outdated_gem = Gemdiff::OutdatedGem.new("haml", "4.0.4", "4.0.5")
-      mock_inspector = mock do
-        stubs list: [outdated_gem]
-        stubs outdated: "outdated"
-      end
+      mock_inspector = stub list: [outdated_gem], outdated: "outdated"
       Gemdiff::BundleInspector.stubs new: mock_inspector
       cli.stubs ask: "y"
       cli.expects(:puts).with(Gemdiff::CLI::CHECKING_FOR_OUTDATED)
@@ -105,10 +99,7 @@ class CLITest < MiniTest::Spec
 
     it "show compare urls of outdated gems with responses of s" do
       outdated_gem = Gemdiff::OutdatedGem.new("haml", "4.0.4", "4.0.5")
-      mock_inspector = mock do
-        stubs list: [outdated_gem]
-        stubs outdated: "outdated"
-      end
+      mock_inspector = stub list: [outdated_gem], outdated: "outdated"
       Gemdiff::BundleInspector.stubs new: mock_inspector
       cli.stubs ask: "s"
       cli.expects(:puts).with(Gemdiff::CLI::CHECKING_FOR_OUTDATED)
@@ -121,10 +112,7 @@ class CLITest < MiniTest::Spec
 
     it "skips outdated gems without responses of y" do
       outdated_gem = Gemdiff::OutdatedGem.new("haml", "4.0.4", "4.0.5")
-      mock_inspector = mock do
-        stubs list: [outdated_gem]
-        stubs outdated: "outdated"
-      end
+      mock_inspector = stub list: [outdated_gem], outdated: "outdated"
       Gemdiff::BundleInspector.stubs new: mock_inspector
       cli.stubs ask: ""
       cli.expects(:puts).with(Gemdiff::CLI::CHECKING_FOR_OUTDATED)
@@ -137,10 +125,7 @@ class CLITest < MiniTest::Spec
 
   describe "#list" do
     it "does nothing when nothing to update" do
-      mock_inspector = mock do
-        stubs list: []
-        stubs outdated: ""
-      end
+      mock_inspector = stub list: [], outdated: ""
       Gemdiff::BundleInspector.stubs new: mock_inspector
       cli.expects(:puts).with(Gemdiff::CLI::CHECKING_FOR_OUTDATED)
       cli.expects(:puts).with("")
@@ -150,10 +135,7 @@ class CLITest < MiniTest::Spec
 
     it "lists outdated gems" do
       outdated_gem = Gemdiff::OutdatedGem.new("pundit", "1.0.0", "1.0.1")
-      mock_inspector = mock do
-        stubs list: [outdated_gem]
-        stubs outdated: "outdated"
-      end
+      mock_inspector = stub list: [outdated_gem], outdated: "outdated"
       Gemdiff::BundleInspector.stubs new: mock_inspector
       outdated_gem.expects(:compare_url).returns("https://github.com/elabs/pundit/compare/v1.0.0...v1.0.1")
       cli.expects(:puts).with(Gemdiff::CLI::CHECKING_FOR_OUTDATED)
@@ -167,11 +149,7 @@ class CLITest < MiniTest::Spec
 
   describe "#update" do
     before do
-      @mock_gem = mock do
-        stubs clean?: true
-        stubs diff: "le diff"
-        stubs show: "le show"
-      end
+      @mock_gem = stub clean?: true, diff: "le diff", show: "le show"
       Gemdiff::GemUpdater.stubs new: @mock_gem
     end
 
@@ -207,16 +185,13 @@ class CLITest < MiniTest::Spec
   private
 
   def mock_gem(name)
-    outdated_gem = mock do
-      stubs repo?: true
-      stubs repo: "http://github.com/#{name}/#{name}"
-    end
+    outdated_gem = stub repo?: true, repo: "http://github.com/#{name}/#{name}"
     Gemdiff::OutdatedGem.stubs new: outdated_gem
     outdated_gem
   end
 
   def mock_missing_gem
-    outdated_gem = mock { stubs repo?: false }
+    outdated_gem = stub repo?: false
     Gemdiff::OutdatedGem.stubs new: outdated_gem
     outdated_gem
   end
