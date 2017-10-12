@@ -18,6 +18,7 @@ module Gemdiff
         activemodel:              "rails/rails",
         activerecord:             "rails/rails",
         activesupport:            "rails/rails",
+        "aws-sdk-rails":          "aws/aws-sdk-rails",
         bluepill:                 "bluepill-rb/bluepill",
         chunky_png:               "wvanbergen/chunky_png",
         "color-schemer":          "at-import/color-schemer",
