@@ -1,14 +1,7 @@
 module Gemdiff
   class BundleInspector
     def list
-      @list ||= begin
-        gems = []
-        outdated.split("\n").each do |line|
-          next unless (outdated_gem = new_outdated_gem(line))
-          gems << outdated_gem
-        end
-        gems
-      end
+      @list ||= outdated.split("\n").map { |line| new_outdated_gem(line) }.compact
     end
 
     def outdated
