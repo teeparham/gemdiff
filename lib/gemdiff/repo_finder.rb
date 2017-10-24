@@ -24,6 +24,8 @@ module Gemdiff
         "color-schemer":          "at-import/color-schemer",
         delayed_job:              "collectiveidea/delayed_job",
         execjs:                   "rails/execjs",
+        factory_girl:             "thoughtbot/factory_bot",
+        factory_girl_rails:       "thoughtbot/factory_bot_rails",
         faraday_middleware:       "lostisland/faraday_middleware",
         flamegraph:               "SamSaffron/flamegraph",
         ffi:                      "ffi/ffi",
