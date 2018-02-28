@@ -104,13 +104,6 @@ Style/Documentation:
     - 'lib/gemdiff/outdated_gem.rb'
     - 'lib/gemdiff/repo_finder.rb'
 
-# Offense count: 18
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: when_needed, always, never
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/IfUnlessModifier:
