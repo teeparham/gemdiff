@@ -57,8 +57,8 @@ DESC
       outdated_gem.compare
     end
 
-    desc "outdated", "Compare each outdated gem in the bundle. You will be prompted to open each compare view."
-    def outdated
+    desc "each", "Compare each outdated gem in the bundle. You will be prompted to open each compare view."
+    def each
       puts CHECKING_FOR_OUTDATED
       inspector = BundleInspector.new
       puts inspector.outdated
@@ -67,11 +67,12 @@ DESC
         puts outdated_gem.compare_message
         response = open_all || ask("Open? (y to open, x to exit, A to open all, s to show all to stdout, else skip)")
         open_all = response if %(A s).include?(response)
-        outdated_gem.compare if %w(y A).include?(response)
+        outdated_gem.compare if %w[y A].include?(response)
         puts outdated_gem.compare_url if response == "s"
         return if response == "x"
       end
     end
+    map outdated: :each
 
     desc "list", "List compare URLs for all outdated gems in the bundle."
     def list
