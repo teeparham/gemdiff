@@ -55,18 +55,18 @@ sqlite3: 1.3.12 > 1.3.11
 https://github.com/sparklemotion/sqlite3-ruby/compare/v1.3.11...v1.3.12
 ```
 
-### `gemdiff outdated`
+`list` is the default task, so `gemdiff` with no arguments is the same as `gemdiff list`.
+
+### `gemdiff each`
 
 Runs `bundle outdated --strict` in the current directory. For each outdated gem,
 you can open the compare view for that gem, skip it, or exit.
 Enter `y` to review. Enter `A` to open all compare views (beware!).
 Enter `s` to list all the compare URLs to stdout (same as the `list` command).
 
-`outdated` is the default task, so `gemdiff` with no arguments is the same as `gemdiff outdated`.
-
 ```sh
 $ cd /your/ruby/project/using/bundler
-$ gemdiff
+$ gemdiff each
 Checking for outdated gems in your bundle...
 Fetching gem metadata from https://rubygems.org/.......
 Fetching version metadata from https://rubygems.org/..
