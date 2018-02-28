@@ -5,7 +5,7 @@ module Gemdiff
     include Thor::Actions
     include Colorize
 
-    default_task :outdated
+    default_task :list
 
     CHECKING_FOR_OUTDATED = "Checking for outdated gems in your bundle..."
     NOTHING_TO_UPDATE = "Nothing to update."
