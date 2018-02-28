@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Gemdiff
   class GemUpdater
     attr_accessor :name

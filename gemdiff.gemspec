@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "./lib/gemdiff/version"
 
 Gem::Specification.new do |spec|
@@ -12,8 +14,8 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
 
   spec.files         = Dir["LICENSE.txt", "README.md", "lib/**/*"]
-  spec.executables   = %w(gemdiff)
-  spec.require_paths = %w(lib)
+  spec.executables   = %w[gemdiff]
+  spec.require_paths = %w[lib]
 
   spec.required_ruby_version = ">= 2.2.0"
 
