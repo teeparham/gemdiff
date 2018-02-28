@@ -121,14 +121,6 @@ Style/MutableConstant:
     - 'lib/gemdiff/version.rb'
     - 'test/repo_finder_test.rb'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: PreferredDelimiters.
-Style/PercentLiteralDelimiters:
-  Exclude:
-    - 'gemdiff.gemspec'
-    - 'lib/gemdiff/outdated_gem.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, AllowInnerSlashes.
