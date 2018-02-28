@@ -76,13 +76,13 @@ class CLITest < MiniTest::Spec
     end
   end
 
-  describe "#outdated" do
+  describe "#each" do
     it "does nothing when nothing to update" do
       mock_inspector = stub list: [], outdated: ""
       Gemdiff::BundleInspector.stubs new: mock_inspector
       cli.expects(:puts).with(Gemdiff::CLI::CHECKING_FOR_OUTDATED)
       cli.expects(:puts).with("")
-      cli.outdated
+      cli.each
     end
 
     it "compares outdated gems with responses of y" do
@@ -94,7 +94,7 @@ class CLITest < MiniTest::Spec
       cli.expects(:puts).with("outdated")
       cli.expects(:puts).with("haml: 4.0.5 > 4.0.4")
       outdated_gem.expects :compare
-      cli.outdated
+      cli.each
     end
 
     it "show compare urls of outdated gems with responses of s" do
@@ -107,7 +107,7 @@ class CLITest < MiniTest::Spec
       cli.expects(:puts).with("haml: 4.0.5 > 4.0.4")
       outdated_gem.expects(:compare_url).returns("https://github.com/haml/haml/compare/4.0.4...4.0.5")
       cli.expects(:puts).with("https://github.com/haml/haml/compare/4.0.4...4.0.5")
-      cli.outdated
+      cli.each
     end
 
     it "skips outdated gems without responses of y" do
@@ -119,7 +119,7 @@ class CLITest < MiniTest::Spec
       cli.expects(:puts).with("outdated")
       cli.expects(:puts).with("haml: 4.0.5 > 4.0.4")
       outdated_gem.expects(:compare).never
-      cli.outdated
+      cli.each
     end
   end
 
