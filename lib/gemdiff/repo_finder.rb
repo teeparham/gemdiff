@@ -44,6 +44,7 @@ module Gemdiff
         "libxml-ruby":            "xml4r/libxml-ruby",
         "minitest-reporters":     "kern/minitest-reporters",
         "modular-scale":          "modularscale/modularscale-sass",
+        msgpack:                  "msgpack/msgpack-ruby",
         "net-ssh-gateway":        "net-ssh/net-ssh-gateway",
         newrelic_rpm:             "newrelic/rpm",
         nokogiri:                 "sparklemotion/nokogiri",
