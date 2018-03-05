@@ -58,6 +58,7 @@ module Gemdiff
         railties:                 "rails/rails",
         rake:                     "ruby/rake",
         resque:                   "resque/resque",
+        "rb-fsevent":             "thibaudgg/rb-fsevent",
         "resque-multi-job-forks": "stulentsev/resque-multi-job-forks",
         representable:            "trailblazer/representable",
         rr:                       "rr/rr",
