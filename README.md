@@ -19,7 +19,8 @@ and simplifies your git workflow for a bundled project.
 `gemdiff` finds a repository by inspecting the local or remote gemspec, or searching GitHub if needed.
 It uses bundler to list your outdated gems. For each outdated gem, it determines your currently used version and
 the version you can update to, and builds a compare view URL with the old and new version tags.
-It provides `update` for a simple `bundle update <gem>` and commit workflow.
+
+Run `gemdiff update [gem]` for a simple `bundle update [gem]` and commit workflow.
 
 ## Install
 
@@ -29,12 +30,12 @@ gem install gemdiff
 
 ## Commands
 
-### `gemdiff list`
+### `gemdiff [list]`
 
-Output outdated gems in your bundle with their compare URLs to stdout.
+Output outdated gems in your bundle with their compare URLs to stdout. `list` is the default command.
 
 ```sh
-$ gemdiff list
+$ gemdiff
 Checking for outdated gems in your bundle...
 Fetching gem metadata from https://rubygems.org/.......
 Fetching version metadata from https://rubygems.org/..
@@ -54,8 +55,6 @@ https://github.com/ruby/rake/compare/v11.1.2...v11.3.0
 sqlite3: 1.3.12 > 1.3.11
 https://github.com/sparklemotion/sqlite3-ruby/compare/v1.3.11...v1.3.12
 ```
-
-`list` is the default task, so `gemdiff` with no arguments is the same as `gemdiff list`.
 
 ### `gemdiff each`
 
@@ -86,7 +85,8 @@ Open? (y to open, x to exit, A to open all, s to show all to stdout, else skip)
 
 ### `gemdiff update [gem]`
 
-Use `update` to update a gem in your bundle and commit the change with git.
+Update a gem in your bundle and commit the change with git.
+A compare URL showing the difference between the versions will be part of the commit message.
 You will be shown a preview of the `git diff` and you may choose to commit or reset the change.
 
 ```sh
