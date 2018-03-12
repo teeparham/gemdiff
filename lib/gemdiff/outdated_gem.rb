@@ -15,6 +15,7 @@ module Gemdiff
       cancan
       capybara
       compass
+      erubi
       ffi
       google-api-client
       mail
