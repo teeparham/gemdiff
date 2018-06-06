@@ -92,9 +92,13 @@ module Gemdiff
         end
         return nil unless (yaml = gemspec(gem_name))
         spec = YAML.load(yaml)
-        return spec.homepage if spec.homepage =~ GITHUB_REPO_REGEX
+        return secure_url(spec.homepage) if spec.homepage =~ GITHUB_REPO_REGEX
         match = spec.description.match(GITHUB_REPO_REGEX)
-        match && match[0]
+        match && secure_url(match[0])
+      end
+
+      def secure_url(url)
+        url.gsub(/\Ahttp:/, "https:")
       end
 
       def search(gem_name)
