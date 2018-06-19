@@ -32,9 +32,12 @@ gem install gemdiff
 
 ### `gemdiff [list]`
 
-Output outdated gems in your bundle with their compare URLs to stdout. `list` is the default command.
+Runs `bundle outdated --strict` in the current directory.
+Outputs outdated gems in your bundle with their compare URLs to stdout. 
+`list` is the default command.
 
 ```sh
+$ cd /your/ruby/project/using/bundler
 $ gemdiff
 Checking for outdated gems in your bundle...
 Fetching gem metadata from https://rubygems.org/.......
@@ -64,7 +67,6 @@ Enter `y` to review. Enter `A` to open all compare views (beware!).
 Enter `s` to list all the compare URLs to stdout (same as the `list` command).
 
 ```sh
-$ cd /your/ruby/project/using/bundler
 $ gemdiff each
 Checking for outdated gems in your bundle...
 Fetching gem metadata from https://rubygems.org/.......
@@ -132,7 +134,8 @@ https://github.com/elabs/pundit
 
 ### `gemdiff open [gem]`
 
-Open the repository URL (with your default browser unless you have an odd setup):
+Open the repository URL with your default browser (or whatever your operating system is configured 
+to run with the `open` command with a URL argument):
 
 ```sh
 $ gemdiff open pundit
