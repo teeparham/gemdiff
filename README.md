@@ -33,7 +33,7 @@ gem install gemdiff
 ### `gemdiff [list]`
 
 Runs `bundle outdated --strict` in the current directory.
-Outputs outdated gems in your bundle with their compare URLs to stdout. 
+Outputs outdated gems in your bundle with their compare URLs to stdout.
 `list` is the default command.
 
 ```sh
@@ -134,7 +134,7 @@ https://github.com/elabs/pundit
 
 ### `gemdiff open [gem]`
 
-Open the repository URL with your default browser (or whatever your operating system is configured 
+Open the repository URL with your default browser (or whatever your operating system is configured
 to run with the `open` command with a URL argument):
 
 ```sh
@@ -196,6 +196,12 @@ You can use abbreviations for any of the above commands. For example, this is eq
 $ gemdiff f pundit
 https://github.com/elabs/pundit
 ```
+
+### Authenticated Github API requests
+
+If Github returns rate limit errors you can make authenticated API
+requests to Github. Set the `GITHUB_TOKEN` environment variable to a
+[personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
 ### What if it didn't work?
 
