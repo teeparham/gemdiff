@@ -114,8 +114,12 @@ module Gemdiff
         "https://github.com/#{full_name}"
       end
 
+      def access_token
+        ENV["GEMDIFF_GITHUB_TOKEN"] || ENV["GITHUB_TOKEN"]
+      end
+
       def octokit_client
-        Octokit::Client.new(access_token: ENV["GITHUB_TOKEN"])
+        Octokit::Client.new(access_token: access_token)
       end
 
       def gemspec(name)

@@ -197,11 +197,14 @@ $ gemdiff f pundit
 https://github.com/elabs/pundit
 ```
 
-### Authenticated Github API requests
+### Authenticated GitHub API requests
 
-If Github returns rate limit errors you can make authenticated API
-requests to Github. Set the `GITHUB_TOKEN` environment variable to a
+If GitHub returns rate limit errors, you can make authenticated API
+requests to GitHub. Set the `GEMDIFF_GITHUB_TOKEN` or `GITHUB_TOKEN`
+environment variable to a
 [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
+Using `GEMDIFF_GITHUB_TOKEN` is recommended, since other programs such as
+`hub` use `GITHUB_TOKEN`.
 
 ### What if it didn't work?
 
