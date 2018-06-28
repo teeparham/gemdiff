@@ -2,8 +2,7 @@ cache: bundler
 language: ruby
 sudo: false
 rvm:
-  - 2.5.0
-  - 2.4.3
-  - 2.3.6
-  - 2.2.9
+  - 2.5.1
+  - 2.4.4
+  - 2.3.7
 before_install: "gem update --system" # https://github.com/travis-ci/travis-ci/issues/8974
