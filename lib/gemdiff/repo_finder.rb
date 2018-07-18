@@ -63,6 +63,7 @@ module Gemdiff
         "resque-multi-job-forks": "stulentsev/resque-multi-job-forks",
         representable:            "trailblazer/representable",
         rr:                       "rr/rr",
+        sass:                     "sass/ruby-sass",
         SassyLists:               "at-import/SassyLists",
         "Sassy-Maps":             "at-import/Sassy-Maps",
         "sassy-math":             "at-import/Sassy-math",
