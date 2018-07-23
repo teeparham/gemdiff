@@ -129,7 +129,7 @@ Show the repository URL using the gemspec. If a GitHub URL is not found, query t
 
 ```sh
 $ gemdiff find pundit
-https://github.com/elabs/pundit
+https://github.com/varvet/pundit
 ```
 
 ### `gemdiff open [gem]`
@@ -194,7 +194,7 @@ You can use abbreviations for any of the above commands. For example, this is eq
 
 ```sh
 $ gemdiff f pundit
-https://github.com/elabs/pundit
+https://github.com/varvet/pundit
 ```
 
 ### Authenticated GitHub API requests

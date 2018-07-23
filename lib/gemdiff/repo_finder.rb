@@ -55,6 +55,7 @@ module Gemdiff
         pg:                       "ged/ruby-pg",
         "pry-doc":                "pry/pry-doc",
         public_suffix:            "weppos/publicsuffix-ruby",
+        pundit:                   "varvet/pundit",
         "rack-protection":        "sinatra/sinatra",
         railties:                 "rails/rails",
         rake:                     "ruby/rake",
