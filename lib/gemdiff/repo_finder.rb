@@ -49,6 +49,7 @@ module Gemdiff
         newrelic_rpm:             "newrelic/rpm",
         nokogiri:                 "sparklemotion/nokogiri",
         nokogumbo:                "rubys/nokogumbo",
+        nsa:                      "localshred/nsa",
         oauth:                    "oauth-xx/oauth-ruby",
         oj:                       "ohler55/oj",
         passenger:                "phusion/passenger",
