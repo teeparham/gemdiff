@@ -79,6 +79,7 @@ module Gemdiff
         "trailblazer-cells":      "trailblazer/trailblazer-cells",
         turbolinks:               "turbolinks/turbolinks",
         "twitter-text":           "twitter/twitter-text",
+        ox:                       "ohler55/ox",
         zeus:                     "burke/zeus",
       }
 
