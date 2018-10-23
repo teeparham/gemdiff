@@ -54,6 +54,7 @@ module Gemdiff
         oj:                       "ohler55/oj",
         passenger:                "phusion/passenger",
         pg:                       "ged/ruby-pg",
+        "pkg-config":             "ruby-gnome2/pkg-config",
         "pry-doc":                "pry/pry-doc",
         public_suffix:            "weppos/publicsuffix-ruby",
         pundit:                   "varvet/pundit",
