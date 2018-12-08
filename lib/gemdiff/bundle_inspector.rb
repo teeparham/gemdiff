@@ -3,7 +3,11 @@
 module Gemdiff
   class BundleInspector
     def list
-      @list ||= outdated.split("\n").map { |line| new_outdated_gem(line) }.compact
+      @list ||=
+        outdated
+          .split("\n")
+          .map { |line| new_outdated_gem(line) }
+          .compact
     end
 
     def outdated
