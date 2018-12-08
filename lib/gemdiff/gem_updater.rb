@@ -62,7 +62,7 @@ module Gemdiff
     # +    activejob (4.2.3)
     # +      activejob (= 4.2.3)
     def git_added_line
-      @added_line ||= `git diff | grep ' #{name} (' | grep '+  '`
+      @git_added_line ||= `git diff | grep ' #{name} (' | grep '+  '`
     end
 
     # example returns:
