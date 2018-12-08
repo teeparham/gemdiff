@@ -5,7 +5,7 @@ require "yaml"
 
 module Gemdiff
   module RepoFinder
-    GITHUB_REPO_REGEX = /(https?):\/\/(www.)?github\.com\/([\w.%-]*)\/([\w.%-]*)/.freeze
+    GITHUB_REPO_REGEX = %r{(https?)://(www.)?github\.com/([\w.%-]*)/([\w.%-]*)}.freeze
 
     # rails builds several gems that are not individual projects
     # some repos move and the old repo page still exists
