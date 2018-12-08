@@ -1,12 +1,50 @@
 inherit_from: .rubocop_todo.yml
 
+AllCops:
+  TargetRubyVersion: 2.3
+
 Layout/AlignParameters:
+  Enabled: false
+
+Layout/AlignHash:
+  Exclude:
+    - 'lib/gemdiff/repo_finder.rb'
+    - 'lib/gemdiff/colorize.rb'
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
   Enabled: false
 
 Layout/MultilineOperationIndentation:
   Enabled: false
 
-Layout/SpaceAroundOperators:
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Style/CaseEquality:
+  Enabled: false
+
+Style/NumericPredicate:
   Enabled: false
 
 Style/SignalException:
@@ -15,9 +53,17 @@ Style/SignalException:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
-Style/NumericPredicate:
+Style/TrailingCommaInArrayLiteral:
   Enabled: false
 
-Metrics/BlockLength:
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+Style/ZeroLengthPredicate:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
   Exclude:
-    - 'test/**/*'
+    - 'Gemfile'
+    - 'Rakefile'
+    - '*.gemspec'
