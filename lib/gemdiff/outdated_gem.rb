@@ -105,7 +105,7 @@ module Gemdiff
 
     def open_url(url)
       Launchy.open(url) do |exception|
-        $stderr.puts "Could not open #{url} because #{exception}"
+        warn "Could not open #{url} because #{exception}"
       end
     end
 
