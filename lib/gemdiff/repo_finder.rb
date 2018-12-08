@@ -34,6 +34,7 @@ module Gemdiff
         "foundation-rails":       "zurb/foundation-rails",
         googleauth:               "google/google-auth-library-ruby",
         gosu:                     "jlnr/gosu",
+        grpc:                     "google/grpc",
         "guard-livereload":       "guard/guard-livereload",
         "jquery-ujs":             "rails/jquery-ujs",
         json:                     "flori/json",
