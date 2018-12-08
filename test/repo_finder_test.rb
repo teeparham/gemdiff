@@ -53,13 +53,13 @@ class RepoFinderTest < MiniTest::Spec
     stub search_repositories: mock_items
   end
 
-FAKE_GEMSPEC = %(
---- !ruby/object:Gem::Specification
-name: fake
-version: !ruby/object:Gem::Version
-  version: 1.2.3
-description: fake
-)
+  FAKE_GEMSPEC = <<~SPEC
+    --- !ruby/object:Gem::Specification
+    name: fake
+    version: !ruby/object:Gem::Version
+      version: 1.2.3
+    description: fake
+  SPEC
 
   def fake_gemspec(extra = "")
     [FAKE_GEMSPEC, extra].compact.join("\n")

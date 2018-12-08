@@ -39,11 +39,11 @@ module Gemdiff
       find(gem_name).master
     end
 
-    desc "compare <gem> [<old> <new>]", <<DESC
-Compare gem versions. Opens the compare view between the specified new and old versions.
-If versions are not specified, your bundle is inspected and the latest version of the
-gem is compared with the current version in your bundle.
-DESC
+    desc "compare <gem> [<old> <new>]", <<~DESC
+      Compare gem versions. Opens the compare view between the specified new and old versions.
+      If versions are not specified, your bundle is inspected and the latest version of the
+      gem is compared with the current version in your bundle.
+    DESC
     def compare(gem_name, old_version = nil, new_version = nil)
       outdated_gem = find(gem_name)
       return unless outdated_gem.repo?

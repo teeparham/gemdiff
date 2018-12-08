@@ -60,36 +60,36 @@ class BundleInspectorTest < MiniTest::Spec
   private
 
   def fake_outdated_old
-<<OUT
-Updating git://github.com/neighborland/active-something.git
-Fetching gem metadata from https://rubygems.org/.......
-Fetching additional metadata from https://rubygems.org/..
-Resolving dependencies...
+    <<~OUT
+      Updating git://github.com/neighborland/active-something.git
+      Fetching gem metadata from https://rubygems.org/.......
+      Fetching additional metadata from https://rubygems.org/..
+      Resolving dependencies...
 
-Outdated gems included in the bundle:
-  * active-something (0.7.0 99ddbc9 > 0.7.0 1da2295)
-  * aws-sdk (1.35.0 > 1.34.1)
-  * haml (4.0.5 > 4.0.4)
-OUT
+      Outdated gems included in the bundle:
+        * active-something (0.7.0 99ddbc9 > 0.7.0 1da2295)
+        * aws-sdk (1.35.0 > 1.34.1)
+        * haml (4.0.5 > 4.0.4)
+    OUT
   end
 
   # bundler output changed around version 1.10
   def fake_outdated
-<<OUT
-Outdated gems included in the bundle:
-  * paperclip (newest 4.3.0, installed 4.2.2) in group "default"
-  * rails (newest 4.2.2, installed 4.2.1, requested ~> 4.2.1) in group "default"
-  * web-console (newest 2.1.3, installed 2.1.2) in groups "development, test"
-OUT
+    <<~OUT
+      Outdated gems included in the bundle:
+        * paperclip (newest 4.3.0, installed 4.2.2) in group "default"
+        * rails (newest 4.2.2, installed 4.2.1, requested ~> 4.2.1) in group "default"
+        * web-console (newest 2.1.3, installed 2.1.2) in groups "development, test"
+    OUT
   end
 
   def fake_up_to_date
-<<OUT
-Fetching gem metadata from https://rubygems.org/.........
-Fetching additional metadata from https://rubygems.org/..
-Resolving dependencies...
+    <<~OUT
+      Fetching gem metadata from https://rubygems.org/.........
+      Fetching additional metadata from https://rubygems.org/..
+      Resolving dependencies...
 
-Your bundle is up to date!
-OUT
+      Your bundle is up to date!
+    OUT
   end
 end
