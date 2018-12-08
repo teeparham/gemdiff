@@ -30,7 +30,7 @@ module Gemdiff
       slack-notifier
       signet
       twilio-ruby
-    ]
+    ].freeze
 
     attr_accessor :name, :old_version, :new_version
 

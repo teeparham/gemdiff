@@ -5,7 +5,7 @@ require "yaml"
 
 module Gemdiff
   module RepoFinder
-    GITHUB_REPO_REGEX = /(https?):\/\/(www.)?github\.com\/([\w.%-]*)\/([\w.%-]*)/
+    GITHUB_REPO_REGEX = /(https?):\/\/(www.)?github\.com\/([\w.%-]*)\/([\w.%-]*)/.freeze
 
     # rails builds several gems that are not individual projects
     # some repos move and the old repo page still exists
@@ -82,7 +82,7 @@ module Gemdiff
         "twitter-text":           "twitter/twitter-text",
         ox:                       "ohler55/ox",
         zeus:                     "burke/zeus",
-      }
+      }.freeze
 
     class << self
       # Try to get the homepage from the gemspec

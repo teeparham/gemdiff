@@ -9,7 +9,7 @@ module Gemdiff
         yellow:  33,
         blue:    34,
         magenta: 35,
-      }
+      }.freeze
 
     # works with `git show` and `git diff`
     def colorize_git_output(lines)
