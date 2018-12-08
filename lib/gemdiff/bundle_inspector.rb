@@ -28,7 +28,7 @@ module Gemdiff
       return unless line.start_with?("  * ")
 
       # clean & convert new & old output to same format
-      items = line.gsub("*", "")
+      items = line.delete("*")
                   .gsub("(newest", "")
                   .gsub(", installed", " >")
                   .gsub(/([(),])/, "")
