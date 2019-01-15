@@ -60,6 +60,7 @@ module Gemdiff
         public_suffix:            "weppos/publicsuffix-ruby",
         pundit:                   "varvet/pundit",
         "rack-protection":        "sinatra/sinatra",
+        rails_multisite:          "discourse/rails_multisite",
         railties:                 "rails/rails",
         rake:                     "ruby/rake",
         resque:                   "resque/resque",
