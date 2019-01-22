@@ -40,6 +40,12 @@ class RepoFinderTest < MiniTest::Spec
     it "returns exception url" do
       assert_equal "https://github.com/rails/rails", Gemdiff::RepoFinder.github_url("activerecord")
     end
+
+    it "returns nil for gemspec with no homepage and no description" do
+      Gemdiff::RepoFinder.stubs octokit_client: mock_octokit(nil)
+      Gemdiff::RepoFinder.stubs gemspec: NO_DESCRIPTION_GEMSPEC
+      assert_nil Gemdiff::RepoFinder.github_url("none")
+    end
   end
 
   private
@@ -59,6 +65,14 @@ class RepoFinderTest < MiniTest::Spec
     version: !ruby/object:Gem::Version
       version: 1.2.3
     description: fake
+  SPEC
+
+  NO_DESCRIPTION_GEMSPEC = <<~SPEC
+    --- !ruby/object:Gem::Specification
+    name: fake
+    version: !ruby/object:Gem::Version
+      version: 1.2.3
+    description:
   SPEC
 
   def fake_gemspec(extra = "")

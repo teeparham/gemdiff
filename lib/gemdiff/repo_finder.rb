@@ -102,7 +102,7 @@ module Gemdiff
         return nil unless (yaml = gemspec(gem_name))
         spec = YAML.load(yaml)
         return secure_url(spec.homepage) if spec.homepage =~ GITHUB_REPO_REGEX
-        match = spec.description.match(GITHUB_REPO_REGEX) if spec.description
+        match = spec.description.to_s.match(GITHUB_REPO_REGEX)
         match && secure_url(match[0])
       end
 
