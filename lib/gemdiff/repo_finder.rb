@@ -107,7 +107,7 @@ module Gemdiff
       end
 
       def secure_url(url)
-        url.gsub(/\Ahttp:/, "https:")
+        url.sub(/\Ahttp:/, "https:")
       end
 
       def search(gem_name)
