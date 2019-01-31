@@ -56,6 +56,7 @@ module Gemdiff
         passenger:                "phusion/passenger",
         pg:                       "ged/ruby-pg",
         "pkg-config":             "ruby-gnome2/pkg-config",
+        pres:                     "neighborland/pres",
         "pry-doc":                "pry/pry-doc",
         public_suffix:            "weppos/publicsuffix-ruby",
         pundit:                   "varvet/pundit",
