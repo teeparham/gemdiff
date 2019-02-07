@@ -32,6 +32,7 @@ module Gemdiff
         flamegraph:               "SamSaffron/flamegraph",
         ffi:                      "ffi/ffi",
         "foundation-rails":       "zurb/foundation-rails",
+        "google-protobuf":        "protocolbuffers/protobuf",
         googleauth:               "google/google-auth-library-ruby",
         gosu:                     "jlnr/gosu",
         grpc:                     "google/grpc",
