@@ -4,9 +4,13 @@
 [![Build Status](https://travis-ci.org/teeparham/gemdiff.svg?branch=master)](https://travis-ci.org/teeparham/gemdiff)
 
 `gemdiff` is a command-line tool to find source code for ruby gems.
-You can compare source code differences between the current version of a gem in your bundle and
-the version of the gem that would be installed with `bundle update <gem>` (or any two versions of a gem).
-`gemdiff` connects gem version management (rubygems + bundler) with source code (GitHub).
+It connects gem version management (rubygems + bundler) with source code (GitHub).
+
+`gemdiff` provides commands to 
+* Find GitHub repositories for gems
+* Open the compare view for two gem versions
+* Inspect your bundle and list all the available updates
+* Simplify your `git` workflow for updating gems
 
 ### Why?
 
@@ -14,13 +18,14 @@ You want to view differences between versions of gems before updating.
 `gemdiff` does the source repository lookup, opens a compare view of commits on GitHub,
 and simplifies your git workflow for a bundled project.
 
-### How?
+### How does it work?
 
 `gemdiff` finds a repository by inspecting the local or remote gemspec, or searching GitHub if needed.
 It uses bundler to list your outdated gems. For each outdated gem, it determines your currently used version and
 the version you can update to, and builds a compare view URL with the old and new version tags.
 
-Run `gemdiff update [gem]` for a simple `bundle update [gem]` and commit workflow.
+Run `gemdiff update [gem]` to update a gem (`bundle update [gem]`) and commit the change with a nice
+commit message that includes the old and new versions and a compare URL with the changes.
 
 ## Install
 
