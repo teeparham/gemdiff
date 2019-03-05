@@ -37,6 +37,7 @@ module Gemdiff
         gosu:                     "jlnr/gosu",
         grpc:                     "google/grpc",
         "guard-livereload":       "guard/guard-livereload",
+        i18n:                     "ruby-i18n/i18n",
         "jquery-ujs":             "rails/jquery-ujs",
         json:                     "flori/json",
         kaminari:                 "kaminari/kaminari",
