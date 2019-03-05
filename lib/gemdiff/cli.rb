@@ -71,7 +71,7 @@ module Gemdiff
         open_all = response if %(A s).include?(response)
         outdated_gem.compare if %w[y A].include?(response)
         puts outdated_gem.compare_url if response == "s"
-        return if response == "x"
+        break if response == "x"
       end
     end
     map outdated: :each
