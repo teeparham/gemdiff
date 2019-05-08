@@ -6,21 +6,18 @@ class RepoFinderTest < MiniTest::Spec
   describe ".github_url" do
     it "returns github url from local gemspec" do
       Gemdiff::RepoFinder.stubs find_local_gemspec: fake_gemspec("homepage: http://github.com/rails/arel")
-      Gemdiff::RepoFinder.stubs last_shell_command_success?: true
       assert_equal "https://github.com/rails/arel", Gemdiff::RepoFinder.github_url("arel")
     end
 
     it "strips anchors from urls" do
       Gemdiff::RepoFinder.stubs \
         find_local_gemspec: fake_gemspec("homepage: https://github.com/rubysec/bundler-audit#readme")
-      Gemdiff::RepoFinder.stubs last_shell_command_success?: true
       assert_equal "https://github.com/rubysec/bundler-audit",
                    Gemdiff::RepoFinder.github_url("bundler-audit")
     end
 
     it "returns github url from remote gemspec" do
       Gemdiff::RepoFinder.stubs find_local_gemspec: ""
-      Gemdiff::RepoFinder.stubs last_shell_command_success?: false
       Gemdiff::RepoFinder.stubs find_remote_gemspec: fake_gemspec("homepage: http://github.com/rails/arel")
       assert_equal "https://github.com/rails/arel", Gemdiff::RepoFinder.github_url("arel")
     end
@@ -45,6 +42,12 @@ class RepoFinderTest < MiniTest::Spec
       Gemdiff::RepoFinder.stubs octokit_client: mock_octokit(nil)
       Gemdiff::RepoFinder.stubs gemspec: NO_DESCRIPTION_GEMSPEC
       assert_nil Gemdiff::RepoFinder.github_url("none")
+    end
+
+    it "returns url when # is present in description" do
+      Gemdiff::RepoFinder.stubs find_local_gemspec: ANCHOR_DESCRIPTION_GEMSPEC
+      assert_equal "https://github.com/nicksieger/multipart-post",
+                   Gemdiff::RepoFinder.github_url("multipart-post")
     end
   end
 
@@ -73,6 +76,18 @@ class RepoFinderTest < MiniTest::Spec
     version: !ruby/object:Gem::Version
       version: 1.2.3
     description:
+  SPEC
+
+  ANCHOR_DESCRIPTION_GEMSPEC = <<~SPEC
+    --- !ruby/object:Gem::Specification
+    name: multipart-post
+    version: !ruby/object:Gem::Version
+      version: 2.0.0
+    description: 'IO values that have #content_type, #original_filename,
+      and #local_path will be posted as a binary file.'
+    homepage: https://github.com/nicksieger/multipart-post
+    licenses:
+    - MIT
   SPEC
 
   def fake_gemspec(extra = "")

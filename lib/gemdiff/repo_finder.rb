@@ -102,21 +102,22 @@ module Gemdiff
         if (full_name = REPO_EXCEPTIONS[gem_name.to_sym])
           return github_repo(full_name)
         end
-        return nil unless (yaml = gemspec(gem_name))
+        return unless (yaml = gemspec(gem_name))
         spec = YAML.load(yaml)
-        return secure_url(spec.homepage) if spec.homepage =~ GITHUB_REPO_REGEX
+        return clean_url(spec.homepage) if spec.homepage =~ GITHUB_REPO_REGEX
         match = spec.description.to_s.match(GITHUB_REPO_REGEX)
-        match && secure_url(match[0])
+        match && clean_url(match[0])
       end
 
-      def secure_url(url)
-        url.sub(/\Ahttp:/, "https:")
+      # return https URL with anchors stripped
+      def clean_url(url)
+        url.sub(/\Ahttp:/, "https:").partition("#").first
       end
 
       def search(gem_name)
         query = "#{gem_name} language:ruby in:name"
         result = octokit_client.search_repositories(query)
-        return nil if result.items.empty?
+        return if result.items.empty?
         github_repo result.items.first.full_name
       end
 
@@ -133,13 +134,9 @@ module Gemdiff
       end
 
       def gemspec(name)
-        local = find_local_gemspec(name)
-        return find_remote_gemspec(name) unless last_shell_command_success?
-        local.partition("#").first if local =~ GITHUB_REPO_REGEX
-      end
-
-      def last_shell_command_success?
-        $CHILD_STATUS.success?
+        yaml = find_local_gemspec(name)
+        return yaml unless yaml.to_s.empty?
+        find_remote_gemspec(name)
       end
 
       def find_local_gemspec(name)
@@ -147,7 +144,7 @@ module Gemdiff
       end
 
       def find_remote_gemspec(name)
-        `gem spec -r #{name}` if last_shell_command_success?
+        `gem spec -r #{name}`
       end
     end
   end
