@@ -102,7 +102,7 @@ module Gemdiff
         if (full_name = REPO_EXCEPTIONS[gem_name.to_sym])
           return github_repo(full_name)
         end
-        return nil unless (yaml = gemspec(gem_name))
+        return unless (yaml = gemspec(gem_name))
         spec = YAML.load(yaml)
         return secure_url(spec.homepage) if spec.homepage =~ GITHUB_REPO_REGEX
         match = spec.description.to_s.match(GITHUB_REPO_REGEX)
@@ -116,7 +116,7 @@ module Gemdiff
       def search(gem_name)
         query = "#{gem_name} language:ruby in:name"
         result = octokit_client.search_repositories(query)
-        return nil if result.items.empty?
+        return if result.items.empty?
         github_repo result.items.first.full_name
       end
 
