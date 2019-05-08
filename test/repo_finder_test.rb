@@ -43,6 +43,12 @@ class RepoFinderTest < MiniTest::Spec
       Gemdiff::RepoFinder.stubs gemspec: NO_DESCRIPTION_GEMSPEC
       assert_nil Gemdiff::RepoFinder.github_url("none")
     end
+
+    it "returns url when # is present in description" do
+      Gemdiff::RepoFinder.stubs find_local_gemspec: ANCHOR_DESCRIPTION_GEMSPEC
+      assert_equal "https://github.com/nicksieger/multipart-post",
+                   Gemdiff::RepoFinder.github_url("multipart-post")
+    end
   end
 
   private
@@ -70,6 +76,18 @@ class RepoFinderTest < MiniTest::Spec
     version: !ruby/object:Gem::Version
       version: 1.2.3
     description:
+  SPEC
+
+  ANCHOR_DESCRIPTION_GEMSPEC = <<~SPEC
+    --- !ruby/object:Gem::Specification
+    name: multipart-post
+    version: !ruby/object:Gem::Version
+      version: 2.0.0
+    description: 'IO values that have #content_type, #original_filename,
+      and #local_path will be posted as a binary file.'
+    homepage: https://github.com/nicksieger/multipart-post
+    licenses:
+    - MIT
   SPEC
 
   def fake_gemspec(extra = "")
