@@ -102,7 +102,8 @@ module Gemdiff
         if (full_name = REPO_EXCEPTIONS[gem_name.to_sym])
           return github_repo(full_name)
         end
-        return unless (yaml = gemspec(gem_name))
+        yaml = gemspec(gem_name)
+        return if yaml.to_s.empty?
         spec = YAML.load(yaml)
         return clean_url(spec.homepage) if spec.homepage =~ GITHUB_REPO_REGEX
         match = spec.description.to_s.match(GITHUB_REPO_REGEX)
