@@ -133,13 +133,9 @@ module Gemdiff
       end
 
       def gemspec(name)
-        local = find_local_gemspec(name)
-        return find_remote_gemspec(name) unless last_shell_command_success?
-        local.partition("#").first if local =~ GITHUB_REPO_REGEX
-      end
-
-      def last_shell_command_success?
-        $CHILD_STATUS.success?
+        yaml = find_local_gemspec(name)
+        return yaml unless yaml.to_s.empty?
+        find_remote_gemspec(name)
       end
 
       def find_local_gemspec(name)
@@ -147,7 +143,7 @@ module Gemdiff
       end
 
       def find_remote_gemspec(name)
-        `gem spec -r #{name}` if last_shell_command_success?
+        `gem spec -r #{name}`
       end
     end
   end
