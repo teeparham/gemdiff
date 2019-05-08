@@ -22,13 +22,25 @@ class RepoFinderTest < MiniTest::Spec
       assert_equal "https://github.com/rails/arel", Gemdiff::RepoFinder.github_url("arel")
     end
 
-    it "returns github url from github search" do
-      Gemdiff::RepoFinder.stubs octokit_client: mock_octokit("haml/haml")
-      Gemdiff::RepoFinder.stubs gemspec: fake_gemspec
-      assert_equal "https://github.com/haml/haml", Gemdiff::RepoFinder.github_url("haml")
+    it "returns nil when gem does not exist and not found in search" do
+      Gemdiff::RepoFinder.stubs octokit_client: mock_octokit(nil)
+      Gemdiff::RepoFinder.stubs gemspec: ""
+      assert_nil Gemdiff::RepoFinder.github_url("nope")
     end
 
-    it "returns nil when not found" do
+    it "returns url from github search when gem does not exist and found in search" do
+      Gemdiff::RepoFinder.stubs octokit_client: mock_octokit("x/x")
+      Gemdiff::RepoFinder.stubs gemspec: ""
+      assert_equal "https://github.com/x/x", Gemdiff::RepoFinder.github_url("x")
+    end
+
+    it "returns url from github search when not in gemspec" do
+      Gemdiff::RepoFinder.stubs octokit_client: mock_octokit("y/y")
+      Gemdiff::RepoFinder.stubs gemspec: fake_gemspec
+      assert_equal "https://github.com/y/y", Gemdiff::RepoFinder.github_url("y")
+    end
+
+    it "returns nil when not in gemspec and not found" do
       Gemdiff::RepoFinder.stubs octokit_client: mock_octokit(nil)
       Gemdiff::RepoFinder.stubs gemspec: fake_gemspec
       assert_nil Gemdiff::RepoFinder.github_url("not_found")
