@@ -32,7 +32,7 @@ module Gemdiff
       twilio-ruby
     ].freeze
 
-    attr_accessor :name, :old_version, :new_version
+    attr_reader :name, :old_version, :new_version
 
     def initialize(name, old_version = nil, new_version = nil)
       @name = name
