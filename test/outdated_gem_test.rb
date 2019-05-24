@@ -3,6 +3,16 @@
 require "test_helper"
 
 class OutdatedGemTest < MiniTest::Spec
+  describe "#initialize" do
+    it "sets name" do
+      assert_equal "x", Gemdiff::OutdatedGem.new("x").name
+    end
+
+    it "sets name to current directory when ." do
+      assert_equal "gemdiff", Gemdiff::OutdatedGem.new(".").name
+    end
+  end
+
   describe "#missing_versions?" do
     it "returns true" do
       assert Gemdiff::OutdatedGem.new("x").missing_versions?

@@ -146,6 +146,15 @@ to run with the `open` command with a URL argument):
 $ gemdiff open pundit
 ```
 
+You may also use `.` as a shortcut for the current directory name. 
+This is helpful if you would like to quickly open the gem you are developing, for example: 
+
+```sh
+$ pwd
+/Users/you/projects/somegem
+$ gemdiff open .
+```
+
 ### `gemdiff compare [gem] [version] [version]`
 
 Open a compare view for an individual outdated gem in your bundle:
@@ -200,6 +209,19 @@ You can use abbreviations for any of the above commands. For example, this is eq
 ```sh
 $ gemdiff f pundit
 https://github.com/varvet/pundit
+```
+
+All commands that have a gem name argument can now use "." as an alias for the current directory name.
+
+For example:
+
+```sh
+pwd
+/Users/you/ruby/somegem
+gemdiff find .
+gemdiff open .
+gemdiff master .
+gemdiff compare . 1.2.3 master
 ```
 
 ### Authenticated GitHub API requests
