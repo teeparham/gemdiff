@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "English"
 require "gemdiff/version"
 require "gemdiff/colorize"
 require "gemdiff/cli"
