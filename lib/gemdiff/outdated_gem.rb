@@ -35,7 +35,7 @@ module Gemdiff
     attr_reader :name, :old_version, :new_version
 
     def initialize(name, old_version = nil, new_version = nil)
-      @name = name
+      @name = find_name(name)
       set_versions old_version, new_version
     end
 
@@ -96,6 +96,12 @@ module Gemdiff
     end
 
     private
+
+    # When ".", use the name of the current directory
+    def find_name(name)
+      return File.basename(Dir.getwd) if name == "."
+      name
+    end
 
     def clean_url(url)
       uri = URI.parse(url)
