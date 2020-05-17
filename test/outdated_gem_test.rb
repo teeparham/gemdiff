@@ -69,7 +69,7 @@ class OutdatedGemTest < MiniTest::Spec
 
   describe "#load_bundle_versions" do
     it "returns false if not found" do
-      mock_inspector = stub :get
+      mock_inspector = stub(get: nil)
       Gemdiff::BundleInspector.stubs new: mock_inspector
       refute Gemdiff::OutdatedGem.new("x").load_bundle_versions
     end
