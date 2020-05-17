@@ -1,23 +1,27 @@
 inherit_from: .rubocop_todo.yml
 
 AllCops:
+  NewCops: enable
   TargetRubyVersion: 2.4
 
-Layout/AlignParameters:
+Layout/EmptyLineAfterGuardClause:
   Enabled: false
 
-Layout/AlignHash:
+Layout/HashAlignment:
   Exclude:
     - 'lib/gemdiff/repo_finder.rb'
     - 'lib/gemdiff/colorize.rb'
 
-Layout/EmptyLineAfterGuardClause:
-  Enabled: false
+Layout/LineLength:
+  Max: 120
 
 Layout/MultilineMethodCallIndentation:
   Enabled: false
 
 Layout/MultilineOperationIndentation:
+  Enabled: false
+
+Layout/ParameterAlignment:
   Enabled: false
 
 Metrics/BlockLength:
@@ -28,9 +32,6 @@ Metrics/ClassLength:
 
 Metrics/CyclomaticComplexity:
   Enabled: false
-
-Metrics/LineLength:
-  Max: 120
 
 Metrics/MethodLength:
   Enabled: false
