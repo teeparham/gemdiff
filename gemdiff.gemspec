@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "launchy", "~> 2.4"
   spec.add_dependency "octokit", "~> 4.0"
-  spec.add_dependency "thor", "~> 0.19"
+  spec.add_dependency "thor", "~> 1.0"
 
   spec.add_development_dependency "minitest", "~> 5.4"
   spec.add_development_dependency "mocha", "~> 1.1"
