@@ -37,12 +37,12 @@ class CLITest < MiniTest::Spec
     end
   end
 
-  describe "#master" do
+  describe "#main" do
     it "opens commits page" do
       outdated_gem = mock_gem("haml")
       cli.expects(:puts).with("http://github.com/haml/haml")
-      outdated_gem.expects :master
-      cli.master "haml"
+      outdated_gem.expects :main
+      cli.main "haml"
     end
   end
 

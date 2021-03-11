@@ -1,12 +1,12 @@
 # gemdiff
 
 [![Gem Version](https://badge.fury.io/rb/gemdiff.svg)](http://rubygems.org/gems/gemdiff)
-[![Build Status](https://travis-ci.org/teeparham/gemdiff.svg?branch=master)](https://travis-ci.org/teeparham/gemdiff)
+[![Build Status](https://travis-ci.org/teeparham/gemdiff.svg?branch=main)](https://travis-ci.org/teeparham/gemdiff)
 
 `gemdiff` is a command-line tool to find source code for ruby gems.
 It connects gem version management (rubygems + bundler) with source code (GitHub).
 
-`gemdiff` provides commands to 
+`gemdiff` provides commands to
 * Find GitHub repositories for gems
 * Open the compare view for two gem versions
 * Inspect your bundle and list all the available updates
@@ -146,8 +146,8 @@ to run with the `open` command with a URL argument):
 $ gemdiff open pundit
 ```
 
-You may also use `.` as a shortcut for the current directory name. 
-This is helpful if you would like to quickly open the gem you are developing, for example: 
+You may also use `.` as a shortcut for the current directory name.
+This is helpful if you would like to quickly open the gem you are developing, for example:
 
 ```sh
 $ pwd
@@ -175,7 +175,7 @@ $ gemdiff compare pundit 1.0.0 0.3.0
 You can compare a version with a branch name:
 
 ```sh
-$ gemdiff compare arel 6.0.0 master
+$ gemdiff compare arel 6.0.0 main
 ```
 
 ### `gemdiff releases [gem]`
@@ -186,12 +186,12 @@ Open the repository's release history page:
 $ gemdiff releases haml
 ```
 
-### `gemdiff master [gem]`
+### `gemdiff main [gem]`
 
-Open the repository's master branch commit history page:
+Open the repository's main branch commit history page:
 
 ```sh
-$ gemdiff master haml
+$ gemdiff main haml
 ```
 
 ### `gemdiff help`
@@ -220,8 +220,8 @@ pwd
 /Users/you/ruby/somegem
 gemdiff find .
 gemdiff open .
-gemdiff master .
-gemdiff compare . 1.2.3 master
+gemdiff main .
+gemdiff compare . 1.2.3 main
 ```
 
 ### Authenticated GitHub API requests
@@ -245,11 +245,11 @@ releases, submit an issue to the gem maintainer to tag their releases.
 
 3. The versions must be tagged using the standard format of `v1.2.3`. If you find gems that follow
 a non-standard format (such as `1.2.3`), please open an issue or submit a pull request.
-See [`lib/gemdiff/outdated_gem.rb`](https://github.com/teeparham/gemdiff/blob/master/lib/gemdiff/outdated_gem.rb).
+See [`lib/gemdiff/outdated_gem.rb`](https://github.com/teeparham/gemdiff/blob/main/lib/gemdiff/outdated_gem.rb).
 
 4. Encourage gem maintainers to enter the GitHub repository URL in the `homepage` field of their gemspec
 or anywhere in the description. If you find exceptions, open an issue or submit a pull request.
-See [`lib/gemdiff/repo_finder.rb`](https://github.com/teeparham/gemdiff/blob/master/lib/gemdiff/repo_finder.rb).
+See [`lib/gemdiff/repo_finder.rb`](https://github.com/teeparham/gemdiff/blob/main/lib/gemdiff/repo_finder.rb).
 
 ### More Info
 

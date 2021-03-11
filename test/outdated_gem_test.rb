@@ -37,9 +37,9 @@ class OutdatedGemTest < MiniTest::Spec
     end
 
     it "returns compare url with branch name for new version" do
-      outdated_gem = Gemdiff::OutdatedGem.new("x", "4.0.0", "master")
+      outdated_gem = Gemdiff::OutdatedGem.new("x", "4.0.0", "main")
       outdated_gem.stubs repo: "http://github.com/x/x"
-      assert_equal "http://github.com/x/x/compare/v4.0.0...master", outdated_gem.compare_url
+      assert_equal "http://github.com/x/x/compare/v4.0.0...main", outdated_gem.compare_url
     end
   end
 
@@ -55,7 +55,7 @@ class OutdatedGemTest < MiniTest::Spec
     it "returns commits url" do
       outdated_gem = Gemdiff::OutdatedGem.new("x")
       outdated_gem.stubs repo: "http://github.com/x/x"
-      assert_equal "http://github.com/x/x/commits/master", outdated_gem.commits_url
+      assert_equal "http://github.com/x/x/commits/main", outdated_gem.commits_url
     end
   end
 
@@ -114,20 +114,20 @@ class OutdatedGemTest < MiniTest::Spec
       assert_equal "1.10.0", outdated_gem.new_version
     end
 
-    it "swaps versions with master" do
+    it "swaps versions with main" do
       outdated_gem = Gemdiff::OutdatedGem.new("x")
-      outdated_gem.set_versions "master", "1.9.3"
+      outdated_gem.set_versions "main", "1.9.3"
       assert_equal "1.9.3", outdated_gem.old_version
-      assert_equal "master", outdated_gem.new_version
+      assert_equal "main", outdated_gem.new_version
     end
   end
 
-  describe "#master" do
-    it "opens master commits url" do
+  describe "#main" do
+    it "opens main commits url" do
       outdated_gem = Gemdiff::OutdatedGem.new("x")
       outdated_gem.stubs repo: "http://github.com/x/x"
-      outdated_gem.expects(:open_url).with("http://github.com/x/x/commits/master")
-      outdated_gem.master
+      outdated_gem.expects(:open_url).with("http://github.com/x/x/commits/main")
+      outdated_gem.main
     end
   end
 
