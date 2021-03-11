@@ -68,7 +68,7 @@ module Gemdiff
     end
 
     def commits_url
-      clean_url "#{repo}/commits/master"
+      clean_url "#{repo}/commits/main"
     end
 
     def compare_message
@@ -79,7 +79,7 @@ module Gemdiff
       clean_url "#{repo}/compare/#{compare_part}"
     end
 
-    def master
+    def main
       open_url(commits_url) if repo?
     end
 
@@ -137,7 +137,7 @@ module Gemdiff
     # swap versions if needed
     def old_new(v_old, v_new)
       return [v_old, v_new] unless v_old && v_new
-      if v_old == "master" || (Gem::Version.new(v_old) > Gem::Version.new(v_new))
+      if v_old == "main" || (Gem::Version.new(v_old) > Gem::Version.new(v_new))
         [v_new, v_old]
       else
         [v_old, v_new]
