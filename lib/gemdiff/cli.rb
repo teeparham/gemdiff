@@ -102,10 +102,11 @@ module Gemdiff
         return
       end
       response = ask("\nCommit? (c to commit, r to reset, else do nothing)")
-      if response == "c"
+      case response
+      when "c"
         gem_updater.commit
-        puts "\n" + colorize_git_output(gem_updater.show)
-      elsif response == "r"
+        puts "\n#{colorize_git_output(gem_updater.show)}"
+      when "r"
         puts gem_updater.reset
       end
     end

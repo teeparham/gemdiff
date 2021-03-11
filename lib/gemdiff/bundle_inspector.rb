@@ -32,7 +32,7 @@ module Gemdiff
                   .gsub("(newest", "")
                   .gsub(", installed", " >")
                   .gsub(/([(),])/, "")
-                  .split(" ")
+                  .split
 
       # ["haml", "4.0.5", ">", "4.0.4"]
       # ["a_forked_gem", "0.7.0", "99ddbc9", ">", "0.7.0", "1da2295"]

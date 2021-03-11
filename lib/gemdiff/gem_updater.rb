@@ -49,7 +49,7 @@ module Gemdiff
     end
 
     def version(changed_line)
-      changed_line.split("\n").first.split(" ").last.gsub(/[()]/, "")
+      changed_line.split("\n").first.split.last.gsub(/[()]/, "")
     end
 
     # example returns:
