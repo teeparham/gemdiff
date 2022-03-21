@@ -79,6 +79,7 @@ class RepoFinderTest < MiniTest::Spec
     name: fake
     version: !ruby/object:Gem::Version
       version: 1.2.3
+    date: 2021-01-06 00:00:00.000000000 Z
     description: fake
   SPEC
 
