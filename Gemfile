@@ -2,6 +2,6 @@
 
 source "https://rubygems.org"
 
-gem "pry-byebug" unless ENV["TRAVIS"]
+gem "pry-byebug" unless ENV["CI"]
 
 gemspec
