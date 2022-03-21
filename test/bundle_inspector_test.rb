@@ -6,21 +6,8 @@ class BundleInspectorTest < MiniTest::Spec
   let(:inspector) { Gemdiff::BundleInspector.new }
 
   describe "#list" do
-    it "returns outdated gems for old bundler" do
-      inspector.stubs bundle_outdated_strict: fake_outdated_old
-      inspector.list.tap do |list|
-        assert_equal 2, list.size
-        assert_equal "aws-sdk", list[0].name
-        assert_equal "1.34.1", list[0].old_version
-        assert_equal "1.35.0", list[0].new_version
-        assert_equal "haml", list[1].name
-        assert_equal "4.0.4", list[1].old_version
-        assert_equal "4.0.5", list[1].new_version
-      end
-    end
-
     it "returns outdated gems" do
-      inspector.stubs bundle_outdated_strict: fake_outdated
+      inspector.stubs bundle_outdated_strict: fake_outdated_parseable
       inspector.list.tap do |list|
         assert_equal 3, list.size
         assert_equal "paperclip", list[0].name
@@ -43,11 +30,11 @@ class BundleInspectorTest < MiniTest::Spec
 
   describe "#get" do
     it "returns single outdated gem" do
-      inspector.stubs bundle_outdated_strict: fake_outdated_old
-      inspector.get("haml").tap do |gem|
-        assert_equal "haml", gem.name
-        assert_equal "4.0.4", gem.old_version
-        assert_equal "4.0.5", gem.new_version
+      inspector.stubs bundle_outdated_strict: fake_outdated_parseable
+      inspector.get("rails").tap do |gem|
+        assert_equal "rails", gem.name
+        assert_equal "4.2.1", gem.old_version
+        assert_equal "4.2.2", gem.new_version
       end
     end
 
@@ -59,37 +46,17 @@ class BundleInspectorTest < MiniTest::Spec
 
   private
 
-  def fake_outdated_old
+  def fake_outdated_parseable
     <<~OUT
-      Updating git://github.com/neighborland/active-something.git
-      Fetching gem metadata from https://rubygems.org/.......
-      Fetching additional metadata from https://rubygems.org/..
-      Resolving dependencies...
-
-      Outdated gems included in the bundle:
-        * active-something (0.7.0 99ddbc9 > 0.7.0 1da2295)
-        * aws-sdk (1.35.0 > 1.34.1)
-        * haml (4.0.5 > 4.0.4)
-    OUT
-  end
-
-  # bundler output changed around version 1.10
-  def fake_outdated
-    <<~OUT
-      Outdated gems included in the bundle:
-        * paperclip (newest 4.3.0, installed 4.2.2) in group "default"
-        * rails (newest 4.2.2, installed 4.2.1, requested ~> 4.2.1) in group "default"
-        * web-console (newest 2.1.3, installed 2.1.2) in groups "development, test"
+      paperclip (newest 4.3.0, installed 4.2.2)
+      rails (newest 4.2.2, installed 4.2.1, requested ~> 4.2.1)
+      web-console (newest 2.1.3, installed 2.1.2)
     OUT
   end
 
   def fake_up_to_date
     <<~OUT
-      Fetching gem metadata from https://rubygems.org/.........
-      Fetching additional metadata from https://rubygems.org/..
-      Resolving dependencies...
 
-      Your bundle is up to date!
     OUT
   end
 end
