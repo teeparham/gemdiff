@@ -1,7 +1,7 @@
 # gemdiff
 
 [![Gem Version](https://badge.fury.io/rb/gemdiff.svg)](http://rubygems.org/gems/gemdiff)
-[![Build Status](https://travis-ci.org/teeparham/gemdiff.svg?branch=main)](https://travis-ci.org/teeparham/gemdiff)
+[![CI](https://github.com/teeparham/gemdiff/actions/workflows/test.yml/badge.svg)](https://github.com/teeparham/gemdiff/actions/workflows/test.yml)
 
 `gemdiff` is a command-line tool to find source code for ruby gems.
 It connects gem version management (rubygems + bundler) with source code (GitHub).
