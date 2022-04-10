@@ -89,6 +89,16 @@ module Gemdiff
         zeus:                     "burke/zeus",
       }.freeze
 
+    PERMITTED_GEMSPEC_CLASSES =
+      %w[
+        Gem::Dependency
+        Gem::Requirement
+        Gem::Specification
+        Gem::Version
+        Symbol
+        Time
+      ].freeze
+
     class << self
       # Try to get the homepage from the gemspec
       # If not found, search github
@@ -104,7 +114,11 @@ module Gemdiff
         end
         yaml = gemspec(gem_name)
         return if yaml.to_s.empty?
-        spec = YAML.load(yaml)
+        spec = if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.6.0')
+          YAML.safe_load(yaml, permitted_classes: PERMITTED_GEMSPEC_CLASSES)
+        else
+          YAML.load(yaml)
+        end
         return clean_url(spec.homepage) if spec.homepage =~ GITHUB_REPO_REGEX
         match = spec.description.to_s.match(GITHUB_REPO_REGEX)
         match && clean_url(match[0])
