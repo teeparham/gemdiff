@@ -5,7 +5,7 @@ require "yaml"
 
 module Gemdiff
   module RepoFinder
-    GITHUB_REPO_REGEX = %r{(https?)://(www.)?github\.com/([\w.%-]*)/([\w.%-]*)}.freeze
+    GITHUB_REPO_REGEX = %r{(https?)://(www.)?github\.com/([\w.%-]*)/([\w.%-]*)}
 
     # rails builds several gems that are not individual projects
     # some repos move and the old repo page still exists
@@ -114,7 +114,7 @@ module Gemdiff
         end
         yaml = gemspec(gem_name)
         return if yaml.to_s.empty?
-        spec = if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.6.0')
+        spec = if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.6.0")
                  YAML.safe_load(yaml, permitted_classes: PERMITTED_GEMSPEC_CLASSES)
                else
                  YAML.load(yaml)
@@ -141,7 +141,7 @@ module Gemdiff
       end
 
       def access_token
-        ENV["GEMDIFF_GITHUB_TOKEN"] || ENV["GITHUB_TOKEN"]
+        ENV["GEMDIFF_GITHUB_TOKEN"] || ENV.fetch("GITHUB_TOKEN", nil)
       end
 
       def octokit_client

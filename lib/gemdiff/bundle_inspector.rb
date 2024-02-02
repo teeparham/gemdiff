@@ -2,7 +2,7 @@
 
 module Gemdiff
   class BundleInspector
-    BUNDLE_OUTDATED_PARSE_REGEX = /\A([^\s]+)\s\(newest\s([^,]+),\sinstalled\s([^,\)]+).*\z/.freeze
+    BUNDLE_OUTDATED_PARSE_REGEX = /\A([^\s]+)\s\(newest\s([^,]+),\sinstalled\s([^,\)]+).*\z/
 
     def list
       @list ||=
