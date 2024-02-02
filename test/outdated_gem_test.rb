@@ -156,4 +156,3 @@ describe "#open" do
     outdated_gem.open
   end
 end
-

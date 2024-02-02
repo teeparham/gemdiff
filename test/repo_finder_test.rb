@@ -12,7 +12,7 @@ describe ".github_url" do
     Gemdiff::RepoFinder.stubs \
       find_local_gemspec: fake_gemspec("homepage: https://github.com/rubysec/bundler-audit#readme")
     assert_equal "https://github.com/rubysec/bundler-audit",
-                  Gemdiff::RepoFinder.github_url("bundler-audit")
+                 Gemdiff::RepoFinder.github_url("bundler-audit")
   end
 
   it "returns github url from remote gemspec" do
@@ -58,7 +58,7 @@ describe ".github_url" do
   it "returns url when # is present in description" do
     Gemdiff::RepoFinder.stubs find_local_gemspec: ANCHOR_DESCRIPTION_GEMSPEC
     assert_equal "https://github.com/nicksieger/multipart-post",
-                  Gemdiff::RepoFinder.github_url("multipart-post")
+                 Gemdiff::RepoFinder.github_url("multipart-post")
   end
 end
 
@@ -66,10 +66,10 @@ private
 
 def mock_octokit(full_name)
   mock_items = if full_name.nil?
-                  stub items: []
-                else
-                  stub items: [stub(full_name: full_name)]
-                end
+                 stub items: []
+               else
+                 stub items: [stub(full_name: full_name)]
+               end
   stub search_repositories: mock_items
 end
 
