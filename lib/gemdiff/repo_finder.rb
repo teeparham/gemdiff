@@ -114,11 +114,7 @@ module Gemdiff
         end
         yaml = gemspec(gem_name)
         return if yaml.to_s.empty?
-        spec = if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.6.0")
-                 YAML.safe_load(yaml, permitted_classes: PERMITTED_GEMSPEC_CLASSES)
-               else
-                 YAML.load(yaml)
-               end
+        spec = YAML.safe_load(yaml, permitted_classes: PERMITTED_GEMSPEC_CLASSES)
         return clean_url(spec.homepage) if spec.homepage =~ GITHUB_REPO_REGEX
         match = spec.description.to_s.match(GITHUB_REPO_REGEX)
         match && clean_url(match[0])
