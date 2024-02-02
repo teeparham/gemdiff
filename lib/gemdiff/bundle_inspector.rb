@@ -27,7 +27,7 @@ module Gemdiff
     end
 
     def new_outdated_gem(line)
-      return unless match = BUNDLE_OUTDATED_PARSE_REGEX.match(line)
+      return unless (match = BUNDLE_OUTDATED_PARSE_REGEX.match(line))
 
       OutdatedGem.new(match[1], match[2], match[3])
     end
