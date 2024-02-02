@@ -16,7 +16,7 @@ describe "#commit" do
     updater.stubs git_removed_line: "-    json (1.8.0)"
     updater.stubs git_added_line: "+    json (1.8.1)"
     assert_equal "Update json to 1.8.1\n\nhttps://github.com/flori/json/compare/v1.8.0...v1.8.1",
-                  updater.send(:commit_message)
+                 updater.send(:commit_message)
     updater.expects :git_add_and_commit_lockfile
     assert updater.commit
   end
@@ -26,7 +26,7 @@ describe "#commit" do
     updater.stubs git_removed_line: "-    ffi (1.2.3)"
     updater.stubs git_added_line: "+    ffi (1.2.4)\n+  ffi"
     assert_equal "Update ffi to 1.2.4\n\nhttps://github.com/ffi/ffi/compare/1.2.3...1.2.4",
-                  updater.send(:commit_message)
+                 updater.send(:commit_message)
     updater.expects :git_add_and_commit_lockfile
     assert updater.commit
   end
@@ -37,7 +37,7 @@ describe "#commit" do
     updater.stubs git_added_line: \
       "+      activejob (= 4.2.3)\n+    activejob (4.2.3)\n+      activejob (= 4.2.3)"
     assert_equal "Update activejob to 4.2.3\n\nhttps://github.com/rails/rails/compare/v4.2.2...v4.2.3",
-                  updater.send(:commit_message)
+                 updater.send(:commit_message)
     updater.expects :git_add_and_commit_lockfile
     assert updater.commit
   end
@@ -80,4 +80,3 @@ describe "#clean?" do
     refute updater.clean?
   end
 end
-

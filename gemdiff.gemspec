@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Tee Parham"]
   spec.email         = ["parhameter@gmail.com"]
   spec.summary       = "Find source repositories for ruby gems. Open, compare, and update outdated gem versions"
-  spec.description   = "Command-line utility to find source repositories for ruby gems, open common GitHub pages, "\
+  spec.description   = "Command-line utility to find source repositories for ruby gems, open common GitHub pages, " \
                        "compare gem versions, and simplify gem update workflow in git."
   spec.homepage      = "https://github.com/teeparham/gemdiff"
   spec.license       = "MIT"
