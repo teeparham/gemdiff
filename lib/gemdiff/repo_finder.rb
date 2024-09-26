@@ -115,7 +115,7 @@ module Gemdiff
         yaml = gemspec(gem_name)
         return if yaml.to_s.empty?
         spec = YAML.safe_load(yaml, permitted_classes: PERMITTED_GEMSPEC_CLASSES)
-        return clean_url(spec.homepage) if spec.homepage =~ GITHUB_REPO_REGEX
+        return clean_url(spec.homepage) if GITHUB_REPO_REGEX.match?(spec.homepage)
         match = spec.description.to_s.match(GITHUB_REPO_REGEX)
         match && clean_url(match[0])
       end
