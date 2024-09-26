@@ -1,7 +1,13 @@
 inherit_from: .rubocop_todo.yml
 
+require:
+  - rubocop-packaging
+  - rubocop-performance
+  - rubocop-rake
+
 AllCops:
   NewCops: enable
+  SuggestExtensions: false
   TargetRubyVersion: 3.0
 
 Layout/EmptyLineAfterGuardClause:
@@ -9,8 +15,8 @@ Layout/EmptyLineAfterGuardClause:
 
 Layout/HashAlignment:
   Exclude:
-    - 'lib/gemdiff/repo_finder.rb'
-    - 'lib/gemdiff/colorize.rb'
+    - "lib/gemdiff/repo_finder.rb"
+    - "lib/gemdiff/colorize.rb"
 
 Layout/LineLength:
   Max: 120
@@ -65,6 +71,6 @@ Style/ZeroLengthPredicate:
 
 Style/FrozenStringLiteralComment:
   Exclude:
-    - 'Gemfile'
-    - 'Rakefile'
-    - '*.gemspec'
+    - "Gemfile"
+    - "Rakefile"
+    - "*.gemspec"
