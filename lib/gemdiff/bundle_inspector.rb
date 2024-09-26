@@ -8,8 +8,7 @@ module Gemdiff
       @list ||=
         outdated
           .split("\n")
-          .map { |line| new_outdated_gem(line) }
-          .compact
+          .filter_map { |line| new_outdated_gem(line) }
     end
 
     def outdated

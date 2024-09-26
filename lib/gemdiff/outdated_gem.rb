@@ -105,7 +105,7 @@ module Gemdiff
 
     def clean_url(url)
       uri = URI.parse(url)
-      uri.path.gsub! %r{/+}, "/"
+      uri.path.squeeze!("/")
       uri.to_s
     end
 
