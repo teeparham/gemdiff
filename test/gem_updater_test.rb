@@ -34,7 +34,7 @@ describe "#commit" do
   it "adds a git commit for an update with dependencies" do
     updater = Gemdiff::GemUpdater.new("activejob")
     updater.stubs git_removed_line: "-    activejob (4.2.2)"
-    updater.stubs git_added_line: \
+    updater.stubs git_added_line:
       "+      activejob (= 4.2.3)\n+    activejob (4.2.3)\n+      activejob (= 4.2.3)"
     assert_equal "Update activejob to 4.2.3\n\nhttps://github.com/rails/rails/compare/v4.2.2...v4.2.3",
                  updater.send(:commit_message)

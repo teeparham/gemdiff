@@ -19,9 +19,9 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = ">= 3.0.0"
 
+  spec.add_dependency "faraday-retry", "~> 2.2"
   spec.add_dependency "launchy", "~> 3.0"
   spec.add_dependency "octokit", "~> 9.0"
-  spec.add_dependency "faraday-retry", "~> 2.2"
   spec.add_dependency "thor", "~> 1.0"
 
   spec.metadata["rubygems_mfa_required"] = "true"
