@@ -15,7 +15,7 @@ describe "#commit" do
     updater = Gemdiff::GemUpdater.new("json")
     updater.stubs git_removed_line: "-    json (1.8.0)"
     updater.stubs git_added_line: "+    json (1.8.1)"
-    assert_equal "Update json to 1.8.1\n\nhttps://github.com/flori/json/compare/v1.8.0...v1.8.1",
+    assert_equal "Update json to 1.8.1\n\nhttps://github.com/ruby/json/compare/v1.8.0...v1.8.1",
                  updater.send(:commit_message)
     updater.expects :git_add_and_commit_lockfile
     assert updater.commit

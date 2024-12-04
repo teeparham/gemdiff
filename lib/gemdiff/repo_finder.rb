@@ -39,7 +39,7 @@ module Gemdiff
         "guard-livereload":       "guard/guard-livereload",
         i18n:                     "ruby-i18n/i18n",
         "jquery-ujs":             "rails/jquery-ujs",
-        json:                     "flori/json",
+        json:                     "ruby/json",
         kaminari:                 "kaminari/kaminari",
         "kaminari-actionview":    "kaminari/kaminari",
         "kaminari-activerecord":  "kaminari/kaminari",
