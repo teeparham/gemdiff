@@ -5,7 +5,7 @@ require "mocha/minitest"
 require "gemdiff"
 
 begin
-  require "debug"
+  require "debug" unless ENV["CI"]
 rescue LoadError
   # ok
 end
