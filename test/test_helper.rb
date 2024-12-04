@@ -5,7 +5,7 @@ require "mocha/minitest"
 require "gemdiff"
 
 begin
-  require "pry-byebug"
+  require "debug"
 rescue LoadError
   # ok
 end
