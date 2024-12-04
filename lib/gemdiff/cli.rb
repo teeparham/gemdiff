@@ -12,6 +12,8 @@ module Gemdiff
     CHECKING_FOR_OUTDATED = "Checking for outdated gems in your bundle..."
     NOTHING_TO_UPDATE = "Nothing to update."
     WORKING_DIRECTORY_IS_NOT_CLEAN = "Your working directory is not clean. Please commit or stash before updating."
+    RESPONSES_ALL = %w[s A].freeze
+    RESPONSES_COMPARE = %w[y A].freeze
 
     desc "find <gem>", "Find the github repository URL for a gem"
     def find(gem_name)
@@ -64,12 +66,12 @@ module Gemdiff
       puts CHECKING_FOR_OUTDATED
       inspector = BundleInspector.new
       puts inspector.outdated
-      open_all = false
+      all_action = false
       inspector.list.each do |outdated_gem|
         puts outdated_gem.compare_message
-        response = open_all || ask("Open? (y to open, x to exit, A to open all, s to show all to stdout, else skip)")
-        open_all = response if %w[s A].include?(response)
-        outdated_gem.compare if %w[y A].include?(response)
+        response = all_action || ask("Open? (y to open, x to exit, A to open all, s to show all to stdout, else skip)")
+        all_action = response if RESPONSES_ALL.include?(response)
+        outdated_gem.compare if RESPONSES_COMPARE.include?(response)
         puts outdated_gem.compare_url if response == "s"
         break if response == "x"
       end
