@@ -62,17 +62,6 @@ describe ".github_url" do
   end
 end
 
-private
-
-def mock_octokit(full_name)
-  mock_items = if full_name.nil?
-                 stub items: []
-               else
-                 stub items: [stub(full_name: full_name)]
-               end
-  stub search_repositories: mock_items
-end
-
 FAKE_GEMSPEC = <<~SPEC
   --- !ruby/object:Gem::Specification
   name: fake
@@ -101,6 +90,17 @@ ANCHOR_DESCRIPTION_GEMSPEC = <<~SPEC
   licenses:
   - MIT
 SPEC
+
+private
+
+def mock_octokit(full_name)
+  mock_items = if full_name.nil?
+                 stub items: []
+               else
+                 stub items: [stub(full_name: full_name)]
+               end
+  stub search_repositories: mock_items
+end
 
 def fake_gemspec(extra = "")
   [FAKE_GEMSPEC, extra].compact.join("\n")
